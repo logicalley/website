@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 
-const Home: React.FC  = (): any => {
+const Home: React.FC  = () => {
   return (
     <div>
       <p>welcomeText</p>
