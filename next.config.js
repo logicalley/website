@@ -1,6 +1,9 @@
 // @ts-check
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  pageExtensions: ['tsx', 'ts']
+  pageExtensions: ['tsx', 'ts'],
+  devIndicators: {
+    autoPrerender: isDev
+  },
 };

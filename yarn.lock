@@ -1014,6 +1014,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bolajiolajide/utils@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@bolajiolajide/utils/-/utils-1.0.8.tgz#f24cba99f46afa1db841d98a190686ce00f3af0d"
+  integrity sha512-3HnFM2SGRrG4WF7dC4wM6MQpMOLKh7WlpMeJ3PstppnzcW8CRPQJqQaiknNE9HGfNWwnxiIBe4+X/gVuiFGojA==
+
 "@next/react-dev-overlay@9.5.3":
   version "9.5.3"
   resolved "https://registry.yarnpkg.com/@next/react-dev-overlay/-/react-dev-overlay-9.5.3.tgz#3275301f08045ecc709e3273031973a1f5e81427"
