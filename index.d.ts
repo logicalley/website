@@ -1,3 +1,3 @@
-export interface DeepLinkDisplayProps {
-  code: string
+export interface NavProps {
+  isHomePage: boolean
 };

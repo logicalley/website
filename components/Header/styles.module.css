@@ -1,0 +1,16 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.logo {
+  display: none;
+}
+
+@media (min-width:48em) {
+  .logo {
+    display: block;
+  }
+}
