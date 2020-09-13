@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Head from 'next/head';
 
-const Home: React.FC  = () => {
+const Home: React.FC = () => {
   return (
-    <div>
-      <p>welcomeText</p>
-    </div>
+    <Fragment>
+      <Head>
+        <title>Annie</title>
+      </Head>
+      <section>
+        <p>welcomeText</p>
+      </section>
+    </Fragment>
   );
 }
 
