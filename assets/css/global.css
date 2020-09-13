@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/SpaceGrotesk-Regular.otf') format('truetype');
+}
+
+:root {
+  --primary: #6525EC;
+  --primary-x2: #BDA3F5;
+  --primary-x3: #EEDFF2;
+
+  --white: #FFF;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#__next {
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+}
