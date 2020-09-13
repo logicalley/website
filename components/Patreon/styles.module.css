@@ -1,0 +1,23 @@
+.patreonLink {
+  border: 2px solid var(--dark);
+  border-radius: var(--borderRadius);
+  box-sizing: content-box;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.patreonLink:hover {
+  background-color: var(--light);
+  text-decoration: none;
+}
+
+.remText {
+  display: none;
+}
+
+@media (min-width:48em) {
+  .remText {
+    display: inline;
+  }
+}

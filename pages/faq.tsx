@@ -4,15 +4,15 @@ import React, { Fragment } from 'react';
 import Header from '../components/Header';
 
 
-const Home: React.FC = () => {
+const FAQ: React.FC = () => {
   return (
     <Fragment>
       <Header />
       <section>
-        <p>welcomeText</p>
+        <p>FAQ</p>
       </section>
     </Fragment>
   );
 }
 
-export default Home;
+export default FAQ;
