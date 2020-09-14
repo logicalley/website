@@ -1,0 +1,30 @@
+.buttonContainer {
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: var(--borderRadius);
+}
+
+.buttonLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.downloadText {
+  font-size: 0.8rem;
+}
+
+.storeName {
+  font-size: 1.5rem;
+}
+
+.storeLogo {
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+}

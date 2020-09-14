@@ -5,6 +5,10 @@
   flex-grow: 1;
 }
 
+.headerNav:hover {
+  text-decoration: underline;
+}
+
 @media (min-width:48em) {
   .nav {
     flex-grow: 0;

@@ -3,13 +3,11 @@
   border-radius: var(--borderRadius);
   box-sizing: content-box;
   padding: 0.5rem;
-  text-decoration: none;
   color: var(--dark);
 }
 
 .patreonLink:hover {
   background-color: var(--light);
-  text-decoration: none;
 }
 
 .remText {

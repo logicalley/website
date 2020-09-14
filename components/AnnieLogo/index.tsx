@@ -1,6 +1,15 @@
 import React from "react";
 
-const AnnieLogo: React.FC = () => {
+import type { AnnieLogoProps } from '../../index.d';
+
+
+const AnnieLogo: React.FC<AnnieLogoProps> = (props: AnnieLogoProps) => {
+  const { height, width } = props;
+  const svgStyle = {
+    height: height || '40px',
+    width: width || '40px'
+  }
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +17,7 @@ const AnnieLogo: React.FC = () => {
       height="42"
       fill="none"
       viewBox="0 0 49 42"
+      style={svgStyle}
     >
       <path
         fill="#000"

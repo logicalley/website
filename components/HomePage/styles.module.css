@@ -1,0 +1,29 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeHeader {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.014em;
+}
+
+.homeHeader span {
+  display: inline;
+}
+
+.downloadSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width:48em) {
+  .homeHeader span {
+    display: block;
+    font-size: 3rem;
+  }
+}
