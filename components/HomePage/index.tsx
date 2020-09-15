@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
       </section>
 
       <Spacer height="30px" />
-      <img src="/images/rect-frame.png" className={styles.songLink} />
+      <img src="/images/song-board.webp" className={styles.songLink} />
     </section>
   );
 };
