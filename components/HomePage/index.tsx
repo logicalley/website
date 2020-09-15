@@ -21,11 +21,13 @@ const HomePage: React.FC = () => {
       </h1>
 
       <Spacer height="30px" />
-
       <section className={styles.downloadSection}>
         <AppleAppStoreButton />
         <GooglePlayButton />
       </section>
+
+      <Spacer height="30px" />
+      <img src="/images/rect-frame.png" className={styles.songLink} />
     </section>
   );
 };
