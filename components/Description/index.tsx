@@ -19,8 +19,9 @@ const Description: React.FC = () => (
           /images/share-illustration.webp 1x,
           /images/share-illustration.webp2x" type="image/webp" />
       <img
-        src="https://res.cloudinary.com/anniemusic/image/upload/v1600212881/landing-page-assets/share-illustration_fdq5ys.jpg"
+        src="https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600212881/landing-page-assets/share-illustration_fdq5ys.jpg"
         alt="How to share songs on Annie"
+        loading="lazy"
         className={styles.descriptionImage} />
     </picture>
   </article>

@@ -316,7 +316,7 @@ body {
 #__next {
   min-width: 100vw;
   min-height: 100vh;
-  padding: 15px 30px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
 }
@@ -330,4 +330,10 @@ a {
 
 h1,h2,h3,h4,h5,h6 {
   color: var(--dark);
+}
+
+@media (min-width: 48em) {
+  #__next {
+    padding: 15px 50px;
+  }
 }

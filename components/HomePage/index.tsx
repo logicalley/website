@@ -10,7 +10,7 @@ import Description from '../Description';
 
 
 const HomePage: React.FC = () => {
-  const songBoardImageFallback = 'https://res.cloudinary.com/anniemusic/image/upload/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
+  const songBoardImageFallback = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
 
   return (
     <section className={styles.homeContainer}>
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
         <GooglePlayButton />
       </section>
 
-      <Spacer height="30px" />
+      <Spacer height="50px" />
       <picture className={styles.songLinkContainer}>
         <source srcSet="
           /images/song-board.webp 1x,
