@@ -1,0 +1,128 @@
+.howToUseContainer {
+  position: relative;
+  width: 100%;
+}
+
+.howToUseContainer h2 {
+  font-size: 2rem;
+  width: 100%;
+}
+
+.howToUseContainer::before {
+  content: '';
+  position: absolute;
+  top: -110px;
+  border-bottom: 53vw solid var(--primary2);
+  border-left: 80vw solid transparent;
+  z-index: -1;
+  left: 3px;
+  right: 0;
+}
+
+.howToUseContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  background: var(--primary2);
+  width: 100%;
+  height: 95%;
+  z-index: -1;
+  left: 0;
+}
+
+.phoneMockupContainer {
+  width: 100%;
+}
+
+.phoneMockup {
+  width: 100%;
+}
+
+.howToUseDescription {
+  padding: 0 40px;
+}
+
+.howToUseDescription div {
+  width: 90%;
+  position: relative;
+}
+
+.howToUseDescription div:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.howToUseDescription dt {
+  font-size: 1.5rem;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.howToUseDescription dd {
+  margin: 0;
+  padding: 0;
+  color: var(--descriptionText);
+  opacity: 0.9;
+  line-height: 150%;
+}
+
+.stepOne::before,
+.stepTwo::before,
+.stepThree::before {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+
+
+.stepOne::before{
+  content: url('/images/one.svg');
+}
+
+.stepTwo::before {
+  content: url('/images/two.svg');
+}
+
+.stepThree::before {
+  content: url('/images/three.svg');
+}
+
+@media (min-width:48em) {
+  .howToUseContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+  }
+
+  .howToUseDescription dt {
+    font-size: 2rem;
+  }
+
+  .howToUseDescription dd {
+    line-height: 150%;
+    font-size: 1.5rem;
+  }
+
+  .howToUseDescription div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 70px 0;
+  }
+
+  .howToUseContainer::before {
+    border-bottom: 17vw solid var(--primary2);
+    border-left: 55vw solid transparent;
+    right: 0;
+    top: -228px;
+  }
+
+  .howToUseContainer h2 {
+    text-align: center;
+    font-size: 2.5rem;
+  }
+
+  .howToUseDescription {
+    margin-top: 100px;
+    width: 70%;
+  }
+}

@@ -7,10 +7,11 @@ import Spacer from '../Spacer';
 import AnnieLogo from '../AnnieLogo';
 import { GooglePlayButton, AppleAppStoreButton } from '../DownloadButtons';
 import Description from '../Description';
+import HowToUse from '../HowToUse';
 
 
 const HomePage: React.FC = () => {
-  const songBoardImageFallback = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
+  const songBoardImageFallback: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
 
   return (
     <section className={styles.homeContainer}>
@@ -39,6 +40,9 @@ const HomePage: React.FC = () => {
 
       <Spacer height="30px" />
       <Description />
+
+      <Spacer height="50px" />
+      <HowToUse />
     </section>
   );
 };
