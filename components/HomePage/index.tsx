@@ -8,6 +8,7 @@ import AnnieLogo from '../AnnieLogo';
 import { GooglePlayButton, AppleAppStoreButton } from '../DownloadButtons';
 import Description from '../Description';
 import HowToUse from '../HowToUse';
+import AnnieLinkArt from '../AnnieLinkArt';
 
 
 const HomePage: React.FC = () => {
@@ -43,6 +44,11 @@ const HomePage: React.FC = () => {
 
       <Spacer height="50px" />
       <HowToUse />
+
+      <Spacer height="30px" />
+      <AnnieLinkArt />
+
+      <Spacer height="50px" />
     </section>
   );
 };

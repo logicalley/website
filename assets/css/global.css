@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: bolder;
+  font-display: swap;
+  src: url('../fonts/SpaceGrotesk-Bold.otf') format('truetype');
+}
+
+@font-face {
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
@@ -23,7 +31,7 @@
   --light: #F6F4FB;
   --black: #000;
   --white: #FFF;
-  --descriptionText: #4F3E6F;
+  --descriptionText: rgba(79, 62, 111, 0.9);;
   -moz-tab-size: 4;
   tab-size: 4;
   --gradient: linear-gradient(0deg, #6525EC 0%, #EB85B6 100%);

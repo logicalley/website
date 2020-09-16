@@ -1,0 +1,40 @@
+.annieLinkImage {
+  width: 100%;
+}
+
+.annieLinkImageContainer {
+  width: 100%;
+}
+
+.linkArtTextContainer h3 {
+  font-size: 2rem;
+}
+
+.linkArtTextContainer span {
+  line-height: 150%;
+  color: var(--descriptionText);
+  font-size: 1.2rem;
+}
+
+@media (min-width: 48em) {
+  .linkArtContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+
+  .linkArtTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .linkArtTextContainer h3 {
+    font-size: 3.5rem;
+  }
+
+  .linkArtTextContainer span {
+    font-size: 2rem;
+  }
+}

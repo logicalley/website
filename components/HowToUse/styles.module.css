@@ -113,12 +113,12 @@
     border-bottom: 17vw solid var(--primary2);
     border-left: 55vw solid transparent;
     right: 0;
-    top: -228px;
+    top: -220px;
   }
 
   .howToUseContainer h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 
   .howToUseDescription {
