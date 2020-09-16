@@ -30,4 +30,8 @@
     display: block;
     font-size: 3rem;
   }
+
+  .songLinkContainer {
+    width: 100%;
+  }
 }

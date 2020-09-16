@@ -1,0 +1,35 @@
+.description h2 {
+  width: 80%;
+}
+
+.description span {
+  color: var(--descriptionText);
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.descriptionImage {
+  width: 100%;
+  margin: 40px 0;
+}
+
+@media (min-width:48em) {
+  .descriptionContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+  }
+
+  .description {
+    margin: 20px 0;
+  }
+
+  .description h2 {
+    font-size: 3rem;
+  }
+
+  .description span {
+    font-size: 1.5rem;
+    line-height: 200%;
+  }
+}

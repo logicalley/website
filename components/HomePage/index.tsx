@@ -6,9 +6,12 @@ import styles from './styles.module.css';
 import Spacer from '../Spacer';
 import AnnieLogo from '../AnnieLogo';
 import { GooglePlayButton, AppleAppStoreButton } from '../DownloadButtons';
+import Description from '../Description';
 
 
 const HomePage: React.FC = () => {
+  const songBoardImageFallback = 'https://res.cloudinary.com/anniemusic/image/upload/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
+
   return (
     <section className={styles.homeContainer}>
       <Spacer height="56px" />
@@ -27,7 +30,15 @@ const HomePage: React.FC = () => {
       </section>
 
       <Spacer height="30px" />
-      <img src="/images/song-board.webp" className={styles.songLink} />
+      <picture className={styles.songLinkContainer}>
+        <source srcSet="
+          /images/song-board.webp 1x,
+          /images/song-board.webp 2x" type="image/webp" />
+        <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
+      </picture>
+
+      <Spacer height="30px" />
+      <Description />
     </section>
   );
 };
