@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   background: var(--primary2);
+  padding: 10px;
 }
 
 .howToUseContainer h2 {

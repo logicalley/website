@@ -10,6 +10,7 @@ import Description from '../Description';
 import HowToUse from '../HowToUse';
 import AnnieLinkArt from '../AnnieLinkArt';
 import GetGrooving from '../GetGrooving';
+import Support from '../Support';
 
 
 const HomePage: React.FC = () => {
@@ -51,6 +52,9 @@ const HomePage: React.FC = () => {
 
       <Spacer height="50px" />
       <GetGrooving />
+
+      <Spacer height="30px" />
+      <Support />
     </section>
   );
 };
