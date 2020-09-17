@@ -9,6 +9,7 @@ import { GooglePlayButton, AppleAppStoreButton } from '../DownloadButtons';
 import Description from '../Description';
 import HowToUse from '../HowToUse';
 import AnnieLinkArt from '../AnnieLinkArt';
+import GetGrooving from '../GetGrooving';
 
 
 const HomePage: React.FC = () => {
@@ -49,6 +50,7 @@ const HomePage: React.FC = () => {
       <AnnieLinkArt />
 
       <Spacer height="50px" />
+      <GetGrooving />
     </section>
   );
 };

@@ -1,33 +1,12 @@
 .howToUseContainer {
   position: relative;
   width: 100%;
+  background: var(--primary2);
 }
 
 .howToUseContainer h2 {
   font-size: 2rem;
   width: 100%;
-}
-
-.howToUseContainer::before {
-  content: '';
-  position: absolute;
-  top: -110px;
-  border-bottom: 53vw solid var(--primary2);
-  border-left: 80vw solid transparent;
-  z-index: -1;
-  left: 3px;
-  right: 0;
-}
-
-.howToUseContainer::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  background: var(--primary2);
-  width: 100%;
-  height: 95%;
-  z-index: -1;
-  left: 0;
 }
 
 .phoneMockupContainer {
@@ -107,13 +86,6 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 70px 0;
-  }
-
-  .howToUseContainer::before {
-    border-bottom: 17vw solid var(--primary2);
-    border-left: 55vw solid transparent;
-    right: 0;
-    top: -220px;
   }
 
   .howToUseContainer h2 {
