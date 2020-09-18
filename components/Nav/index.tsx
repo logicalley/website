@@ -7,7 +7,7 @@ import Patreon from '../Patreon';
 
 import styles from './styles.module.css';
 
-import type { NavProps } from '../../index.d';
+import type { NavProps } from '../..';
 
 
 const Nav: React.FC<NavProps> = (props: NavProps) => {

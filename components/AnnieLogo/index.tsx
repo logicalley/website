@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { AnnieLogoProps } from '../../index.d';
+import type { AnnieLogoProps } from '../..';
 
 
 const AnnieLogo: React.FC<AnnieLogoProps> = (props: AnnieLogoProps) => {
