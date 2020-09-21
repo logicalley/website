@@ -26,14 +26,16 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id: trackId } = context.params;
-  const trackApiEndpoint: string = `${process.env.ANNIE_API_BASE_URL}/track/${trackId}`;
-  console.log({ trackApiEndpoint })
+  let trackId;
+  if (context.params) {
+    const { id: trackId } = context.params;
+    const trackApiEndpoint: string = `${process.env.ANNIE_API_BASE_URL}/track/${trackId}`;
+    const res = await fetch(trackApiEndpoint)
+    const trackDetails = await res.json();
+    return { props: { trackDetails } }
+  }
 
-  const res = await fetch(trackApiEndpoint)
-  const trackDetails = await res.json();
-
-  return { props: { trackDetails } }
+  return { props: { error: 'Track ID isn\'t included in params' } }
 }
 
 export default TrackDetail;
