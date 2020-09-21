@@ -325,7 +325,7 @@ a {
   font-family: 'Work Sans', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, h1 > *, h2 > *, h3 > *, h4 > *, h5 > *, h6 > * {
   color: var(--dark);
   font-weight: bolder;
   font-family: 'Space Grotesk';
@@ -354,6 +354,11 @@ h5 {
 h6 {
   font-size: .75em;
   margin: 1.67em 0
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 @media (min-width: 48em) {

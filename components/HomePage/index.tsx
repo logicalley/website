@@ -18,22 +18,23 @@ const HomePage: React.FC = () => {
 
   return (
     <section className={styles.homeContainer}>
-      <Spacer height="56px" />
+      <Spacer height="64px" />
 
       <AnnieLogo height="80px" width="80px" />
+      <Spacer height="24px" />
       <h1 className={styles.homeHeader}>
         <span>The easiest way to share</span>
         {' '}
         <span>good music</span>
       </h1>
 
-      <Spacer height="30px" />
+      <Spacer height="48px" />
       <section className={styles.downloadSection}>
         <AppleAppStoreButton />
         <GooglePlayButton />
       </section>
 
-      <Spacer height="50px" />
+      <Spacer height="54px" />
       <picture className={styles.songLinkContainer}>
         <source srcSet="
           /images/song-board.webp 1x,
@@ -41,19 +42,19 @@ const HomePage: React.FC = () => {
         <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
       </picture>
 
-      <Spacer height="30px" />
+      <Spacer height="231px" />
       <Description />
 
-      <Spacer height="50px" />
+      <Spacer height="231px" />
       <HowToUse />
 
-      <Spacer height="30px" />
+      <Spacer height="231px" />
       <AnnieLinkArt />
 
-      <Spacer height="50px" />
+      <Spacer height="231px" />
       <GetGrooving />
 
-      <Spacer height="30px" />
+      <Spacer height="231px" />
       <Support />
     </section>
   );

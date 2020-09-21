@@ -1,3 +1,6 @@
+import { GetServerSidePropsContext } from 'next';
+
+
 export interface NavProps {
   isHomePage: boolean
 };
@@ -15,6 +18,7 @@ interface Platform {
   name: string,
   url: string,
   color: string,
+  buttonColor: string,
   icon: string | null,
   darkIcon: string | null
 }
@@ -35,5 +39,11 @@ export interface TrackPageProps {
   trackDetails: {
     status: string,
     data: Track
+  }
+}
+
+export interface TrackQuery extends GetServerSidePropsContext {
+  params: {
+    id: string
   }
 }

@@ -2,7 +2,7 @@
   border: 2px solid var(--dark);
   border-radius: var(--borderRadius);
   box-sizing: content-box;
-  padding: 0.5rem;
+  padding: 1rem;
   color: var(--dark);
 }
 
