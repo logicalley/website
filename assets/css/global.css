@@ -313,7 +313,7 @@ body {
 #__next {
   min-width: 100vw;
   min-height: 100vh;
-  padding: 10px 20px;
+  padding: 32px 20px;
   display: flex;
   flex-direction: column;
 }
@@ -363,6 +363,6 @@ img {
 
 @media (min-width: 48em) {
   #__next {
-    padding: 15px 50px;
+    padding: 48px 50px;
   }
 }

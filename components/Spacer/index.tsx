@@ -9,7 +9,7 @@ const Spacer: React.FC<SpacerProps> = ({ h, mh }: SpacerProps) => {
     setHeight(heightToUse);
   }, []);
 
-  return <div style={{height, width: '100%'}}></div>;
+  return <div style={{ height, width: '100%' }}></div>;
 }
 
 export default memo(Spacer);
