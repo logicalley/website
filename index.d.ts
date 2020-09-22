@@ -6,7 +6,8 @@ export interface NavProps {
 };
 
 export interface SpacerProps {
-  height: string
+  h: string,
+  mh: string
 };
 
 export interface AnnieLogoProps {
