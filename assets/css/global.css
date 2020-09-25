@@ -37,6 +37,8 @@
   tab-size: 4;
   --gradient: linear-gradient(0deg, #6525EC 0%, #EB85B6 100%);
   --borderRadius: 4px;
+  --footerStrokeColor: #D7D7D7;
+  --bodyPadding: 50px;
 }
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -363,6 +365,6 @@ img {
 
 @media (min-width: 48em) {
   #__next {
-    padding: 48px 50px;
+    padding: var(--bodyPadding);
   }
 }

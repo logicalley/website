@@ -30,7 +30,7 @@ const Nav: React.FC<NavProps> = (props: NavProps) => {
         <a className={styles.headerNav}>Contact</a>
       </Link>
 
-      <Patreon />
+      {/* <Patreon /> */}
     </nav>
   );
 }
