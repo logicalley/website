@@ -3,7 +3,6 @@ import React, { useEffect, useState, memo } from 'react';
 import type { SpacerProps } from '../..';
 
 const Spacer: React.FC<SpacerProps> = ({ h, mh }: SpacerProps) => {
-  console.log(process.browser)
   const [height, setHeight] = useState(h);
 
   useEffect(() => {

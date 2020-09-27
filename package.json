@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@bolajiolajide/utils": "1.0.8",
+    "@react-spring/parallax": "^9.0.0-rc.3",
     "next": "9.5.3",
     "next-on-netlify": "2.4.0",
     "react": "16.13.1",
