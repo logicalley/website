@@ -20,8 +20,26 @@ const Parallax: React.FC = () => {
   // })
   useEffect(() => {
     console.log('here i am');
-    console.log(parallaxRef)
-  }, [parallaxRef])
+    console.log(parallaxRef);
+  }, [parallaxRef]);
+
+  const handleScroll = () => {
+    if (parallaxContainerRef.current) {
+      const posY = parallaxContainerRef.current.getBoundingClientRect().top;
+      const offset = window.pageYOffset - posY;
+      console.log(offset);
+    }
+  };
+
+  useEffect(() => {
+    if (parallaxContainerRef.current) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <Fragment>
