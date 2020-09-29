@@ -30,7 +30,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
       <meta name="twitter:domain" content={url} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://www.bolaji.de/assets/avatar-card.png" />
+      <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:url" content={url} />
       <meta name="twitter:label1" content={pageTitle} />
       <meta name="twitter:data1" content={description} />
