@@ -6,7 +6,7 @@ import SEO from '../components/SEO';
 
 
 const FAQ: React.FC = () => {
-  const pageTitle: string = 'FAQs | Annie';
+  const pageTitle: string = 'FAQs';
   const description: string = 'Annie helps you share your favorite songs and playlists between music platforms.';
   const url: string = 'https://anniemusic.app/faq';
   const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers';
