@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 
 
 const Home: NextPage = () => {
-  const pageTitle: string = 'Annie | Home';
+  const pageTitle: string = 'Home | Annie';
   const description: string = 'Annie helps you share your favorite songs and playlists between music platforms.';
   const url: string = 'https://anniemusic.app';
   const keywords: string = 'music song annie share spotify deezer apple sharing';
