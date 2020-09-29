@@ -40,7 +40,8 @@ export interface TrackPageProps {
   trackDetails: {
     status: string,
     data: Track
-  }
+  },
+  trackId: string
 }
 
 export interface TrackQuery extends GetServerSidePropsContext {
