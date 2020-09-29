@@ -10,6 +10,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => (
   <Fragment>
     <Head>
       <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="theme-color" content="#ffffff"></meta>
       <title>Annie</title>
     </Head>
     <Component {...pageProps} />
