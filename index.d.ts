@@ -49,3 +49,11 @@ export interface TrackQuery extends GetServerSidePropsContext {
     id: string
   }
 }
+
+export interface SEOProps {
+  title: string
+  keywords: string
+  description: string
+  url: string
+  imageUrl: string
+}

@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import Head from 'next/head';
 import { NextPage, GetServerSideProps } from 'next';
 
 import type { TrackPageProps } from '../..';
 
-import Spinner from '../../components/Spinner';
+import SEO from '../../components/SEO';
 
 
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
@@ -13,33 +13,19 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
   const { title, artiste, image_url } = trackDetails.data;
   const pageTitle: string = `${title} - ${artiste}`;
   const description: string = `Listen to "${title}" by ${artiste}`;
-  const keywords: string = `${title} ${artiste}`;
+  const keywords: string = `${title} ${artiste} music song annie share spotify deezer apple music`;
   const trackUrl: string = `https://anniemusic.app/t/${trackId}`;
 
   return (
     <Fragment>
-      <Head>
-        <title>{pageTitle} | Annie</title>
-        <meta name="keywords" content={keywords} />
-        <meta name="description" content={description} />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={trackUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image_url} />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:domain" content={trackUrl} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://www.bolaji.de/assets/avatar-card.png" />
-        <meta name="twitter:url" content={trackUrl} />
-        <meta name="twitter:label1" content={pageTitle} />
-        <meta name="twitter:data1" content={description} />
-      </Head>
+      <SEO
+        title={pageTitle}
+        description={description}
+        url={trackUrl}
+        imageUrl={image_url}
+        keywords={keywords}
+      />
       <section>
-        <Spinner />
         <p>Track is working</p>
         <code>
           {JSON.stringify(trackDetails, null, 2)}
