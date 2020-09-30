@@ -1,18 +1,17 @@
 import React, { Fragment } from 'react';
 import { NextPage } from 'next';
 
-// components
-import Header from '../components/Header';
 import SEO from '../components/SEO';
+import Header from '../components/Header';
+import PrivacyPolicy from '../components/PrivacyPolicy';
 import Footer from '../components/Footer';
-import FAQs from '../components/FAQs';
 
 
-const FAQPage: NextPage = () => {
-  const pageTitle: string = 'FAQs';
+const PrivacyPolicyPage: NextPage = () => {
+  const pageTitle: string = 'Privacy Policy';
   const description: string = 'Annie helps you share your favorite songs and playlists between music platforms.';
-  const url: string = 'https://anniemusic.app/faq';
-  const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers';
+  const url: string = 'https://anniemusic.app/privacy-policy';
+  const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers privacy policy';
   const imageUrl: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1601396354/landing-page-assets/annie-logo_ruc0bw.png';
 
   return (
@@ -25,10 +24,10 @@ const FAQPage: NextPage = () => {
         keywords={keywords}
       />
       <Header />
-      <FAQs />
+      <PrivacyPolicy />
       <Footer />
     </Fragment>
   );
-}
+};
 
-export default FAQPage;
+export default PrivacyPolicyPage;

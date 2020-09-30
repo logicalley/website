@@ -316,8 +316,10 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   padding: 32px 20px;
+  padding-bottom: 0;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 a {
@@ -366,5 +368,6 @@ img {
 @media (min-width: 48em) {
   #__next {
     padding: var(--bodyPadding);
+    padding-bottom: 0;
   }
 }
