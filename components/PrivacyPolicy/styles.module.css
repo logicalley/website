@@ -1,0 +1,13 @@
+.privacyPolicyContainer {
+  flex: 1;
+}
+
+.privacyPolicyHeader {
+  text-align: center;
+}
+
+@media (min-width: 48em) {
+  .privacyPolicyHeader {
+    text-align: left;
+  }
+}
