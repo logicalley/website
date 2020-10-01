@@ -1,0 +1,240 @@
+.trackHeaderContainer {
+  width: 100%;
+  height: 90px;
+  background: #F9F7FD;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--bodyPadding);
+}
+
+.searchInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trackInfo {
+  height: 95px;
+  width: 379px;
+  border: 1px solid rgba(90, 100, 121, 0.13);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.trackImage {
+  border-radius: 6px;
+  width: 62px;
+  height: 62px;
+  background: var(--primary);
+}
+
+.trackInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.trackDetails {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.trackDetails span {
+  color: var(--black);
+  font-family: 'Space Grotesk';
+}
+
+.trackTitle {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: 'Space Grotesk Bold';
+}
+
+.trackArtiste {
+  font-style: normal;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.genreYear span {
+  color: #5A6479;
+  font-size: 11px;
+}
+
+.trackFooter {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  justify-content: space-between;
+}
+
+.trackFooter * {
+  font-family: 'Space Grotesk';
+}
+
+.platformGroupContainer * {
+  font-family: 'Space Grotesk';
+}
+
+.platformGroupHeader {
+  font-size: 23px;
+  line-height: 28px;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.platformGroupContainer {
+  margin-top: 30px;
+}
+
+.platformGroup {
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.platformGroup * {
+  font-family: 'Space Grotesk';
+}
+
+.platformCardContainerBase {
+  height: var(--platformCardHeight);
+  width: 100%;
+  padding: var(--platformCardPadding);
+  border-radius: var(--platformBorderRadius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.annieCardContainer {
+  composes: platformCardContainerBase;
+  background: var(--anniePlatformColor);
+}
+
+.copyLinkBtn {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1.19261px solid #C7D0E9;
+  border-radius: 9.5409px;
+  height: 48px;
+  cursor: pointer;
+  color: var(--black);
+  font-family: 'Space Grotesk Bold';
+  font-size: 19.0818px;
+  line-height: 23px;
+  text-align: center;
+}
+
+.platformDetails {
+  flex: 1;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.platformHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.platformHeader h3 {
+  font-family: 'Space Grotesk Bold';
+  margin: 0 10px;
+  font-size: 20px;
+}
+
+.platformIcon {
+  width: 29.82px;
+  height: 28.62px;
+}
+
+.platformTrackImage {
+  border-radius: 7.15567px;
+  width: 73.94px;
+  height: 73.94px;
+}
+
+.platformTrackDetails {
+  position: relative;
+  display: flex;
+}
+
+.appleTrackImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 7.15567px;
+  width: 73.94px;
+  height: 73.94px;
+  background: linear-gradient(0deg, rgba(242, 55, 148, 0.4), rgba(242, 55, 148, 0.4));
+}
+
+.spotifyTrackImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 7.15567px;
+  width: 73.94px;
+  height: 73.94px;
+  background: linear-gradient(0deg, rgba(30, 215, 96, 0.4), rgba(30, 215, 96, 0.4));
+}
+
+.deezerTrackImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 7.15567px;
+  width: 73.94px;
+  height: 73.94px;
+  background: linear-gradient(0deg, rgba(251, 195, 34, 0.4), rgba(251, 195, 34, 0.4));
+}
+
+.platformTrackInfo {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.platformTrackInfo * {
+  color: var(--black);
+}
+
+.platformTrackTitle {
+  font-size: 21.467px;
+  line-height: 26px;
+  font-family: 'Space Grotesk Bold';
+}
+
+.platformTrackArtiste {
+  font-size: 13.1187px;
+  line-height: 16px;
+}
+
+.platformGenreYear span {
+  font-size: 13.1187px;
+  line-height: 16px;
+  color: #5A6479;
+}

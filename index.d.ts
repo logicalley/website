@@ -30,24 +30,16 @@ interface Track {
   title: string,
   artiste: string,
   image_url: string,
-  genre: number | null,
+  genre: string | null,
   year: string | null,
   preview_url: string,
   platforms: Platform[]
 }
 
 export interface TrackPageProps {
-  trackDetails: {
-    status: string,
-    data: Track
-  },
-  trackId: string
-}
-
-export interface TrackQuery extends GetServerSidePropsContext {
-  params: {
-    id: string
-  }
+  trackDetails: Track,
+  trackId: string,
+  error?: string
 }
 
 export interface SEOProps {
@@ -56,4 +48,31 @@ export interface SEOProps {
   description: string
   url: string
   imageUrl: string
+}
+
+
+export interface TrackHeaderProps {
+  title: string
+}
+
+interface TrackInfoProps {
+  title: string
+  artiste: string
+  year: string | null
+  genre: string | null
+  imageUrl: string
+}
+
+export interface TrackInfoCardProps extends TrackInfoProps {
+  previewUrl: string | null
+}
+
+export interface PlatformGroup extends TrackInfoProps {
+  platforms: Platform[]
+}
+
+export interface PlatformCardProps extends TrackInfoProps, Platform {}
+
+export interface CopyLinkButtonProps {
+  link: string
 }
