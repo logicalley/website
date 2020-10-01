@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Space Grotesk Bold';
   font-style: normal;
   font-weight: bolder;
   font-display: swap;
@@ -39,6 +39,14 @@
   --borderRadius: 4px;
   --footerStrokeColor: #D7D7D7;
   --bodyPadding: 50px;
+
+  --anniePlatformColor: #F4F7FF;
+  --platformBorderRadius: 17.8892px;
+  --appleMusicPlatformColor: #FFE9F4;
+  --spotifyPlatformColor: #E5F4EB;
+  --deezerPlatformColor: #F9F2DE;
+  --platformCardHeight: 223px;
+  --platformCardPadding: 20px;
 }
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -320,6 +328,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  position: relative;
 }
 
 a {
@@ -332,7 +341,7 @@ a {
 h1, h2, h3, h4, h5, h6, h1 > *, h2 > *, h3 > *, h4 > *, h5 > *, h6 > * {
   color: var(--dark);
   font-weight: bolder;
-  font-family: 'Space Grotesk';
+  font-family: 'Space Grotesk Bold';
 }
 
 h1 {
@@ -363,6 +372,10 @@ h6 {
 img {
   max-width: 100%;
   display: block;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 @media (min-width: 48em) {
