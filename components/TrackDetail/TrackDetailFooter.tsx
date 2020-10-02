@@ -12,13 +12,13 @@ const TrackDetailFooter: React.FC = () => {
     <section className={styles.trackFooter}>
       <span>Copyright © {currentYear} Annie. All Rights Reserved </span>
 
-      <div>
+      <div className={styles.footerLinks}>
         <Link href={termsOfUseLink}>
-          <a>Terms and Conditions</a>
+          <a className={styles.platformLink}>Terms and Conditions</a>
         </Link>
 
         <Link href={privacyPolicyLink}>
-          <a>Privacy Policy</a>
+          <a className={styles.platformLink}>Privacy Policy</a>
         </Link>
       </div>
     </section>

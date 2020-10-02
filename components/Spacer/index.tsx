@@ -18,4 +18,4 @@ const Spacer: React.FC<SpacerProps> = ({ h, mh }: SpacerProps) => {
   return <div style={{ height, width: '100%' }}></div>;
 }
 
-export default memo(Spacer);
+export default Spacer;

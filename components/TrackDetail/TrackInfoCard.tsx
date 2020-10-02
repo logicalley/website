@@ -10,7 +10,7 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
 
   return (
     <section>
-      <h1>Result</h1>
+      <h2>Top Results</h2>
 
       <section className={styles.trackInfo}>
         <img src={imageUrl} className={styles.trackImage} alt={imageAlt} />
