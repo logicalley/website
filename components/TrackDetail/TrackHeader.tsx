@@ -27,7 +27,7 @@ const TrackHeader: React.FC<TrackHeaderProps> = ({ title }: TrackHeaderProps) =>
       </div>
 
       <Link href="/">
-        <a>Home</a>
+        <a className={styles.platformLink}>Home</a>
       </Link>
     </header>
   );

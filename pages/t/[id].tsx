@@ -14,7 +14,6 @@ import {
   TrackDetailFooter,
   TrackPlatformGroup
 } from '../../components/TrackDetail';
-import { platform } from 'os';
 
 
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {

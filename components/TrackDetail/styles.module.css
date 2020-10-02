@@ -6,9 +6,15 @@
   top: 0;
   left: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 0 var(--bodyPadding);
+}
+
+.platformLink {
+  text-decoration: underline;
+  margin-top: 10px;
 }
 
 .searchInfo {
@@ -19,7 +25,7 @@
 
 .trackInfo {
   height: 95px;
-  width: 379px;
+  width: 100%;
   border: 1px solid rgba(90, 100, 121, 0.13);
   border-radius: 8px;
   padding: 10px;
@@ -70,9 +76,18 @@
 
 .trackFooter {
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 20px 0;
   justify-content: space-between;
+}
+
+.footerLinks {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .trackFooter * {
@@ -96,9 +111,6 @@
 
 .platformGroup {
   margin: 30px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
 }
 
 .platformGroup * {
@@ -113,6 +125,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 20px 0;
 }
 
 .annieCardContainer {
@@ -237,4 +250,40 @@
   font-size: 13.1187px;
   line-height: 16px;
   color: #5A6479;
+}
+
+@media (min-width: 48em) {
+  .platformGroup {
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .platformCardContainerBase {
+    margin: 0;
+  }
+
+  .trackFooter {
+    flex-direction: row;
+  }
+
+  .footerLinks {
+    margin: 0;
+    flex-direction: row;
+  }
+
+  .trackHeaderContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .platformLink {
+    text-decoration: none;
+    margin-top: 0;
+  }
+
+  .trackInfo {
+    width: 379px;
+  }
 }
