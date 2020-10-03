@@ -61,9 +61,9 @@
 .trackTitle {
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  font-family: 'Space Grotesk Bold';
+  font-size: 15px;
+    line-height: 18px;
+  font-family: 'Space Grotesk Bold' !important;
 }
 
 .trackArtiste {
@@ -238,8 +238,8 @@
 }
 
 .platformTrackTitle {
-  font-size: 21.467px;
-  line-height: 26px;
+  font-size: 16.467px;
+  line-height: 20px;
   font-family: 'Space Grotesk Bold';
 }
 
