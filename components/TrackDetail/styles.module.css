@@ -23,12 +23,15 @@
   align-items: center;
 }
 
-.trackInfo {
+.trackInfoGroup {
   height: 95px;
   width: 100%;
   border: 1px solid rgba(90, 100, 121, 0.13);
   border-radius: 8px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .trackImage {
@@ -283,7 +286,7 @@
     margin-top: 0;
   }
 
-  .trackInfo {
+  .trackInfoGroup {
     width: 379px;
   }
 }

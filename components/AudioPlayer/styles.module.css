@@ -1,0 +1,30 @@
+.audioPlayerContainer {
+  cursor: pointer;
+  position: relative;
+}
+
+.button {
+  cursor: pointer;
+  position: absolute;
+}
+
+.playButton {
+  composes: button;
+  left: 36%;
+  top: -4%;
+  width: 25%;
+}
+
+.pauseButton {
+  composes: button;
+  left: 37%;
+  top: -4%;
+  width: 15%;
+}
+
+.stopButton {
+  composes: button;
+  left: 31%;
+  top: -7%;
+  width: 30%;
+}

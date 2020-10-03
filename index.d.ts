@@ -76,3 +76,7 @@ export interface PlatformCardProps extends TrackInfoProps, Platform {}
 export interface CopyLinkButtonProps {
   link: string
 }
+
+export interface AudioPlayerProps {
+  previewUrl: string
+}
