@@ -13,9 +13,9 @@ const CopyLinkButton: React.FC<CopyLinkButtonProps> = ({ link }: CopyLinkButtonP
     setShowButton(shouldShowCopyLinkButton);
   }, []);
 
-  const copyLink = (): void => {
-    document.execCommand('copy', false, 'my name is bolaji');
-  }
+  const copyLink = (): Promise<void> => navigator
+    .clipboard
+    .writeText(link)
 
   return showButton ? (
     <button className={styles.copyLinkBtn} onClick={copyLink}>
