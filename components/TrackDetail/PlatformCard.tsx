@@ -44,10 +44,15 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
   const iconAlt: string = `${props.name} icon`;
   const trackImageAlt: string = `Track cover for ${props.name}`;
   const platformClassName = getPlatformClassName(props.name);
+  const linkProps = {
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    href: props.url
+  }
 
   return (
     <section className={styles.platformCardContainerBase} style={{ background }}>
-      <section className={styles.platformDetails}>
+      <a className={styles.platformDetails} {...linkProps}>
         <section className={styles.platformHeader}>
           {props.icon && <img src={props.icon} className={styles.platformIcon} alt={iconAlt} />}
           <h3>{props.name}</h3>
@@ -68,7 +73,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
             </div>
           </section>
         </section>
-      </section>
+      </a>
 
       <CopyLinkButton link={props.url} />
     </section>
