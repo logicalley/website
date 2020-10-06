@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
   const privacyPolicyLink: string = '/privacy-policy';
 
   return (
-    <section className={styles.footerContainer}>
+    <footer className={styles.footerContainer}>
       <div className={styles.footerTopBorder} />
       <AnnieLogo height="47px" width="56px" />
 
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
           </a>
         </section>
       </section>
-    </section>
+    </footer>
   );
 };
 

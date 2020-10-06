@@ -9,7 +9,7 @@ const TrackDetailFooter: React.FC = () => {
   const privacyPolicyLink: string = '/privacy-policy';
 
   return (
-    <section className={styles.trackFooter}>
+    <footer className={styles.trackFooter}>
       <span>Copyright © {currentYear} Annie. All Rights Reserved </span>
       <br />
       <div className={styles.footerLinks}>
@@ -21,7 +21,7 @@ const TrackDetailFooter: React.FC = () => {
           <a className={styles.platformLink}>Privacy Policy</a>
         </Link>
       </div>
-    </section>
+    </footer>
   );
 }
 
