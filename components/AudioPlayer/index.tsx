@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, SyntheticEvent, useEffect } from 'react';
+import React, { useRef, useState, SyntheticEvent, useEffect, memo } from 'react';
 
 import styles from './styles.module.css';
 
@@ -10,11 +10,11 @@ import { PlayStatus } from '../../utils/constants';
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl }: AudioPlayerProps) => {
   const audioPlayerRef = useRef<HTMLAudioElement>(null);
   const [audioDuration, setAudioDuration] = useState<number>(0);
-  const [strokeProgress, setStrokeProgress] = useState<string>("3,2000");
+  const [strokeProgress, setStrokeProgress] = useState<string>("2,2000");
   const [playStatus, setPlayStatus] = useState<PlayStatus>(PlayStatus.PLAY);
 
-  // const primaryColor: string = '#9C77EB';
-  const primaryColor: string = '#000';
+  const primaryColor: string = '#6525EC';
+  const darkColor: string = '#000';
   const radius: number = 40;
   const circumference: number = radius * 2 * Math.PI;
 
@@ -108,13 +108,14 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl }: AudioPlayerProp
     if (progress >= 100) {
       setPlayStatus(PlayStatus.PLAY);
     }
+
     setStrokeProgress(`${audioClipProgress},2000`);
   }
 
   useEffect(() => {
     if (audioPlayerRef.current && previewUrl) {
       const { duration } = audioPlayerRef.current;
-      setAudioDuration(duration);
+      setAudioDuration(duration || 29);
     }
   }, []);
 
@@ -128,7 +129,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl }: AudioPlayerProp
         onClick={togglePlay}
       >
         <g transform="translate(14, 0) rotate(-90, 38, 38)">
-          <circle cx={radius} cy={radius} r={radius} fill="transparent" strokeWidth="3" stroke={primaryColor} />
+          <circle cx={radius} cy={radius} r={radius} fill="transparent" strokeWidth="3" stroke={darkColor} />
           <circle cx={radius} cy={radius} r={radius} fill="transparent" stroke={primaryColor} strokeWidth="8" strokeDasharray={strokeProgress} />
         </g>
       </svg>
@@ -140,4 +141,4 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl }: AudioPlayerProp
   );
 }
 
-export default AudioPlayer;
+export default memo(AudioPlayer);
