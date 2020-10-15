@@ -80,3 +80,10 @@ export interface CopyLinkButtonProps {
 export interface AudioPlayerProps {
   previewUrl: string
 }
+
+export interface Faq {
+  question: string
+  answer: string
+}
+
+export interface AccordionProps extends Faq {}
