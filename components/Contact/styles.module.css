@@ -22,6 +22,7 @@
   background: var(--dark);
   color: white;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 @media (min-width: 48em) {
