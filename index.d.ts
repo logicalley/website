@@ -1,5 +1,4 @@
-import { GetServerSidePropsContext } from 'next';
-
+import { ContactFormReducerEnum } from './utils/constants';
 
 export interface NavProps {
   isHomePage: boolean
@@ -87,3 +86,13 @@ export interface Faq {
 }
 
 export interface AccordionProps extends Faq {}
+
+export interface ContactFormState {
+  email: string
+  complaint: string
+}
+
+type ContactFormReducerAction = {
+  type: ContactFormReducerEnum
+  payload: string
+}
