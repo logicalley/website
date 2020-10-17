@@ -1,0 +1,31 @@
+.contactContainer {
+  flex: 1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.inputField {
+  padding: 10px;
+  color: var(--bodyText);
+  margin: 10px 0;
+  width: 100%;
+}
+
+.contactButton {
+  padding: 10px;
+  border: 0;
+  width: 200px;
+  background: var(--dark);
+  color: white;
+  text-transform: uppercase;
+}
+
+@media (min-width: 48em) {
+  .inputField {
+    width: 50rem;
+  }
+}

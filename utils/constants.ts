@@ -8,3 +8,8 @@ export enum PlayStatus {
   PAUSE,
   STOP
 }
+
+export enum ContactFormReducerEnum {
+  EMAIL,
+  COMPLAINT
+}
