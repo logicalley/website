@@ -10,7 +10,6 @@ const Page404: React.FC = () => {
   const description: string = 'This page does not exist.';
   const url: string = 'https://anniemusic.app';
   const keywords: string = 'music song annie share spotify deezer apple sharing faq';
-  const imageUrl: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1601396354/landing-page-assets/annie-logo_ruc0bw.png';
 
   return (
     <Fragment>
@@ -18,7 +17,6 @@ const Page404: React.FC = () => {
         title={pageTitle}
         description={description}
         url={url}
-        imageUrl={imageUrl}
         keywords={keywords}
       />
       <Header />
