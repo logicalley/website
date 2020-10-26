@@ -10,7 +10,7 @@ const BetaFeedbackPage: NextPage = () => {
   const pageTitle: string = 'Beta Feedback Form';
   const url: string = 'https://anniemusic.app/beta/volunteer';
   const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers beta';
-  const volunteerUrl: string = 'https://airtable.com/embed/shrY7dnnae4yINho3?backgroundColor=purple';
+  const feedbackUrl: string = 'https://airtable.com/embed/shrY7dnnae4yINho3?backgroundColor=purple';
   const description: string = 'Share your feedback about the Annie Beta test.'
 
   return (
@@ -22,7 +22,7 @@ const BetaFeedbackPage: NextPage = () => {
         description={description}
       />
       <Header />
-      <IFrameLoader url={volunteerUrl} />
+      <IFrameLoader url={feedbackUrl} />
       <Footer />
     </Fragment>
   )
