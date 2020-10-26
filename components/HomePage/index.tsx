@@ -10,11 +10,11 @@ import Description from '../Description';
 import HowToUse from '../HowToUse';
 import AnnieLinkArt from '../AnnieLinkArt';
 import GetGrooving from '../GetGrooving';
-import Footer from '../Footer';
 import Parallax from '../Parallax';
 
-
 const HomePage: React.FC = () => {
+  const songBoardImageFallback: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
+
   return (
     <section className={styles.homeContainer}>
       <Spacer h="64px" mh="56px" />
@@ -34,7 +34,13 @@ const HomePage: React.FC = () => {
       </section>
 
       <Spacer h="54px" mh="64px" />
-      <Parallax />
+      {/* <Parallax /> */}
+      <picture className={styles.songLinkContainer}>
+        <source srcSet="
+          /images/song-board.webp 1x,
+          /images/song-board.webp 2x" type="image/webp" />
+        <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
+      </picture>
 
       <Spacer h="231px" mh="94px" />
       <Description />
@@ -49,7 +55,6 @@ const HomePage: React.FC = () => {
       <GetGrooving />
 
       <Spacer h="231px" mh="94px" />
-      <Footer />
     </section>
   );
 };

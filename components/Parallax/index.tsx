@@ -1,73 +1,80 @@
-import React, { Fragment, useRef, useEffect } from 'react';
-import { Parallax as RSParallax, ParallaxLayer, IParallax } from '@react-spring/parallax';
+import React, { useEffect, useRef } from 'react';
+import { Parallax, Background } from 'react-parallax';
 
 import styles from './styles.module.css';
 
 
-const Parallax: React.FC = () => {
-  const songBoardImageFallback: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';
-  const parallaxContainerRef = useRef<HTMLTableSectionElement>(null);
-  let parallaxRef: IParallax | null = null;
-
-  // useEffect(() => {
-  //   let options = {
-  //     root: document.querySelector('#scrollArea'),
-  //     rootMargin: '0px',
-  //     threshold: 1.0
-  //   }
-
-  //   let observer = new IntersectionObserver(callback, options);
-  // })
-  useEffect(() => {
-    console.log('here i am');
-    console.log(parallaxRef);
-  }, [parallaxRef]);
-
-  const handleScroll = () => {
-    if (parallaxContainerRef.current) {
-      const posY = parallaxContainerRef.current.getBoundingClientRect().top;
-      const offset = window.pageYOffset - posY;
-      console.log(offset);
-    }
-  };
+const _Parallax: React.FC = () => {
+  const parallaxBackgroundImage: string = 'https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80';
+  const sectionRef = useRef<HTMLTableSectionElement>(null);
 
   useEffect(() => {
-    if (parallaxContainerRef.current) {
-      window.addEventListener('scroll', handleScroll);
+    let observer: IntersectionObserver;
+
+    if (process.browser && 'IntersectionObserver' in window && sectionRef.current) {
+      const observerOptions: IntersectionObserverInit = {
+        root: null,
+        rootMargin: '0px',
+        threshold: [0.5, 0.8]
+      };
+
+      observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+      if (observer && sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
   }, []);
 
-  return (
-    <Fragment>
-      <picture className={styles.songLinkContainer}>
-        <source srcSet="
-          /images/song-board.webp 1x,
-          /images/song-board.webp 2x" type="image/webp" />
-        <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
-      </picture>
+  const handleIntersection: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
+    const [parallaxContainer] = entries;
 
-      <section className={styles.parallaxContainer} ref={parallaxContainerRef}>
-        <RSParallax ref={ref => parallaxRef = ref} pages={3} horizontal={false}>
-          <ParallaxLayer offset={0.3} speed={0}>
-            <span>Scroll down!</span>
-          </ParallaxLayer>
-          <ParallaxLayer offset={1.2} speed={0}>
-            <span>Scroll down!</span>
-          </ParallaxLayer>
-          <ParallaxLayer offset={0.9} speed={3}>
-            <span>I'm fast!</span>
-          </ParallaxLayer>
-          <ParallaxLayer speed={-0.2} offset={1.3}>
-            <span>I'm going in the other direction!</span>
-          </ParallaxLayer>
-        </RSParallax>
-      </section>
-    </Fragment>
-  )
+    if (parallaxContainer.boundingClientRect.top <= 200) {
+      console.log('about to scroll')
+      parallaxContainer.target.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    console.log(parallaxContainer.boundingClientRect, parallaxContainer.target.scrollTo, parallaxContainer)
+    if (parallaxContainer.intersectionRatio > 0) {
+      console.log('Element is Intersecting');
+    } else {
+      console.log('Element is NOT Intersecting');
+    }
+  }
+
+  return (
+    <section className={styles.parallaxContainer} ref={sectionRef}>
+      <Parallax
+        strength={500}
+        bgClassName={styles.parallaxBackground}
+        bgImage={parallaxBackgroundImage}
+        disabled={false}
+      >
+        {/* <Background>
+          <div className={styles.backgroundImage}></div>
+        </Background> */}
+        <div className={styles.pageOne}>
+          Custom Text
+        </div>
+
+        <div className={styles.pageTwo}>
+          Custom Text
+        </div>
+
+        <div className={styles.pageThree}>
+          Custom Text
+        </div>
+      </Parallax>
+    </section>
+  );
 };
 
-export default Parallax;
+export default _Parallax;

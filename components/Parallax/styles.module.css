@@ -1,21 +1,30 @@
-
-.songLinkContainer,
-.songLink {
-  width: 100%;
-}
-
-.songLinkContainer {
-  display: block;
-}
-
 .parallaxContainer {
   height: 100vh;
   width: 100vw;
-  background-color: blanchedalmond;
+  border: 5px solid red;
 }
 
-@media (min-width:48em) {
-  .songLinkContainer {
-    display: none;
-  }
+.parallaxBackground {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+.pageOne {
+  composes: page;
+  background-color: red;
+}
+
+.pageTwo {
+  composes: page;
+  background-color: black;
+}
+
+.pageThree {
+  composes: page;
+  background-color: beige;
 }

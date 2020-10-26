@@ -5183,6 +5183,7 @@ react-is@16.13.1, react-is@^16.8.1:
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-layout-effect@^1.0.1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-layout-effect/-/react-layout-effect-1.0.5.tgz#0dc4e24452aee5de66c93c166f0ec512dfb1be80"
@@ -5202,13 +5203,23 @@ react-query@^2.23.0:
   dependencies:
     "@babel/runtime" "^7.5.5"
 =======
+=======
+>>>>>>> feat/create-parallax
 react-native-get-random-values@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-native-get-random-values/-/react-native-get-random-values-1.5.0.tgz#91cda18f0e66e3d9d7660ba80c61c914030c1e05"
   integrity sha512-LK+Wb8dEimJkd/dub7qziDmr9Tw4chhpzVeQ6JDo4czgfG4VXbptRyOMdu8503RiMF6y9pTH6ZUTkrrpprqT7w==
   dependencies:
     fast-base64-decode "^1.0.0"
+<<<<<<< HEAD
 >>>>>>> chore: update dependency lock
+=======
+
+react-parallax@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.0.3.tgz#5550f1e81bf040b240045348cb3b039b73a735ef"
+  integrity sha512-kdoMjg5B9nQFh3mTFrnzkr7AoG89L/tq1c98ho3g+11UwfeYePji9D3oeqN/oDtJemWKypnB8OYrzQ/BTazrNA==
+>>>>>>> feat/create-parallax
 
 react-refresh@0.8.3:
   version "0.8.3"
@@ -5985,10 +5996,14 @@ ts-pnp@^1.1.6:
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 tslib@^1.11.1, tslib@^1.9.0:
 =======
 tslib@^1.8.0, tslib@^1.9.0, tslib@^1.9.3:
 >>>>>>> chore: update dependency lock
+=======
+tslib@^1.8.0, tslib@^1.9.0, tslib@^1.9.3:
+>>>>>>> feat/create-parallax
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
