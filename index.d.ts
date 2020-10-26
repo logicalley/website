@@ -44,9 +44,9 @@ export interface TrackPageProps {
 export interface SEOProps {
   title: string
   keywords: string
-  description: string
+  description?: string
   url: string
-  imageUrl: string
+  imageUrl?: string
 }
 
 
