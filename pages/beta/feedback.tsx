@@ -7,10 +7,10 @@ import Footer from '../../components/Footer';
 import IFrameLoader from '../../components/IFrameLoader';
 
 const BetaFeedbackPage: NextPage = () => {
-  const pageTitle: string = 'Beta Volunteer Form';
+  const pageTitle: string = 'Beta Feedback Form';
   const url: string = 'https://anniemusic.app/beta/volunteer';
   const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers';
-  const volunteerUrl: string = 'https://airtable.com/embed/shreOBdjoNCqglpKe?backgroundColor=orange';
+  const volunteerUrl: string = 'https://airtable.com/embed/shrY7dnnae4yINho3?backgroundColor=purple';
 
   return (
     <Fragment>
