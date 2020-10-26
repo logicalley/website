@@ -291,19 +291,8 @@ Remove the inner padding in Chrome and Safari on macOS.
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
-  /* 1 */
   font: inherit;
-  /* 2 */
 }
-
-/*
-Interactive
-===========
-*/
-
-/*
-Add the correct display in Chrome and Safari.
-*/
 
 summary {
   display: list-item;
@@ -327,8 +316,8 @@ body {
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   position: relative;
+  height: 100%;
 }
 
 a {

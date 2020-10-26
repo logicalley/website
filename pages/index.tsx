@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import Header from '../components/Header';
 import HomePage from '../components/HomePage';
 import SEO from '../components/SEO';
+import Footer from '../components/Footer';
 
 
 const Home: NextPage = () => {
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
       />
       <Header />
       <HomePage />
+      <Footer />
     </Fragment>
   );
 }

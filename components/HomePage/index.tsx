@@ -35,13 +35,13 @@ const HomePage: React.FC = () => {
       </section>
 
       <Spacer h="54px" mh="64px" />
-      <Parallax />
-      {/* <picture className={styles.songLinkContainer}>
+      {/* <Parallax /> */}
+      <picture className={styles.songLinkContainer}>
         <source srcSet="
           /images/song-board.webp 1x,
           /images/song-board.webp 2x" type="image/webp" />
         <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
-      </picture> */}
+      </picture>
 
       <Spacer h="231px" mh="94px" />
       <Description />
@@ -56,7 +56,6 @@ const HomePage: React.FC = () => {
       <GetGrooving />
 
       <Spacer h="231px" mh="94px" />
-      <Footer />
     </section>
   );
 };
