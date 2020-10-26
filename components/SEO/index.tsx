@@ -8,9 +8,9 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   const {
     title,
     keywords,
-    description,
+    description = 'Annie helps you share your favorite songs and playlists between music platforms.',
     url,
-    imageUrl
+    imageUrl = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1601396354/landing-page-assets/annie-logo_ruc0bw.png'
   } = props;
   const pageTitle = title ? `${title} | Annie` : 'Annie';
 
