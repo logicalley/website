@@ -96,3 +96,7 @@ type ContactFormReducerAction = {
   type: ContactFormReducerEnum
   payload: string
 }
+
+export interface IFrameLoaderProps {
+  url: string
+}

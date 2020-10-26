@@ -4,12 +4,13 @@ import { NextPage } from 'next';
 import Header from '../components/Header';
 import SEO from '../components/SEO';
 import Footer from '../components/Footer';
-import Beta from '../components/Beta';
+import IFrameLoader from '../components/IFrameLoader';
 
 const BetaPage: NextPage = () => {
   const pageTitle: string = 'Beta Volunteer Form';
   const url: string = 'https://anniemusic.app/beta';
   const keywords: string = 'music song annie share spotify deezer apple sharing faq question answers';
+  const volunteerUrl: string = 'https://airtable.com/embed/shreOBdjoNCqglpKe?backgroundColor=orange';
 
   return (
     <Fragment>
@@ -19,7 +20,7 @@ const BetaPage: NextPage = () => {
         keywords={keywords}
       />
       <Header />
-      <Beta />
+      <IFrameLoader url={volunteerUrl} />
       <Footer />
     </Fragment>
   )

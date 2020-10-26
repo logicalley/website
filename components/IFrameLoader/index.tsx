@@ -4,8 +4,9 @@ import styles from './styles.module.css';
 
 import Spinner from '../Spinner';
 
-const Beta: React.FC = () => {
-  const airtableUrl: string = 'https://airtable.com/embed/shreOBdjoNCqglpKe?backgroundColor=orange';
+import type { IFrameLoaderProps } from '../..';
+
+const IFrameLoader: React.FC<IFrameLoaderProps> = ({ url }: IFrameLoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -13,7 +14,7 @@ const Beta: React.FC = () => {
       {isLoading ? <Spinner /> : null}
       <iframe
         className={styles.airtableEmbed}
-        src={airtableUrl}
+        src={url}
         frameBorder="0"
         onLoad={() => setIsLoading(false)}
       />
@@ -21,4 +22,4 @@ const Beta: React.FC = () => {
   );
 }
 
-export default Beta;
+export default IFrameLoader;
