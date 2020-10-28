@@ -22,6 +22,10 @@
   align-items: center;
 }
 
+.songLinkContainer, .songLink {
+  width: 100%;
+}
+
 @media (min-width:48em) {
   .homeHeader span {
     display: block;
