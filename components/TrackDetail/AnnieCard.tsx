@@ -8,7 +8,6 @@ import CopyLinkButton from './CopyLinkButton';
 
 
 const AnnieCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
-  console.log(props)
   return (
     <section className={styles.annieCardContainer}>
       <section className={styles.platformDetails}>
