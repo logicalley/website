@@ -367,6 +367,10 @@ img {
   font-weight: bold;
 }
 
+.ReactModal__Overlay {
+  background: rgb(0, 0, 0, 0.75) !important;
+}
+
 @media (min-width: 48em) {
   #__next {
     padding: var(--bodyPadding);

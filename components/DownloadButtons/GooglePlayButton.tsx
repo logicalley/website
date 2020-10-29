@@ -68,7 +68,7 @@ const GooglePlayButton: React.FC = () => {
         contentLabel="Beta Modal!"
       >
         <section className={styles.modalContainer}>
-          <h3>Annie is currently in Beta!</h3>
+          {/* <h3>Annie is currently in Beta!</h3> */}
           {/* <a href="/beta/volunteer" className={styles.betaLink}>
             Sign up for Beta access here.
           </a> */}
