@@ -17,7 +17,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   return (
     <Head>
       <title>{pageTitle}</title>
-      <meta name="keywords" content={keywords} />
+      <meta name="keywordes" content={keywords} />
       <meta name="description" content={description} />
 
       <meta property="og:type" content="website" />
@@ -25,6 +25,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:site_name" content="https://anniemusic.app" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:domain" content={url} />

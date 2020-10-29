@@ -10,6 +10,8 @@
   transition: background-color 1s 0.2s, transform .5s;
   width: 160px;
   height: 50px;
+  cursor: pointer;
+  outline: 0;
 }
 
 .buttonLabel {
@@ -34,6 +36,30 @@
   transition: transform 0.5s;
 }
 
+.betaLink {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.socialMedia {
+  display: block;
+  margin-top: 15px;
+}
+
+.socialMediaLink {
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+}
+
 @media (min-width:48em) {
   .buttonContainer {
     padding: 10px 20px;
@@ -45,6 +71,7 @@
   .buttonContainer:hover {
     transform: scale3d(1.1, 1.1, 1.1);
     background-color: var(--light);
+    border: 0;
   }
 
   .buttonContainer:hover svg {
