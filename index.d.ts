@@ -100,3 +100,10 @@ type ContactFormReducerAction = {
 export interface IFrameLoaderProps {
   url: string
 }
+
+type GTagEvent = {
+  action: string;
+  category: string;
+  label: string;
+  value: number;
+};
