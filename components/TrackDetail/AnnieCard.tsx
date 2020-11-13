@@ -43,7 +43,12 @@ const AnnieCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
         </section>
         <span>Share everything in one link.</span>
       </section>
-      <CopyLinkButton link={props.url} />
+
+      <CopyLinkButton
+        link={props.url}
+        label={`${props.title} - ${props.artiste}`}
+        platform={props.name}
+      />
     </section>
   );
 };

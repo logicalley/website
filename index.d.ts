@@ -1,4 +1,10 @@
-import { ContactFormReducerEnum } from './utils/constants';
+import {
+  ContactFormReducerEnum,
+  ANNIE_TYPE,
+  SPOTIFY_TYPE,
+  DEEZER_TYPE,
+  APPLE_MUSIC_TYPE
+} from './utils/constants';
 
 export interface NavProps {
   isHomePage: boolean
@@ -74,10 +80,13 @@ export interface PlatformCardProps extends TrackInfoProps, Platform {}
 
 export interface CopyLinkButtonProps {
   link: string
+  label: string
+  platform: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE
 }
 
 export interface AudioPlayerProps {
   previewUrl: string
+  analyticsLabel: string
 }
 
 export interface Faq {

@@ -30,7 +30,12 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
           </section>
         </section>
 
-        {previewUrl && <AudioPlayer previewUrl={previewUrl} />}
+        {previewUrl && (
+          <AudioPlayer
+            previewUrl={previewUrl}
+            analyticsLabel={`${title} - ${artiste}`}
+          />
+        )}
       </div>
     </section>
   );

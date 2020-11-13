@@ -6,6 +6,13 @@ import styles from './styles.module.css';
 // components
 import AnnieLogo from '../AnnieLogo';
 
+import { registerEvent } from '../../utils/googleAnalytics';
+import {
+  GA_ACTION_FOOTER_INSTAGRAM_LINK,
+  GA_ACTION_FOOTER_TWITTER_LINK,
+  GA_CATEGORY_SOCIAL_MEDIA
+} from '../../utils/constants';
+
 
 const Footer: React.FC = () => {
   const genericUserName: string = 'anniemusicapp';
@@ -13,6 +20,20 @@ const Footer: React.FC = () => {
   const instagramLink: string = `https://instagram.com/${genericUserName}`;
   const termsOfUseLink: string = '/terms-conditions';
   const privacyPolicyLink: string = '/privacy-policy';
+
+  const sendTwitterAnalytics = () => registerEvent({
+    value: 1,
+    action: GA_ACTION_FOOTER_TWITTER_LINK,
+    category: GA_CATEGORY_SOCIAL_MEDIA,
+    label: GA_ACTION_FOOTER_TWITTER_LINK,
+  });
+
+  const sendInstagramAnalytics = () => registerEvent({
+    value: 1,
+    action: GA_ACTION_FOOTER_INSTAGRAM_LINK,
+    category: GA_CATEGORY_SOCIAL_MEDIA,
+    label: GA_ACTION_FOOTER_INSTAGRAM_LINK,
+  });
 
   return (
     <footer className={styles.footerContainer}>
@@ -39,6 +60,7 @@ const Footer: React.FC = () => {
               fill="none"
               viewBox="0 0 21 19"
               className={styles.twitterLogo}
+              onClick={sendTwitterAnalytics}
             >
               <path
                 fill="#140929"
@@ -58,6 +80,7 @@ const Footer: React.FC = () => {
               fill="none"
               viewBox="0 0 20 21"
               className={styles.instagramLogo}
+              onClick={sendInstagramAnalytics}
             >
               <path
                 fill="#140929"

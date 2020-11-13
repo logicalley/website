@@ -6,11 +6,15 @@ import type { PlatformCardProps } from '../..';
 import {
   SPOTIFY_TYPE,
   DEEZER_TYPE,
-  APPLE_MUSIC_TYPE
+  APPLE_MUSIC_TYPE,
+  GA_ACTION_SPOTIFY_CARD_CLICK,
+  GA_ACTION_APPLE_MUSIC_CARD_CLICK,
+  GA_ACTION_DEEZER_CARD_CLICK,
+  GA_CATEGORY_TRACK_ACTIONS
 } from '../../utils/constants';
+import { registerEvent } from '../../utils/googleAnalytics';
 
 import CopyLinkButton from './CopyLinkButton';
-import { platform } from 'os';
 
 
 const getBackgroundColor = (platformName: string): string => {
@@ -48,10 +52,32 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     target: '_blank',
     rel: 'noopener noreferrer',
     href: props.url
+  };
+
+  const sendTrackAnalytics = () => {
+    const platform = props.name;
+    let action, label
+
+    if (platform === SPOTIFY_TYPE) {
+      action = GA_ACTION_SPOTIFY_CARD_CLICK;
+    } else if (platform === DEEZER_TYPE) {
+      action = GA_ACTION_DEEZER_CARD_CLICK;
+    } else if (platform === APPLE_MUSIC_TYPE) {
+      action = GA_ACTION_APPLE_MUSIC_CARD_CLICK;
+    } else {
+      action = 'UNDEFINED_CARD_CLICK';
+    }
+
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_ACTIONS,
+      label: `${action}: ${props.title} - ${props.artiste}`,
+      value: 1
+    });
   }
 
   return (
-    <section className={styles.platformCardContainerBase} style={{ background }}>
+    <section className={styles.platformCardContainerBase} style={{ background }} onClick={sendTrackAnalytics}>
       <a className={styles.platformDetails} {...linkProps}>
         <section className={styles.platformHeader}>
           {props.icon && <img src={props.icon} className={styles.platformIcon} alt={iconAlt} />}
@@ -75,7 +101,11 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
         </section>
       </a>
 
-      <CopyLinkButton link={props.url} />
+      <CopyLinkButton
+        link={props.url}
+        platform={props.name}
+        label={`${props.title} - ${props.artiste}`}
+      />
     </section>
   );
 };

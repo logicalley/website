@@ -3,6 +3,12 @@ import Modal from 'react-modal';
 
 import styles from './styles.module.css';
 
+import { registerEvent } from '../../utils/googleAnalytics';
+import {
+  GA_ACTION_PLAY_STORE_DOWNLOAD,
+  GA_CATEGORY_DOWNLOAD_BUTTONS
+} from '../../utils/constants';
+
 
 const customStyles = {
   content: {
@@ -20,7 +26,15 @@ Modal.setAppElement('#modal');
 const GooglePlayButton: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const popUpModal = () => setIsOpen(true);
+  const popUpModal = () => {
+    registerEvent({
+      action: GA_ACTION_PLAY_STORE_DOWNLOAD,
+      category: GA_CATEGORY_DOWNLOAD_BUTTONS,
+      label: GA_ACTION_PLAY_STORE_DOWNLOAD,
+      value: 1
+    });
+    setIsOpen(true);
+  }
   const closeModal = () => setIsOpen(false);
 
   const baseLinkProps = {

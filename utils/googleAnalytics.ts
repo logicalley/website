@@ -8,10 +8,12 @@ export const registerPageView = (url: URL) => window.gtag('config', GA_TRACKING_
 
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
-export const event = ({ action, category, label, value }: GTagEvent) => {
-  window.gtag('event', action, {
-    event_category: category,
-    event_label: label,
-    value: value
-  });
+export const registerEvent = ({ action, category, label, value }: GTagEvent) => {
+  if (process.env.NODE_ENV !== 'development') {
+    window.gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value: value
+    });
+  }
 };
