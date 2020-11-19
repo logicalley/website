@@ -46,7 +46,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
       />
       <div style={{ flex: 1 }}>
         <TrackHeader title={title} />
-        <Spacer h="40px" mh="40px" />
+        <Spacer h="40px" mh="50px" />
         <TrackInfoCard
           title={title}
           imageUrl={image_url}

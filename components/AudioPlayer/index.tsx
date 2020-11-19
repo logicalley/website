@@ -23,7 +23,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
   const radius: number = 40;
   const circumference: number = radius * 2 * Math.PI;
 
-  const sendAudiAnalytics = () => registerEvent({
+  const sendAudioAnalytics = () => registerEvent({
     action: GA_ACTION_MUSIC_PLAYER,
     category: GA_CATEGORY_TRACK_ACTIONS,
     label: `${GA_ACTION_MUSIC_PLAYER}: ${analyticsLabel}`,
@@ -34,7 +34,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
     if (audioPlayerRef.current) {
       if (audioPlayerRef.current.paused) {
         audioPlayerRef.current.play();
-        sendAudiAnalytics();
+        sendAudioAnalytics();
         setPlayStatus(PlayStatus.PAUSE);
       } else {
         audioPlayerRef.current.pause();
@@ -58,7 +58,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
         fillRule="evenodd"
         d="M41 0a5 5 0 00-5 5v66a5 5 0 0010 0V5a5 5 0 00-5-5M10 5v66a5 5 0 01-10 0V5a5 5 0 0110 0"
         clipRule="evenodd"
-      ></path>
+      />
     </svg>
   );
 
@@ -77,7 +77,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
         fillRule="evenodd"
         d="M8 62.758v-49.54l31.525 24.77L8 62.758zm40.471-27.915l-42-33A3.999 3.999 0 000 4.988v66a4.002 4.002 0 004 4c.879 0 1.753-.29 2.471-.855l42-33a4 4 0 000-6.29z"
         clipRule="evenodd"
-      ></path>
+      />
     </svg>
   );
 
@@ -96,7 +96,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
         fillRule="evenodd"
         d="M9 68.988h59v-59H9v59zm68-63.5a4.5 4.5 0 00-4.5-4.5h-68a4.5 4.5 0 00-4.5 4.5v68a4.5 4.5 0 004.5 4.5h68a4.5 4.5 0 004.5-4.5v-68z"
         clipRule="evenodd"
-      ></path>
+      />
     </svg>
   );
 
@@ -142,8 +142,8 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
         onClick={togglePlay}
       >
         <g transform="translate(14, 0) rotate(-90, 38, 38)">
-          <circle cx={radius} cy={radius} r={radius} fill="transparent" strokeWidth="3" stroke={darkColor} />
-          <circle cx={radius} cy={radius} r={radius} fill="transparent" stroke={primaryColor} strokeWidth="8" strokeDasharray={strokeProgress} />
+          <circle cx={radius} cy={radius} r={radius} fill="transparent" strokeWidth="0.5" stroke={darkColor} />
+          <circle cx={radius} cy={radius} r={radius} fill="transparent" stroke={primaryColor} strokeWidth="3" strokeDasharray={strokeProgress} />
         </g>
       </svg>
       {renderButton()}
