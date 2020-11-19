@@ -173,65 +173,17 @@
 }
 
 .platformTrackImage {
-  border-radius: 7.15567px;
   width: 100%;
   height: 100%;
+  width: 73.94px;
+  height: 73.94px;
+  border-radius: 7.15567px;
 }
 
 .platformTrackDetails {
   position: relative;
   display: flex;
 }
-
-.appleTrackImage,
-.spotifyTrackImage,
-.deezerTrackImage {
-  width: 73.94px;
-  height: 73.94px;
-}
-
-.appleTrackImage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  border-radius: 7.15567px;
-  width: 73.94px;
-  height: 73.94px;
-  background: linear-gradient(0deg, rgba(242, 55, 148, 0.4), rgba(242, 55, 148, 0.4));
-}
-
-.spotifyTrackImage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  border-radius: 7.15567px;
-  width: 73.94px;
-  height: 73.94px;
-  background: linear-gradient(0deg, rgba(30, 215, 96, 0.4), rgba(30, 215, 96, 0.4));
-}
-
-.deezerTrackImage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-  border-radius: 7.15567px;
-  width: 73.94px;
-  height: 73.94px;
-  background: linear-gradient(0deg, rgba(251, 195, 34, 0.4), rgba(251, 195, 34, 0.4));
-}
-
 .platformTrackInfo {
   margin-left: 20px;
   display: flex;

@@ -30,24 +30,10 @@ const getBackgroundColor = (platformName: string): string => {
   }
 }
 
-const getPlatformClassName = (platformName: string): string => {
-  switch (platformName) {
-    case SPOTIFY_TYPE:
-      return 'spotifyTrackImage';
-    case DEEZER_TYPE:
-      return 'deezerTrackImage';
-    case APPLE_MUSIC_TYPE:
-      return 'appleTrackImage';
-    default:
-      return 'platformTrackImage';
-  }
-}
-
 const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
   const background: string = getBackgroundColor(props.name);
   const iconAlt: string = `${props.name} icon`;
   const trackImageAlt: string = `Track cover for ${props.name}`;
-  const platformClassName = getPlatformClassName(props.name);
   const linkProps = {
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -84,9 +70,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
           <h3>{props.name}</h3>
         </section>
         <section className={styles.platformTrackDetails}>
-          <div className={styles[platformClassName]}>
-            <img alt={trackImageAlt} className={styles.platformTrackImage} src={props.imageUrl} />
-          </div>
+          <img alt={trackImageAlt} className={styles.platformTrackImage} src={props.imageUrl} />
 
           <section className={styles.platformTrackInfo}>
             <span className={styles.platformTrackTitle}>{props.title}</span>
