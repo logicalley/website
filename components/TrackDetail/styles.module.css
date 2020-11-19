@@ -1,6 +1,6 @@
 .trackHeaderContainer {
   width: 100%;
-  height: 90px;
+  height: 70px;
   background: #F9F7FD;
   position: absolute;
   top: 0;
@@ -243,6 +243,7 @@
   .trackHeaderContainer {
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 0px;
   }
 
   .platformLink {
