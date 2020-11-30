@@ -12,7 +12,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
     url,
     imageUrl = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1603713396/icons/annie-logo-white_g6obnp.png'
   } = props;
-  const pageTitle = title ? `${title} | Annie` : 'Annie';
+  const pageTitle = title || 'Annie';
 
   return (
     <Head>
