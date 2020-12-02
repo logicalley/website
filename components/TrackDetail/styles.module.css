@@ -137,6 +137,13 @@
   background: var(--anniePlatformColor);
 }
 
+.platformCardBtnGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .copyLinkBtn {
   width: 100%;
   background: #FFFFFF;
@@ -149,6 +156,16 @@
   font-size: 19.0818px;
   line-height: 23px;
   text-align: center;
+}
+
+.openLinkBtn {
+  composes: copyLinkBtn;
+  padding: 0;
+  margin: 0;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .platformDetails {
@@ -230,6 +247,7 @@
 
   .platformCardContainerBase {
     margin: 0;
+    height: 250px;
   }
 
   .trackFooter {
@@ -254,5 +272,14 @@
 
   .trackInfoGroup {
     width: 379px;
+  }
+
+  .platformCardBtnGroup {
+    flex-direction: row;
+  }
+
+  .openLinkBtn {
+    margin: 0;
+    margin-left: 20px;
   }
 }

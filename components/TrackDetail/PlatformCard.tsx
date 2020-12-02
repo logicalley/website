@@ -10,7 +10,8 @@ import {
   GA_ACTION_SPOTIFY_CARD_CLICK,
   GA_ACTION_APPLE_MUSIC_CARD_CLICK,
   GA_ACTION_DEEZER_CARD_CLICK,
-  GA_CATEGORY_TRACK_ACTIONS
+  GA_CATEGORY_TRACK_ACTIONS,
+  GA_ACTION_OPEN_LINK_BUTTON_CLICK
 } from '../../utils/constants';
 import { registerEvent } from '../../utils/googleAnalytics';
 
@@ -42,7 +43,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
 
   const sendTrackAnalytics = () => {
     const platform = props.name;
-    let action, label
+    let action;
 
     if (platform === SPOTIFY_TYPE) {
       action = GA_ACTION_SPOTIFY_CARD_CLICK;
@@ -54,6 +55,16 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
       action = 'UNDEFINED_CARD_CLICK';
     }
 
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_ACTIONS,
+      label: `${action}: ${props.title} - ${props.artiste}`,
+      value: 1
+    });
+  }
+
+  const sendOpenLinkAnalytics = () => {
+    const action = GA_ACTION_OPEN_LINK_BUTTON_CLICK;
     registerEvent({
       action,
       category: GA_CATEGORY_TRACK_ACTIONS,
@@ -85,11 +96,16 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
         </section>
       </a>
 
-      <CopyLinkButton
-        link={props.url}
-        platform={props.name}
-        label={`${props.title} - ${props.artiste}`}
-      />
+      <section className={styles.platformCardBtnGroup}>
+        <CopyLinkButton
+          link={props.url}
+          platform={props.name}
+          label={`${props.title} - ${props.artiste}`}
+        />
+        <a {...linkProps} onClick={sendOpenLinkAnalytics} className={styles.openLinkBtn}>
+          Open Link
+        </a>
+      </section>
     </section>
   );
 };
