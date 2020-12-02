@@ -41,7 +41,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     href: props.url
   };
 
-  const sendTrackAnalytics = () => {
+  const sendTrackAnalytics = (): void => {
     const platform = props.name;
     let action;
 
@@ -63,7 +63,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     });
   }
 
-  const sendOpenLinkAnalytics = () => {
+  const sendOpenLinkAnalytics = (): void => {
     const action = GA_ACTION_OPEN_LINK_BUTTON_CLICK;
     registerEvent({
       action,
