@@ -116,3 +116,9 @@ type GTagEvent = {
   label: string;
   value: number;
 };
+
+export interface OembedProps {
+  trackId: string;
+  title: string;
+  type: 'track' | 'playlist';
+};

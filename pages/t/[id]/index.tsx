@@ -1,20 +1,23 @@
 import React, { Fragment } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
+import getConfig from 'next/config';
 
-import type { TrackPageProps } from '../..';
+import type { TrackPageProps } from '../../..';
 
-import SEO from '../../components/SEO';
-import Page404 from '../404';
-import Spacer from '../../components/Spacer';
-
+import SEO from '../../../components/SEO';
+import Page404 from '../../404';
+import Spacer from '../../../components/Spacer';
+import Oembed from '../../../components/Oembed';
 // track components
 import {
   TrackHeader,
   TrackInfoCard,
   TrackDetailFooter,
   TrackPlatformGroup
-} from '../../components/TrackDetail';
+} from '../../../components/TrackDetail';
 
+
+const { publicRuntimeConfig } = getConfig();
 
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
   const { trackDetails, trackId, error } = props;
@@ -28,7 +31,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
     genre,
     year,
     preview_url,
-    platforms
+    platforms,
   } = trackDetails;
   const pageTitle: string = `${title} - ${artiste}`;
   const description: string = `Listen to "${title}" by ${artiste}`;
@@ -37,6 +40,11 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
   return (
     <Fragment>
+      <Oembed
+        trackId={trackId}
+        title={pageTitle}
+        type="track"
+      />
       <SEO
         title={pageTitle}
         description={description}
@@ -71,10 +79,11 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let trackId;
+
   try {
     if (context.params && context.params.id) {
       const { id: trackId } = context.params;
-      const trackApiEndpoint: string = `${process.env.ANNIE_API_BASE_URL}/track/${trackId}`;
+      const trackApiEndpoint: string = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}`;
       const res = await fetch(trackApiEndpoint);
       const { data } = await res.json();
       return { props: { trackDetails: data, trackId } }
@@ -85,6 +94,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return { props: { error: 'Track ID isn\'t included in URL params' } }
-}
+};
 
 export default TrackDetail;
