@@ -1,17 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
-import getConfig from 'next/config';
 
 import type { OembedProps } from '../..';
+import { OEMBED_BASE_URL } from '../../utils/constants';
 
-
-const { publicRuntimeConfig } = getConfig();
 
 const Oembed: React.FC<OembedProps> = ({ trackId, title, type }: OembedProps) => {
   let embedUrl: string = '';
 
   if (type === 'track') {
-    embedUrl = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}/oembed`;
+    embedUrl = `${OEMBED_BASE_URL}?url=https://anniemusic.app/t/${trackId}`;
   }
 
   return (

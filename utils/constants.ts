@@ -31,3 +31,5 @@ export const GA_ACTION_OPEN_LINK_BUTTON_CLICK = 'OPEN_LINK_BUTTON_CLICK';
 export const GA_CATEGORY_DOWNLOAD_BUTTONS = 'DOWNLOAD_BUTTONS';
 export const GA_CATEGORY_SOCIAL_MEDIA = 'SOCIAL_MEDIA';
 export const GA_CATEGORY_TRACK_ACTIONS = 'TRACK ACTIONS';
+
+export const OEMBED_BASE_URL = 'https://api.anniemusic.app/api/v1/oembed'
