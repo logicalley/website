@@ -7,5 +7,9 @@ module.exports = {
     autoPrerender: isDev,
     buildActivity: isDev
   },
-  target: 'serverless'
+  target: 'serverless',
+  publicRuntimeConfig: {
+    isDev,
+    apiBaseUrl: process.env.ANNIE_API_BASE_URL
+  },
 };
