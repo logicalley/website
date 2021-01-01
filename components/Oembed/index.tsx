@@ -9,7 +9,8 @@ const Oembed: React.FC<OembedProps> = ({ trackId, title, type }: OembedProps) =>
   let embedUrl: string = '';
 
   if (type === 'track') {
-    embedUrl = `${OEMBED_BASE_URL}?url=https://anniemusic.app/t/${trackId}`;
+    const encodedTrackUrl: string = encodeURI('https://anniemusic.app/t/${trackId}');
+    embedUrl = `${OEMBED_BASE_URL}?url=${encodedTrackUrl}`;
   }
 
   return (
