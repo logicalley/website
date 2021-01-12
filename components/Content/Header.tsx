@@ -1,12 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-import styles from './styles.module.css';
-
-import type { TrackHeaderProps } from '../..';
+import styles from '../TrackDetail/styles.module.css';
 
 
-const TrackHeader: React.FC<TrackHeaderProps> = ({ title }: TrackHeaderProps) => {
+const ContentHeader: React.FC = () => {
   return (
     <header className={styles.trackHeaderContainer}>
       <Link href="/">
@@ -16,4 +14,4 @@ const TrackHeader: React.FC<TrackHeaderProps> = ({ title }: TrackHeaderProps) =>
   );
 };
 
-export default TrackHeader;
+export default ContentHeader;

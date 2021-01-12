@@ -368,6 +368,7 @@ h6 {
 img {
   max-width: 100%;
   display: block;
+  font-size: 11px;
 }
 
 .bold {

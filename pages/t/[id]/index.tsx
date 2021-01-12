@@ -8,14 +8,10 @@ import SEO from '../../../components/SEO';
 import Page404 from '../../404';
 import Spacer from '../../../components/Spacer';
 import Oembed from '../../../components/Oembed';
-// track components
-import {
-  TrackHeader,
-  TrackInfoCard,
-  TrackDetailFooter,
-  TrackPlatformGroup
-} from '../../../components/TrackDetail';
-import SpecialLayout from "../../../components/SpecialLayout";
+import ContentHeader from '../../../components/Content/Header';
+import ContentFooter from '../../../components/Content/Footer';
+import TrackInfoCard from '../../../components/TrackDetail/TrackInfoCard';
+import TrackPlatformGroup from '../../../components/TrackDetail/TrackPlatformGroup';
 
 
 const { publicRuntimeConfig } = getConfig();
@@ -53,8 +49,8 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
         imageUrl={image_url}
         keywords={keywords}
       />
-      <SpecialLayout>
-        <TrackHeader title={title} />
+      <div style={{ flex: 1 }}>
+        <ContentHeader />
         <Spacer h="40px" mh="50px" />
         <TrackInfoCard
           title={title}
@@ -72,8 +68,8 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
           year={year}
           platforms={platforms}
         />
-      </SpecialLayout>
-      <TrackDetailFooter />
+      </div>
+      <ContentFooter />
     </Fragment>
   );
 };

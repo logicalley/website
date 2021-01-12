@@ -42,10 +42,34 @@ interface Track {
   platforms: Platform[]
 }
 
+interface PlaylistInfo {
+  id: number;
+  owner: string;
+  origin: string;
+  origin_id: string;
+  description: string;
+  image_url: string;
+  title: string;
+  apple_url: string;
+  track_count: number;
+  count: number;
+  next: string;
+}
+
+interface Playlist extends PlaylistInfo {
+  tracks: Track[]
+}
+
 export interface TrackPageProps {
   trackDetails: Track,
   trackId: string,
   error?: string
+}
+
+export interface PlaylistPageProps {
+  playlistDetails: Playlist;
+  playlistId: string;
+  error?: string;
 }
 
 export interface SEOProps {
@@ -54,11 +78,6 @@ export interface SEOProps {
   description?: string
   url: string
   imageUrl?: string
-}
-
-
-export interface TrackHeaderProps {
-  title: string
 }
 
 interface TrackInfoProps {
@@ -80,8 +99,8 @@ export interface PlatformGroup extends TrackInfoProps {
 export interface PlatformCardProps extends TrackInfoProps, Platform {}
 
 export interface AudioPlayerProps {
-  previewUrl: string
-  analyticsLabel: string
+  previewUrl: string;
+  analyticsLabel: string;
 }
 
 export interface Faq {
@@ -150,4 +169,16 @@ export interface SelectableStorefront {
 export interface StorefrontSelectorProps {
   setUserStorefront: Dispatch<SetStateAction<SelectableStorefront | undefined>>;
   userStorefront: SelectableStorefront | undefined;
+}
+export interface PlaylistInfoCard {
+  info: PlaylistInfo;
+};
+
+export interface PlaylistTrack {
+  track: Track;
+};
+
+export interface LoadMoreProps {
+  fetchMore: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  isLoading: boolean;
 }
