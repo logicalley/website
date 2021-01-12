@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 
 import type { AudioPlayerProps } from '../..';
 
@@ -11,7 +11,7 @@ import {
 import styles from './styles.module.css';
 
 
-const AudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps) => {
+const PlaylistAudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps) => {
   const { previewUrl, analyticsLabel } = props;
 
   const audioPlayerRef = useRef<HTMLAudioElement>(null);
@@ -75,4 +75,4 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps) => {
   )
 };
 
-export default AudioPlayer;
+export default memo(PlaylistAudioPlayer);

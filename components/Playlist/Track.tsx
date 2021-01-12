@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import type { PlaylistTrack } from '../..';
 
 import styles from './styles.module.css';
 
-import AudioPlayer from './AudioPlayer';
+import PlaylistAudioPlayer from './PlaylistAudioPlayer';
 
 
-const Track: React.FC<PlaylistTrack> = (props: PlaylistTrack) => {
+const TrackDisplay: React.FC<PlaylistTrack> = (props: PlaylistTrack) => {
   const { preview_url, title, artiste, image_url } = props.track;
   const imageAlt = `Artwork for ${title}`;
 
   return (
     <section className={styles.playlistTrackContainer}>
-      <AudioPlayer
+      <PlaylistAudioPlayer
         previewUrl={preview_url}
         analyticsLabel={`${title} - ${artiste}`}
       />
@@ -27,4 +27,4 @@ const Track: React.FC<PlaylistTrack> = (props: PlaylistTrack) => {
   );
 };
 
-export default Track;
+export default memo(TrackDisplay);
