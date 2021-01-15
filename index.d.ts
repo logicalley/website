@@ -178,7 +178,27 @@ export interface PlaylistTrack {
   track: Track;
 };
 
+export interface TrackDisplayProps extends PlaylistTrack {
+  activeTrack: ActiveTrack | null;
+  isPlaying: boolean;
+  setActiveTrack: React.Dispatch<React.SetStateAction<ActiveTrack | null>>;
+}
+
 export interface LoadMoreProps {
   fetchMore: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   isLoading: boolean;
+}
+
+export interface ActiveTrack {
+  id: number;
+  previewUrl: string;
+  analyticsLabel: string;
+}
+
+export interface PlaylistAudioProps {
+  isPlaying: boolean;
+  activeTrack: ActiveTrack | null;
+  setActiveTrack: React.Dispatch<React.SetStateAction<ActiveTrack | null>>;
+  trackId: number;
+  previewUrl: string;
 }
