@@ -178,11 +178,7 @@ export interface PlaylistTrack {
   track: Track;
 };
 
-export interface TrackDisplayProps extends PlaylistTrack {
-  activeTrack: ActiveTrack | null;
-  isPlaying: boolean;
-  setActiveTrack: React.Dispatch<React.SetStateAction<ActiveTrack | null>>;
-}
+export interface TrackDisplayProps extends PlaylistTrack {}
 
 export interface LoadMoreProps {
   fetchMore: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;

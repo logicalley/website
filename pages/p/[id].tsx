@@ -29,9 +29,6 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
   if (error || !playlistDetails) return <Page404 />;
 
   const [playlistTracks, setPlaylistTracks] = useState<Track[]>([]);
-  const audioPlayerRef = useRef<HTMLAudioElement>(null);
-  const [activeTrack, setActiveTrack] = useState<ActiveTrack | null>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [nextUrl, setNextUrl] = useState<string>('');
 
   const { tracks, ...playlistInfo } = playlistDetails;
@@ -45,26 +42,6 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
   const description: string = `Listen to the Playlist "${playlistInfo.title}" by ${playlistInfo.owner}`;
   const keywords: string = `${playlistInfo.title} ${playlistInfo.owner} music song annie share spotify deezer apple music`;
   const trackUrl: string = `https://anniemusic.app/p/${playlistId}`;
-
-  const sendAudioAnalytics = () => registerEvent({
-    action: GA_ACTION_MUSIC_PLAYER,
-    category: GA_CATEGORY_TRACK_ACTIONS,
-    label: `${GA_ACTION_MUSIC_PLAYER}: ${activeTrack?.analyticsLabel}`,
-    value: 1
-  });
-
-  const togglePlay = (): void => {
-    if (audioPlayerRef.current) {
-      if (audioPlayerRef.current.paused) {
-        sendAudioAnalytics();
-        setIsPlaying(true);
-        audioPlayerRef.current.play();
-      } else {
-        audioPlayerRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
 
   const fetchMoreTracks = async () => {
     try {
@@ -104,19 +81,10 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
         <InfoCard info={playlistInfo} />
         <Spacer h="20px" mh="20px" />
 
-        {activeTrack ? (
-          <audio ref={audioPlayerRef}>
-            <source src={activeTrack?.previewUrl} type="audio/mp3" />
-          </audio>
-        ) : null}
-
         {playlistTracks.map((track) => {
           const trackDisplayProps = {
             key: track.id,
-            activeTrack,
             track,
-            isPlaying,
-            setActiveTrack
           }
 
           return <TrackDisplay {...trackDisplayProps} />;

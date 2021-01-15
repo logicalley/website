@@ -6,7 +6,6 @@ import { registerEvent } from '../../utils/googleAnalytics';
 import {
   GA_ACTION_MUSIC_PLAYER,
   GA_CATEGORY_TRACK_ACTIONS,
-  PlayStatus
 } from '../../utils/constants';
 import styles from './styles.module.css';
 

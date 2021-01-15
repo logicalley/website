@@ -17,7 +17,6 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (props: TrackDisplayProps) => 
     image_url,
     platforms,
   } = props.track;
-  const { isPlaying, activeTrack, setActiveTrack } = props;
   const analyticsLabel = `${title} - ${artiste}`;
   const imageAlt = `Artwork for ${title}`;
 
@@ -45,10 +44,7 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (props: TrackDisplayProps) => 
       </section>
 
       <PlaylistAudioPlayer
-        trackId={trackId}
-        activeTrack={activeTrack}
-        isPlaying={isPlaying}
-        setActiveTrack={setActiveTrack}
+        analyticsLabel={analyticsLabel}
         previewUrl={preview_url}
       />
     </section>
