@@ -10,7 +10,6 @@ import PlaylistAudioPlayer from './PlaylistAudioPlayer';
 
 const TrackDisplay: React.FC<TrackDisplayProps> = (props: TrackDisplayProps) => {
   const {
-    id: trackId,
     preview_url,
     title,
     artiste,

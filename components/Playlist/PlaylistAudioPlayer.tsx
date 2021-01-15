@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useRef, useState, useEffect, SyntheticEvent } from 'react';
 
 import type { AudioPlayerProps } from '../..';
 
@@ -13,9 +13,12 @@ import styles from './styles.module.css';
 const PlaylistAudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps) => {
   const { previewUrl, analyticsLabel } = props;
 
+  const [audioDuration, setAudioDuration] = useState<number>(0);
   const audioPlayerRef = useRef<HTMLAudioElement>(null);
   const [playStatus, setPlayStatus] = useState<boolean>(false);
   const primaryColor: string = '#140929';
+  const radius: number = 40;
+  const circumference: number = radius * 2 * Math.PI;
 
   const sendAudioAnalytics = () => registerEvent({
     action: GA_ACTION_MUSIC_PLAYER,
@@ -36,6 +39,22 @@ const PlaylistAudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps
       }
     }
   };
+
+  const calculateProgress = (event: SyntheticEvent<HTMLAudioElement>): void => {
+    const { currentTime } = event.currentTarget;
+    const progress = Math.round((currentTime / audioDuration) * 100);
+
+    if (progress >= 100) {
+      setPlayStatus(false);
+    }
+  }
+
+  useEffect(() => {
+    if (audioPlayerRef.current && previewUrl) {
+      const { duration } = audioPlayerRef.current;
+      setAudioDuration(duration || 29);
+    }
+  }, []);
 
   const PauseSVG: JSX.Element = (
     <svg
@@ -62,7 +81,7 @@ const PlaylistAudioPlayer: React.FC<AudioPlayerProps> = (props: AudioPlayerProps
   return (
     <button className={styles.audioPlayerContainer} onClick={togglePlay}>
       {playStatus ? PauseSVG : PlaySVG}
-      <audio ref={audioPlayerRef}>
+      <audio ref={audioPlayerRef} onTimeUpdate={calculateProgress}>
         <source src={previewUrl} type="audio/mp3" />
       </audio>
     </button>

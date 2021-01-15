@@ -17,7 +17,7 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
         <h1 className={styles.playlistTitle}>{title}</h1>
         <span className={styles.playlistOwner}>by {owner}</span>
 
-        <button className={styles.cloneBtn}>Clone Playlist</button>
+        <button className={styles.cloneBtn} onClick={() => console.log('cloning playlist')}>Clone Playlist</button>
       </section>
     </section>
   );
