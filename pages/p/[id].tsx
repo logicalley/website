@@ -12,6 +12,7 @@ import Page404 from '../404';
 import TrackDisplay from '../../components/Playlist/TrackDisplay';
 import LoadMoreButton from '../../components/Playlist/LoadMoreButton';
 import SEO from '../../components/SEO';
+import PlaylistContainer from '../../components/Playlist/Container';
 import Oembed from '../../components/Oembed';
 
 import {
@@ -51,7 +52,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
         const { data } = await response.json();
         const { next, tracks } = data.details;
         setNextUrl(next);
-        setPlaylistTracks((currentPlaylistTracks) => ([ ...currentPlaylistTracks, ...tracks ]))
+        setPlaylistTracks((currentPlaylistTracks) => ([...currentPlaylistTracks, ...tracks]))
         return;
       }
       console.error('There was an error fetching the tracks from the API. Please try again.');
@@ -75,7 +76,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
         imageUrl={playlistInfo.image_url}
         keywords={keywords}
       />
-      <div style={{ flex: 1 }}>
+      <PlaylistContainer>
         <ContentHeader />
         <Spacer h="40px" mh="50px" />
         <InfoCard info={playlistInfo} />
@@ -94,7 +95,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
           fetchMore={fetchMoreTracks}
           isLoading={false}
         />) : null}
-      </div>
+      </PlaylistContainer>
       <ContentFooter />
     </Fragment>
   );
