@@ -83,10 +83,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     if (context.params && context.params.id) {
       const { id: trackId } = context.params;
+      let trackDetails;
       const trackApiEndpoint: string = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}`;
       const res = await fetch(trackApiEndpoint);
       const { data } = await res.json();
-      return { props: { trackDetails: data, trackId } }
+
+      if (data) {
+        trackDetails = data.track_details;
+      }
+
+      return { props: { trackDetails, trackId } }
     }
   } catch (error) {
     const errorMessage = error.message || `There was an error fetching track with ID: ${trackId}`
