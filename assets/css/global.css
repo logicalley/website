@@ -41,11 +41,11 @@
   --bodyPadding: 50px;
 
   --anniePlatformColor: #F4F7FF;
-  --platformBorderRadius: 17.8892px;
+  --platformBorderRadius: 18px;
   --appleMusicPlatformColor: #FFE9F4;
   --spotifyPlatformColor: #E5F4EB;
   --deezerPlatformColor: #F9F2DE;
-  --platformCardHeight: 300px;
+  --platformCardHeight: 80px;
   --platformCardPadding: 20px;
 }
 

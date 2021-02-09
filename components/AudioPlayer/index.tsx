@@ -18,7 +18,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
   const [strokeProgress, setStrokeProgress] = useState<string>("2,2000");
   const [playStatus, setPlayStatus] = useState<PlayStatus>(PlayStatus.PLAY);
 
-  const primaryColor: string = '#6525EC';
+  const primaryColor: string = '#000';
   const darkColor: string = '#000';
   const radius: number = 40;
   const circumference: number = radius * 2 * Math.PI;

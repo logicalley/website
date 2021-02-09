@@ -11,29 +11,33 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
   const imageAlt = `Track artwork for "${title}" by "${artiste}"`;
 
   return (
-    <div className={styles.trackInfoGroup}>
-      <section className={styles.trackInfo}>
-        <img src={imageUrl} className={styles.trackImage} alt={imageAlt} />
+    <section>
+      <h2 className={styles.infoCardIntroText}>This song was found on</h2>
 
-        <section className={styles.trackDetails}>
-          <span className={styles.trackTitle}>{title}</span>
-          <span className={styles.trackArtiste}>{artiste}</span>
+      <section className={styles.trackInfoGroup}>
+        <section className={styles.trackInfo}>
+          <img src={imageUrl} className={styles.trackImage} alt={imageAlt} />
 
-          <div className={styles.genreYear}>
-            <span>{genre}</span>
-            {" · "}
-            <span>{year}</span>
-          </div>
+          <section className={styles.trackDetails}>
+            <span className={styles.trackTitle}>{title}</span>
+            <span className={styles.trackArtiste}>{artiste}</span>
+
+            <div className={styles.genreYear}>
+              <span>{genre}</span>
+              {" · "}
+              <span>{year}</span>
+            </div>
+          </section>
         </section>
-      </section>
 
-      {previewUrl && (
-        <AudioPlayer
-          previewUrl={previewUrl}
-          analyticsLabel={`${title} - ${artiste}`}
-        />
-      )}
-    </div>
+        {previewUrl && (
+          <AudioPlayer
+            previewUrl={previewUrl}
+            analyticsLabel={`${title} - ${artiste}`}
+          />
+        )}
+      </section>
+    </section>
   );
 }
 

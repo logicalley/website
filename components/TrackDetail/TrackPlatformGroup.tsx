@@ -13,7 +13,7 @@ const TrackPlatformGroup: React.FC<PlatformGroup> = (props: PlatformGroup) => {
 
   return (
     <section className={styles.platformGroupContainer}>
-      <span className={styles.platformGroupHeader}>This song was found on</span>
+      <span className={styles.platformGroupHeader}>Share everything with Annie</span>
 
       <section className={styles.platformGroup}>
         {platforms.map((platform) => {
