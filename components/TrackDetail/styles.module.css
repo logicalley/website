@@ -158,18 +158,45 @@
   background: none;
 }
 
+.shareGroup {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
 .copyLinkBtn {
-  width: 100%;
-  background: #FFFFFF;
-  border: 1.19261px solid #C7D0E9;
-  border-radius: 9.5409px;
-  height: 48px;
+  composes: shareGroup;
+  background: transparent;
   cursor: pointer;
   color: var(--black);
-  font-family: 'Space Grotesk Bold';
-  font-size: 19.0818px;
-  line-height: 23px;
-  text-align: center;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  border: 0;
+  outline: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.shareModalHeader {
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.shareGroup > span {
+  font-weight: 400;
+}
+
+.shareModalDescription {
+  color: #111010;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 28px;
+  /* identical to box height, or 127% */
+  letter-spacing: -0.24px;
 }
 
 .platformIcon {
@@ -181,6 +208,14 @@
   width: 35px;
   height: 35px;
   margin: 10px;
+}
+
+.platformModalContainer {
+  width: 80%;
+  border: 1px solid #E8E8E8;
+  width: 250px;
+  min-height: 250px;
+  padding: 10px 0;
 }
 
 @media (min-width: 48em) {

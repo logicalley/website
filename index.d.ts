@@ -78,12 +78,6 @@ export interface PlatformGroup extends TrackInfoProps {
 
 export interface PlatformCardProps extends TrackInfoProps, Platform {}
 
-export interface CopyLinkButtonProps {
-  link: string
-  label: string
-  platform: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE
-}
-
 export interface AudioPlayerProps {
   previewUrl: string
   analyticsLabel: string
@@ -121,4 +115,12 @@ export interface OembedProps {
   trackId: string;
   title: string;
   type: 'track' | 'playlist';
+};
+
+export interface PlatformModalProps {
+  title: string;
+  url: string;
+  artiste: string;
+  closeFn: () => void;
+  platformName: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE;
 };
