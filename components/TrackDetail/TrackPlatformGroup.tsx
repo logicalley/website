@@ -26,9 +26,6 @@ const TrackPlatformGroup: React.FC<PlatformGroup> = (props: PlatformGroup) => {
             year
           };
 
-          if (platform.name === ANNIE_TYPE) {
-            return null;
-          }
           return <PlatformCard {...cardProps} key={platform.name} />
         })}
       </section>

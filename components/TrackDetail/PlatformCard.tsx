@@ -5,6 +5,7 @@ import styles from './styles.module.css';
 
 import type { PlatformCardProps } from '../..';
 import {
+  ANNIE_TYPE,
   SPOTIFY_TYPE,
   DEEZER_TYPE,
   APPLE_MUSIC_TYPE,
@@ -71,8 +72,9 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     setIsOpen(true);
   };
 
+  const classToUse = props.name === ANNIE_TYPE ? 'annieCardContainer' : 'platformCardContainerBase';
   const platformBtnProps = {
-    className: styles.platformCardContainerBase,
+    className: styles[classToUse],
     style: { borderColor: props.color },
     onClick: openCardOptions
   };
