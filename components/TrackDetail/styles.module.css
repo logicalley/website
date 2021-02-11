@@ -119,7 +119,7 @@
 }
 
 .platformGroup * {
-  font-family: 'Space Grotesk';
+  font-family: 'Space Grotesk', serif;
 }
 
 .platformName {
@@ -133,7 +133,7 @@
 .platformIcon {
   width: 24px;
   height: 24px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .infoCardIntroText {
@@ -201,11 +201,6 @@
   line-height: 28px;
   /* identical to box height, or 127% */
   letter-spacing: -0.24px;
-}
-
-.platformIcon {
-  width: 29.82px;
-  height: 28.62px;
 }
 
 .searchIcon {
