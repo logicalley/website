@@ -72,7 +72,8 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     setIsOpen(true);
   };
 
-  const classToUse = props.name === ANNIE_TYPE ? 'annieCardContainer' : 'platformCardContainerBase';
+  const isAnnieLink = props.name === ANNIE_TYPE;
+  const classToUse = isAnnieLink ? 'annieCardContainer' : 'platformCardContainerBase';
   const platformBtnProps = {
     className: styles[classToUse],
     style: { borderColor: props.color },
@@ -82,7 +83,13 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
   return (
     <Fragment>
       <button {...platformBtnProps}>
-        <h4 className={styles.platformName}>{props.name}</h4>
+        <section className={styles.platformCardTitleContainer}>
+          <h4 className={styles.platformName}>{props.name}</h4>
+          {isAnnieLink ? (
+            <span className={styles.annieCardDescription}>Everything in one link.</span>
+          ) : null}
+        </section>
+
         {iconToUse ? (
           <img src={iconToUse} alt={iconAlt} className={styles.platformIcon} />
         ) : <div />}
