@@ -18,6 +18,9 @@ import {
 
 import TwitterIcon from '../icons/Twitter';
 import CopyIcon from '../icons/Copy';
+import WhatsappIcon from '../icons/Whatsapp';
+import EmailIcon from "../icons/Email";
+import OpenIcon from "../icons/Open";
 import Spacer from '../Spacer';
 
 
@@ -97,12 +100,12 @@ Shared via @anniemusicapp%0a%0a`;
       </a>
 
       <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
-        <TwitterIcon />
+        <WhatsappIcon />
         <span>Whatsapp</span>
       </a>
 
       <a href={emailShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
-        <TwitterIcon />
+        <EmailIcon />
         <span>Email</span>
       </a>
 
@@ -110,14 +113,13 @@ Shared via @anniemusicapp%0a%0a`;
 
       {showButton ? (
         <button className={styles.copyLinkBtn} onClick={copyLink}>
-          {/* <img src="/images/duplicate.svg" /> */}
-          <TwitterIcon />
+          <CopyIcon />
           <span>Copy Link</span>
         </button>
       ) : null}
 
       <a href={props.url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={sendOpenLinkAnalytics}>
-        <TwitterIcon />
+        <OpenIcon />
         <span>Open Link</span>
       </a>
     </section>

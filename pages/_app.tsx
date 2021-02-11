@@ -36,7 +36,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       <Head>
         <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff"></meta>
+        <meta name="theme-color" content="#ffffff" />
         <link rel="canonical" href="https://anniemusic.app" />
         <meta name="twitter:site" content="@anniemusicapp" />
         <meta name="twitter:creator" content="@anniemusicapp" />
@@ -48,7 +48,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <title>Annie</title>
       </Head>
       <Component {...pageProps} />
-      <section id="modal"></section>
+      <section id="modal" />
     </Fragment>
   );
 }
