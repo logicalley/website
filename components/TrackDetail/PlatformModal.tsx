@@ -94,7 +94,9 @@ Shared via @anniemusicapp%0a%0a`;
       label: `${action}: ${props.title} - ${props.artiste}`,
       value: 1
     });
-  }
+  };
+
+  const isAnnieLink = props.platformName === ANNIE_TYPE;
 
   return (
     <section className={styles.platformModalContainer}>
@@ -126,10 +128,13 @@ Shared via @anniemusicapp%0a%0a`;
         </button>
       ) : null}
 
-      <a href={props.url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={sendOpenLinkAnalytics}>
-        <OpenIcon />
-        <span>Open Link</span>
-      </a>
+      {isAnnieLink ? null : (
+        <a href={props.url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
+           onClick={sendOpenLinkAnalytics}>
+          <OpenIcon/>
+          <span>Open Link</span>
+        </a>
+      )}
     </section>
   );
 };
