@@ -34,11 +34,19 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
 
   const label = `${props.title} - ${props.artiste}`;
   const encodedUrl = encodeURI(props.url);
-  const shareText = `Here's a song for you ...
+
+  const twitterShareText = `Here's a song for you ...
   %0a%0a
 ${props.title} by ${props.artiste}.%0a%0a
 Shared via @anniemusicapp%0a%0a`;
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodedUrl}`;
+
+  const shareText = `Here's a song for you ...
+  %0a%0a
+${props.title} by ${props.artiste}.%0a
+${props.url}
+%0a%0a
+Shared via @anniemusicapp%0a%0a`;
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
 
   const emailSubject = `Listen to ${props.title} by ${props.artiste}`
   const emailShareLink = `mailto:?body=${shareText}&subject=${emailSubject}`;
