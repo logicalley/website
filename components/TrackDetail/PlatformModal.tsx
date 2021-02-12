@@ -13,7 +13,14 @@ import {
   SPOTIFY_TYPE,
   DEEZER_TYPE,
   APPLE_MUSIC_TYPE,
-  GA_ACTION_OPEN_LINK_BUTTON_CLICK
+  GA_ACTION_OPEN_LINK_BUTTON_CLICK,
+  GA_ACTION_LINKEDIN_LINK_SHARE,
+  GA_ACTION_REDDIT_LINK_SHARE,
+  GA_ACTION_TWITTER_LINK_SHARE,
+  GA_ACTION_FACEBOOK_LINK_SHARE,
+  GA_ACTION_WHATSAPP_LINK_SHARE,
+  GA_ACTION_EMAIL_LINK_SHARE,
+  GA_CATEGORY_TRACK_SHARE_ACTIONS
 } from '../../utils/constants';
 
 import TwitterIcon from '../icons/Twitter';
@@ -27,7 +34,7 @@ import OpenIcon from '../icons/Open';
 import Spacer from '../Spacer';
 
 
-const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) => {
+const PlatformModal: React.FC<PlatformModalProps> = ({artiste, platformName, title, url}: PlatformModalProps) => {
   const [showButton, setShowButton] = useState<boolean>(false);
 
   useEffect(() => {
@@ -35,22 +42,22 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
     setShowButton(shouldShowCopyLinkButton);
   }, []);
 
-  const label = `${props.title} - ${props.artiste}`;
-  const encodedUrl = encodeURI(props.url);
+  const label = `${title} - ${artiste}`;
+  const encodedUrl = encodeURI(url);
 
   const fbAndTwitterShareText = `Here's a song for you ...
   %0a%0a
-${props.title} by ${props.artiste}.%0a%0a
+${title} by ${artiste}.%0a%0a
 Shared via @anniemusicapp%0a%0a`;
 
   const shareText = `Here's a song for you ...
   %0a%0a
-${props.title} by ${props.artiste}.%0a
-${props.url}
+${title} by ${artiste}.%0a
+${url}
 %0a%0a
 Shared via @anniemusicapp%0a%0a`;
 
-  const emailSubject = `Listen to ${props.title} by ${props.artiste}`;
+  const emailSubject = `Listen to ${title} by ${artiste}`;
   const emailShareLink = `mailto:?body=${shareText}&subject=${emailSubject}`;
 
   const twitterShareLink = `https://twitter.com/intent/tweet?text=${fbAndTwitterShareText}&url=${encodedUrl}`;
@@ -63,16 +70,16 @@ Shared via @anniemusicapp%0a%0a`;
   const registerLinkCopy = () => {
     let action, analyticsLabel;
 
-    if (props.platformName === ANNIE_TYPE) {
+    if (platformName === ANNIE_TYPE) {
       action = GA_ACTION_ANNIE_LINK_COPY;
       analyticsLabel = `${GA_ACTION_ANNIE_LINK_COPY}: ${label}`;
-    } else if (props.platformName === SPOTIFY_TYPE) {
+    } else if (platformName === SPOTIFY_TYPE) {
       action = GA_ACTION_SPOTIFY_LINK_COPY;
       analyticsLabel = `${GA_ACTION_SPOTIFY_LINK_COPY}: ${label}`;
-    } else if (props.platformName === DEEZER_TYPE) {
+    } else if (platformName === DEEZER_TYPE) {
       action = GA_ACTION_DEEZER_LINK_COPY;
       analyticsLabel = `${GA_ACTION_DEEZER_LINK_COPY}: ${label}`;
-    } else if (props.platformName === APPLE_MUSIC_TYPE) {
+    } else if (platformName === APPLE_MUSIC_TYPE) {
       action = GA_ACTION_APPLE_MUSIC_LINK_COPY;
       analyticsLabel = `${GA_ACTION_APPLE_MUSIC_LINK_COPY}: ${label}`;
     } else {
@@ -90,7 +97,18 @@ Shared via @anniemusicapp%0a%0a`;
 
   const copyLink = (): Promise<void> => {
     registerLinkCopy();
-    return navigator.clipboard.writeText(props.url);
+    return navigator.clipboard.writeText(url);
+  };
+
+  const registerShareLink = (action: string): void => {
+    const analyticsLabel = `${action}: ${label} - PLATFORM: ${platformName}`;
+
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_SHARE_ACTIONS,
+      label: analyticsLabel,
+      value: 1
+    });
   };
 
   const sendOpenLinkAnalytics = (): void => {
@@ -98,12 +116,12 @@ Shared via @anniemusicapp%0a%0a`;
     registerEvent({
       action,
       category: GA_CATEGORY_TRACK_ACTIONS,
-      label: `${action}: ${props.title} - ${props.artiste}`,
+      label: `${action}: ${title} - ${artiste}`,
       value: 1
     });
   };
 
-  const isAnnieLink = props.platformName === ANNIE_TYPE;
+  const isAnnieLink = platformName === ANNIE_TYPE;
 
   return (
     <section className={styles.platformModalContainer}>
@@ -113,32 +131,32 @@ Shared via @anniemusicapp%0a%0a`;
 
       <Spacer h="10px" mh="10px" />
 
-      <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}>
         <TwitterIcon />
         <span>Twitter</span>
       </a>
 
-      <a href={facebookShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={facebookShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_FACEBOOK_LINK_SHARE)}>
         <FacebookIcon />
         <span>Facebook</span>
       </a>
 
-      <a href={linkedInShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={linkedInShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_LINKEDIN_LINK_SHARE)}>
         <LinkedInIcon />
         <span>LinkedIn</span>
       </a>
 
-      <a href={redditShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={redditShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_REDDIT_LINK_SHARE)}>
         <RedditIcon />
         <span>Reddit</span>
       </a>
 
-      <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_WHATSAPP_LINK_SHARE)}>
         <WhatsappIcon />
         <span>Whatsapp</span>
       </a>
 
-      <a href={emailShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+      <a href={emailShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_EMAIL_LINK_SHARE)}>
         <EmailIcon />
         <span>Email</span>
       </a>
@@ -151,7 +169,7 @@ Shared via @anniemusicapp%0a%0a`;
       ) : null}
 
       {isAnnieLink ? null : (
-        <a href={props.url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
+        <a href={url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
            onClick={sendOpenLinkAnalytics}>
           <OpenIcon/>
           <span>Open Link</span>
