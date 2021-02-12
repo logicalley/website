@@ -163,11 +163,14 @@
 }
 
 .shareGroup {
-  margin: 18px 0;
+  margin: 12px 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   cursor: pointer;
+  border: 1px solid #e5e5e5;
+  padding: 11px 20px;
+  border-radius: 5px;
 }
 
 .copyLinkBtn {
@@ -178,16 +181,9 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
-  border: 0;
   outline: 0;
   display: flex;
-  justify-content: center;
-  padding: 0;
-}
-
-.shareModalHeader {
-  margin-bottom: 20px;
-  padding: 0 10px;
+  width: 100%;
 }
 
 .shareGroup > span {
@@ -210,7 +206,6 @@
 }
 
 .platformModalContainer {
-  border: 1px solid #E8E8E8;
   width: 250px;
   min-height: 250px;
   padding: 10px 0;

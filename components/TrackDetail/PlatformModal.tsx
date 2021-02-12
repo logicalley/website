@@ -99,8 +99,10 @@ Shared via @anniemusicapp%0a%0a`;
   return (
     <section className={styles.platformModalContainer}>
       <section className={styles.shareModalHeader}>
-        <span className={styles.shareModalDescription}>Share to ...</span>
+        <span className={styles.shareModalDescription}>Share to...</span>
       </section>
+
+      <Spacer h="10px" mh="10px" />
 
       <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
         <TwitterIcon />
@@ -116,8 +118,6 @@ Shared via @anniemusicapp%0a%0a`;
         <EmailIcon />
         <span>Email</span>
       </a>
-
-      <Spacer h="20px" mh="20px" />
 
       {showButton ? (
         <button className={styles.copyLinkBtn} onClick={copyLink}>
