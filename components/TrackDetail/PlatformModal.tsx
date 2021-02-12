@@ -19,8 +19,11 @@ import {
 import TwitterIcon from '../icons/Twitter';
 import CopyIcon from '../icons/Copy';
 import WhatsappIcon from '../icons/Whatsapp';
-import EmailIcon from "../icons/Email";
-import OpenIcon from "../icons/Open";
+import EmailIcon from '../icons/Email';
+import FacebookIcon from '../icons/Facebook';
+import LinkedInIcon from '../icons/LinkedIn';
+import RedditIcon from '../icons/Reddit';
+import OpenIcon from '../icons/Open';
 import Spacer from '../Spacer';
 
 
@@ -35,7 +38,7 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   const label = `${props.title} - ${props.artiste}`;
   const encodedUrl = encodeURI(props.url);
 
-  const twitterShareText = `Here's a song for you ...
+  const fbAndTwitterShareText = `Here's a song for you ...
   %0a%0a
 ${props.title} by ${props.artiste}.%0a%0a
 Shared via @anniemusicapp%0a%0a`;
@@ -46,10 +49,14 @@ ${props.title} by ${props.artiste}.%0a
 ${props.url}
 %0a%0a
 Shared via @anniemusicapp%0a%0a`;
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
 
-  const emailSubject = `Listen to ${props.title} by ${props.artiste}`
+  const emailSubject = `Listen to ${props.title} by ${props.artiste}`;
   const emailShareLink = `mailto:?body=${shareText}&subject=${emailSubject}`;
+
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${fbAndTwitterShareText}&url=${encodedUrl}`;
+  const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&t=${fbAndTwitterShareText}`;
+  const linkedInShareLink = `https://www.linkedin.com/shareArticle?mini=true&summary=a&title=${emailSubject}&url=${encodedUrl}`;
+  const redditShareLink = `https://reddit.com/submit?url=${encodedUrl}&title=${emailSubject}`;
 
   const whatsappShareLink = `whatsapp://send?text=${shareText}`;
 
@@ -109,6 +116,21 @@ Shared via @anniemusicapp%0a%0a`;
       <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
         <TwitterIcon />
         <span>Twitter</span>
+      </a>
+
+      <a href={facebookShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+        <FacebookIcon />
+        <span>Facebook</span>
+      </a>
+
+      <a href={linkedInShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+        <LinkedInIcon />
+        <span>LinkedIn</span>
+      </a>
+
+      <a href={redditShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
+        <RedditIcon />
+        <span>Reddit</span>
       </a>
 
       <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}>
