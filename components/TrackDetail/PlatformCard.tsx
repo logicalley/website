@@ -42,7 +42,9 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
     isOpen: modalIsOpen,
     onRequestClose: closeModal,
     style: customStyles,
-    contentLabel: "Beta Modal!"
+    contentLabel: 'Beta Modal!',
+    onAfterOpen: () => document.body.style.overflow = 'hidden',
+    onAfterClose: () => document.body.style.overflow = 'unset'
   };
 
   const sendTrackAnalytics = (): void => {

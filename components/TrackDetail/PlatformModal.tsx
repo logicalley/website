@@ -32,12 +32,13 @@ import FacebookIcon from '../icons/Facebook';
 import LinkedInIcon from '../icons/LinkedIn';
 import RedditIcon from '../icons/Reddit';
 import OpenIcon from '../icons/Open';
+import CloseIcon from '../icons/Close';
 
 import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
 
 
-const PlatformModal: React.FC<PlatformModalProps> = ({artiste, platformName, title, url}: PlatformModalProps) => {
+const PlatformModal: React.FC<PlatformModalProps> = ({artiste, platformName, title, url, closeFn}: PlatformModalProps) => {
   const [showButton, setShowButton] = useState<boolean>(false);
   const [userStorefront, setUserStorefront] = useState<SelectableStorefront>();
   const [fetchedStorefront, setFetchedStorefront] = useState<boolean>(false);
@@ -238,6 +239,9 @@ Shared via @anniemusicapp%0a%0a`;
     <section className={styles.platformModalContainer}>
       <section className={styles.shareModalHeader}>
         <span className={styles.shareModalDescription}>Share to...</span>
+        <button className={styles.closeIconBtn} onClick={closeFn}>
+          <CloseIcon />
+        </button>
       </section>
 
       <Spacer h="10px" mh="10px" />
