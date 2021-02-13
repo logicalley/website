@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 import styles from './styles.module.css';
 import type { PlatformModalProps } from '../..';
@@ -96,8 +97,22 @@ Shared via @anniemusicapp%0a%0a`;
   };
 
   const copyLink = (): Promise<void> => {
-    registerLinkCopy();
-    return navigator.clipboard.writeText(url);
+    let status: string;
+
+    return navigator.clipboard.writeText(url)
+      .then(() => {
+        status = 'success';
+        registerLinkCopy();
+      })
+      .catch(() => {
+        status = 'failure';
+      })
+      .finally(() => {
+        const isSuccess = status === 'success';
+        const toastFn = isSuccess ? toast.success : toast.error;
+        const toastMessage = isSuccess ? 'Link Copied.' : 'Failed to copy link.';
+        toastFn(toastMessage);
+      })
   };
 
   const registerShareLink = (action: string): void => {

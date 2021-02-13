@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import Head from 'next/head';
 import { prepareClientPortals } from '@jesstelford/react-portal-universal';
 import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
 
 import type { AppProps } from 'next/app';
 
@@ -18,6 +19,8 @@ if (typeof window !== 'undefined') {
 
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
+
+  const toastPosition = 'top-center';
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development') {
@@ -48,6 +51,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <title>Annie</title>
       </Head>
       <Component {...pageProps} />
+      <Toaster position={toastPosition} reverseOrder={false} />
       <section id="modal" />
     </Fragment>
   );
