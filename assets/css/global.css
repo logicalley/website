@@ -370,6 +370,10 @@ img {
   background: rgb(0, 0, 0, 0.75) !important;
 }
 
+.error {
+  color: red;
+}
+
 @media (min-width: 48em) {
   #__next {
     padding: var(--bodyPadding);

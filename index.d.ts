@@ -124,3 +124,18 @@ export interface PlatformModalProps {
   closeFn: () => void;
   platformName: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE;
 };
+
+export interface Storefront {
+  id: string;
+  name: string;
+}
+
+export interface SelectableStorefront {
+  label: string;
+  value: string;
+}
+
+export interface StorefrontSelectorProps {
+  setUserStorefront: Dispatch<SetStateAction<SelectableStorefront | undefined>>;
+  userStorefront: SelectableStorefront | undefined;
+}

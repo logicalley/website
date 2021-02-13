@@ -14,6 +14,13 @@ export enum ContactFormReducerEnum {
   COMPLAINT
 }
 
+export enum FetchStatus {
+  IDLE,
+  SUCCESS,
+  ERROR,
+  LOADING
+}
+
 export const GA_ACTION_APP_STORE_DOWNLOAD: string = 'APP_STORE_DOWNLOAD';
 export const GA_ACTION_PLAY_STORE_DOWNLOAD: string = 'PLAY_STORE_DOWNLOAD';
 export const GA_ACTION_FOOTER_TWITTER_LINK: string = 'FOOTER_TWITTER_LINK';
@@ -41,5 +48,4 @@ export const GA_CATEGORY_TRACK_SHARE_ACTIONS: string = 'TRACK_SHARE_ACTIONS';
 
 export const OEMBED_BASE_URL: string = 'https://api.anniemusic.app/api/v1/oembed';
 
-export const ANNIE_STOREFRONT_DATA_KEY: string = 'ANNIE_STOREFRONT_DATA_KEY';
 export const ANNIE_USER_SELECTED_STOREFRONT_KEY: string = 'ANNIE_STOREFRONT_USER_KEY'

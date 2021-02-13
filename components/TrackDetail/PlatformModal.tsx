@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import toast from 'react-hot-toast';
 
 import styles from './styles.module.css';
-import type { PlatformModalProps } from '../..';
+import type { PlatformModalProps, SelectableStorefront } from '../..';
 import { registerEvent } from '../../utils/googleAnalytics';
 import {
   GA_ACTION_ANNIE_LINK_COPY,
@@ -21,7 +21,7 @@ import {
   GA_ACTION_FACEBOOK_LINK_SHARE,
   GA_ACTION_WHATSAPP_LINK_SHARE,
   GA_ACTION_EMAIL_LINK_SHARE,
-  GA_CATEGORY_TRACK_SHARE_ACTIONS
+  GA_CATEGORY_TRACK_SHARE_ACTIONS, ANNIE_USER_SELECTED_STOREFRONT_KEY
 } from '../../utils/constants';
 
 import TwitterIcon from '../icons/Twitter';
@@ -32,15 +32,33 @@ import FacebookIcon from '../icons/Facebook';
 import LinkedInIcon from '../icons/LinkedIn';
 import RedditIcon from '../icons/Reddit';
 import OpenIcon from '../icons/Open';
+
+import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
 
 
 const PlatformModal: React.FC<PlatformModalProps> = ({artiste, platformName, title, url}: PlatformModalProps) => {
   const [showButton, setShowButton] = useState<boolean>(false);
+  const [userStorefront, setUserStorefront] = useState<SelectableStorefront>();
+  const [fetchedStorefront, setFetchedStorefront] = useState<boolean>(false);
+  const [editStorefront, setEditStorefront] = useState<boolean>(false);
 
   useEffect(() => {
     const shouldShowCopyLinkButton: boolean = document.queryCommandSupported('copy');
     setShowButton(shouldShowCopyLinkButton);
+  }, []);
+
+  useEffect(() => {
+    if (process.browser) {
+      const selectedStorefront: string | null = localStorage.getItem(ANNIE_USER_SELECTED_STOREFRONT_KEY);
+
+      if (selectedStorefront) {
+        const parsedSelectedStorefront: SelectableStorefront = JSON.parse(selectedStorefront);
+        setUserStorefront(parsedSelectedStorefront);
+      }
+
+      setFetchedStorefront(true);
+    }
   }, []);
 
   const label = `${title} - ${artiste}`;
@@ -137,15 +155,36 @@ Shared via @anniemusicapp%0a%0a`;
   };
 
   const isAnnieLink = platformName === ANNIE_TYPE;
+  const isAppleLink = platformName === APPLE_MUSIC_TYPE;
 
-  return (
-    <section className={styles.platformModalContainer}>
-      <section className={styles.shareModalHeader}>
-        <span className={styles.shareModalDescription}>Share to...</span>
-      </section>
+  const confirmUserStorefront = (data: SelectableStorefront) => {
+    setUserStorefront((data));
+    setEditStorefront(false);
+  };
 
-      <Spacer h="10px" mh="10px" />
+  const toggleDisplayStorefrontSelector = () => setEditStorefront((prevState) => !prevState);
 
+  const renderStoreFront = (): JSX.Element => {
+    if (isAppleLink && fetchedStorefront) {
+      if (editStorefront) {
+        return <StorefrontSelector setUserStorefront={confirmUserStorefront} userStorefront={userStorefront} />;
+      }
+
+      if (userStorefront) {
+        return (
+          <section className={styles.storefrontTextContainer}>
+            <span className={styles.storefrontText}>Selected Storefront: <span className={styles.storefrontLabel}>{userStorefront?.label}</span></span>
+            <button className={styles.storefrontTextBtn} onClick={toggleDisplayStorefrontSelector}>Change Storefront</button>
+          </section>
+        );
+      }
+    }
+
+    return <span />;
+  };
+
+  const renderShareOptions = (): JSX.Element => (
+    <Fragment>
       <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}>
         <TwitterIcon />
         <span>Twitter</span>
@@ -190,6 +229,40 @@ Shared via @anniemusicapp%0a%0a`;
           <span>Open Link</span>
         </a>
       )}
+    </Fragment>
+  );
+
+  const lsLoadedNoSelectedUserStorefront = isAppleLink && fetchedStorefront && (!userStorefront);
+
+  return (
+    <section className={styles.platformModalContainer}>
+      <section className={styles.shareModalHeader}>
+        <span className={styles.shareModalDescription}>Share to...</span>
+      </section>
+
+      <Spacer h="10px" mh="10px" />
+
+      {
+        lsLoadedNoSelectedUserStorefront ? (
+          <Fragment>
+            <p>
+              Apple Music requires users to select a storefront which corresponds to their home location or the country
+              selected when creating their apple account.
+            </p>
+            <p>This is used to generate the apple music link for the song requested.</p>
+            <StorefrontSelector setUserStorefront={confirmUserStorefront} userStorefront={userStorefront} />
+          </Fragment>
+        ) : (
+          <Fragment>
+            {renderStoreFront()}
+            {renderShareOptions()}
+          </Fragment>
+        )
+      }
+
+
+
+
     </section>
   );
 };
