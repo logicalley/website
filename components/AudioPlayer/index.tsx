@@ -63,23 +63,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
   );
 
   const PlaySVG: JSX.Element = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="75"
-      fill="none"
-      viewBox="0 0 50 75"
-      className={styles.playButton}
-      onClick={togglePlay}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" className={styles.playButton} onClick={togglePlay}>
       <path
         fill={primaryColor}
         fillRule="evenodd"
-        d="M8 62.758v-49.54l31.525 24.77L8 62.758zm40.471-27.915l-42-33A3.999 3.999 0 000 4.988v66a4.002 4.002 0 004 4c.879 0 1.753-.29 2.471-.855l42-33a4 4 0 000-6.29z"
+        d="M9.333 9.093v13.814a1.33 1.33 0 002.054 1.12L22.24 17.12c.827-.52.827-1.72 0-2.253L11.387 7.973a1.33 1.33 0 00-2.054 1.12z"
         clipRule="evenodd"
       />
     </svg>
-  );
+  )
 
   const StopSVG: JSX.Element = (
     <svg

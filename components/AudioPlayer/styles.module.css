@@ -10,9 +10,8 @@
 
 .playButton {
   composes: button;
-  left: 36%;
-  top: -4%;
-  width: 25%;
+  left: 28%;
+  top: 20%;
 }
 
 .pauseButton {
