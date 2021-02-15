@@ -1,25 +1,33 @@
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Mulish';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-display: swap;
-  src: url('../fonts/SpaceGrotesk-Regular.otf') format('truetype');
+  src: url('../fonts/Mulish-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Space Grotesk Bold';
-  font-style: normal;
-  font-weight: bold;
-  font-display: swap;
-  src: url('../fonts/SpaceGrotesk-Bold.otf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Work Sans';
+  font-family: 'Mulish';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/WorkSans-Regular.ttf') format('truetype');
+  src: url('../fonts/Mulish-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Mulish-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/Mulish-SemiBold.ttf') format('truetype');
 }
 
 :root {
