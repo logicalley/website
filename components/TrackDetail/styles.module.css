@@ -56,15 +56,13 @@
 
 .trackDetails span {
   color: var(--black);
-  font-family: 'Space Grotesk', serif;
 }
 
 .trackTitle {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 15px;
   line-height: 18px;
-  font-family: 'Space Grotesk Bold', serif !important;
 }
 
 .trackArtiste {
@@ -94,14 +92,6 @@
   align-items: center;
 }
 
-.trackFooter * {
-  font-family: 'Space Grotesk', serif;
-}
-
-.platformGroupContainer * {
-  font-family: 'Space Grotesk', serif;
-}
-
 .platformGroupHeader {
   font-size: 20px;
   line-height: 24px;
@@ -116,10 +106,6 @@
 
 .platformGroup {
   margin: 30px 0;
-}
-
-.platformGroup * {
-  font-family: 'Space Grotesk', serif;
 }
 
 .platformName {
