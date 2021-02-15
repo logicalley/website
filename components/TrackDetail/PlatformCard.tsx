@@ -104,6 +104,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
           url={props.url}
           artiste={props.artiste}
           platformName={props.name}
+          shortUrl={props.shortUrl}
         />
       </Modal>
     </Fragment>

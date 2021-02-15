@@ -16,17 +16,18 @@ export interface SpacerProps {
 };
 
 export interface AnnieLogoProps {
-  height?: string
-  width?: string
+  height?: string;
+  width?: string;
 };
 
 interface Platform {
-  name: string,
-  url: string,
-  color: string,
-  buttonColor: string,
-  icon: string | null,
-  darkIcon: string | null
+  name: string;
+  url: string;
+  color: string;
+  buttonColor: string;
+  icon: string | null;
+  darkIcon: string | null;
+  shortUrl: string | null;
 }
 
 interface Track {
@@ -123,6 +124,7 @@ export interface PlatformModalProps {
   artiste: string;
   closeFn: () => void;
   platformName: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE;
+  shortUrl: string | null;
 };
 
 export interface Storefront {

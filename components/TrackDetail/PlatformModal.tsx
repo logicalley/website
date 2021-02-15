@@ -38,11 +38,14 @@ import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
 
 
-const PlatformModal: React.FC<PlatformModalProps> = ({artiste, platformName, title, url, closeFn}: PlatformModalProps) => {
+const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) => {
+  const { artiste, platformName, title, url, closeFn, shortUrl } = props;
+
   const [showButton, setShowButton] = useState<boolean>(false);
   const [userStorefront, setUserStorefront] = useState<SelectableStorefront>();
   const [fetchedStorefront, setFetchedStorefront] = useState<boolean>(false);
   const [editStorefront, setEditStorefront] = useState<boolean>(false);
+  const appleMusicBaseUrl: string = 'https://music.apple.com';
 
   useEffect(() => {
     const shouldShowCopyLinkButton: boolean = document.queryCommandSupported('copy');
@@ -115,10 +118,15 @@ Shared via @anniemusicapp%0a%0a`;
     });
   };
 
+  const isAnnieLink = platformName === ANNIE_TYPE;
+  const isAppleLink = platformName === APPLE_MUSIC_TYPE;
+
   const copyLink = (): Promise<void> => {
     let status: string;
+    const storefrontUsable: boolean = isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
+    let textToCopy: string = storefrontUsable ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}` : url;
 
-    return navigator.clipboard.writeText(url)
+    return navigator.clipboard.writeText(textToCopy)
       .then(() => {
         status = 'success';
         registerLinkCopy();
@@ -154,9 +162,6 @@ Shared via @anniemusicapp%0a%0a`;
       value: 1
     });
   };
-
-  const isAnnieLink = platformName === ANNIE_TYPE;
-  const isAppleLink = platformName === APPLE_MUSIC_TYPE;
 
   const confirmUserStorefront = (data: SelectableStorefront) => {
     setUserStorefront((data));
