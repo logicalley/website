@@ -47,6 +47,12 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   const [editStorefront, setEditStorefront] = useState<boolean>(false);
   const appleMusicBaseUrl: string = 'https://music.apple.com';
 
+  const isAnnieLink = platformName === ANNIE_TYPE;
+  const isAppleLink = platformName === APPLE_MUSIC_TYPE;
+
+  const storefrontUsable: boolean = isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
+  const trackUrl: string = storefrontUsable ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}` : url;
+
   useEffect(() => {
     const shouldShowCopyLinkButton: boolean = document.queryCommandSupported('copy');
     setShowButton(shouldShowCopyLinkButton);
@@ -66,7 +72,7 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   }, []);
 
   const label = `${title} - ${artiste}`;
-  const encodedUrl = encodeURI(url);
+  const encodedUrl = encodeURI(trackUrl);
 
   const fbAndTwitterShareText = `Here's a song for you ...
   %0a%0a
@@ -76,7 +82,7 @@ Shared via @anniemusicapp%0a%0a`;
   const shareText = `Here's a song for you ...
   %0a%0a
 ${title} by ${artiste}.%0a
-${url}
+${trackUrl}
 %0a%0a
 Shared via @anniemusicapp%0a%0a`;
 
@@ -118,13 +124,8 @@ Shared via @anniemusicapp%0a%0a`;
     });
   };
 
-  const isAnnieLink = platformName === ANNIE_TYPE;
-  const isAppleLink = platformName === APPLE_MUSIC_TYPE;
-
   const copyLink = (): Promise<void> => {
     let status: string;
-    const storefrontUsable: boolean = isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
-    let textToCopy: string = storefrontUsable ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}` : url;
 
     return navigator.clipboard.writeText(textToCopy)
       .then(() => {
@@ -229,7 +230,7 @@ Shared via @anniemusicapp%0a%0a`;
       ) : null}
 
       {isAnnieLink ? null : (
-        <a href={url} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
+        <a href={trackUrl} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
            onClick={sendOpenLinkAnalytics}>
           <OpenIcon/>
           <span>Open Link</span>
