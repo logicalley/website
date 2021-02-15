@@ -11,7 +11,11 @@ export enum PlayStatus {
 
 export enum ContactFormReducerEnum {
   EMAIL,
-  COMPLAINT
+  COMPLAINT,
+  NAME,
+  LOADING,
+  FORM_SUBMITTED,
+  ERROR
 }
 
 export enum FetchStatus {

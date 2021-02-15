@@ -92,13 +92,17 @@ export interface Faq {
 export interface AccordionProps extends Faq {}
 
 export interface ContactFormState {
-  email: string
-  complaint: string
+  email: string;
+  complaint: string;
+  name: string;
+  formSubmitted: boolean;
+  loading: boolean;
+  errorMessage: string;
 }
 
 type ContactFormReducerAction = {
-  type: ContactFormReducerEnum
-  payload: string
+  type: ContactFormReducerEnum;
+  payload: string;
 }
 
 export interface IFrameLoaderProps {

@@ -19,7 +19,7 @@
   padding: 10px;
   border: 0;
   width: 200px;
-  background: var(--dark);
+  background: var(--primary);
   color: white;
   text-transform: uppercase;
   cursor: pointer;
