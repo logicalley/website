@@ -127,7 +127,7 @@ Shared via @anniemusicapp%0a%0a`;
   const copyLink = (): Promise<void> => {
     let status: string;
 
-    return navigator.clipboard.writeText(textToCopy)
+    return navigator.clipboard.writeText(trackUrl)
       .then(() => {
         status = 'success';
         registerLinkCopy();
