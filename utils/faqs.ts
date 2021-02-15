@@ -3,7 +3,7 @@ import type { Faq } from '..'
 const faqs: Faq[] = [
   {
     question: 'Does Annie work with Youtube Music?',
-    answer: 'Currently, Annie only supports Spotify, Deezer and Apple Music. We hope to add more streaming platforms in the future.'
+    answer: 'Currently, Annie only supports Spotify, Deezer and Apple Music. We plan to add more streaming platforms in the future.'
   },
   {
     question: 'Is Annie free or subscription based?',
@@ -15,7 +15,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Can I convert a track with Annie on my PC?',
-    answer: 'Annie is only available on Android and iOS devices.'
+    answer: 'Annie is only available on iOS devices at this time.'
   }
 ];
 
