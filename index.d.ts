@@ -105,6 +105,12 @@ type ContactFormReducerAction = {
   payload: string;
 }
 
+export type ComplaintFormPayload = {
+  name?: string;
+  email?: string;
+  issue: string;
+}
+
 export interface IFrameLoaderProps {
   url: string
 }

@@ -4,7 +4,7 @@ import getConfig from 'next/config';
 import styles from './styles.module.css';
 
 import { ContactFormReducerEnum } from '../../utils/constants';
-import type { ContactFormState, ContactFormReducerAction } from '../..';
+import type { ContactFormState, ContactFormReducerAction, ComplaintFormPayload } from '../..';
 
 import Spinner from '../Spinner';
 
@@ -64,14 +64,34 @@ const Contact: React.FC = () => {
     try {
       dispatch({ type: ContactFormReducerEnum.LOADING, payload: '' });
 
+      var headers = new Headers();
+      headers.append("Content-Type", "application/json");
+
+      const rawPayload: ComplaintFormPayload = { issue: state.complaint };
+
+      if (state.name) {
+        rawPayload.name = state.name;
+      }
+
+      if (state.email) {
+        rawPayload.email = state.email;
+      }
+
       const complaintEndpoint: string = `${publicRuntimeConfig.apiBaseUrl}/complaint`;
-      const response = await fetch(complaintEndpoint);
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(rawPayload),
+        headers
+      };
+
+      const response = await fetch(complaintEndpoint, requestOptions);
 
       if (response.ok) {
         dispatch({ type: ContactFormReducerEnum.FORM_SUBMITTED, payload: '' });
       } else {
+        const errorObject = await response.json();
         const errorMessage = 'An error occurred while submitting your complaint. Please try again.'
-        dispatch({ type: ContactFormReducerEnum.ERROR, payload: errorMessage });
+        dispatch({ type: ContactFormReducerEnum.ERROR, payload: errorObject.message || errorMessage });
       }
     } catch (error) {
       dispatch({ type: ContactFormReducerEnum.ERROR, payload: error.message });
