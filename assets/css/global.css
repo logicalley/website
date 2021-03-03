@@ -1,33 +1,33 @@
 @font-face {
-  font-family: 'Mulish';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('../fonts/Mulish-Light.ttf') format('truetype');
+  src: url('../fonts/Inter-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Mulish';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/Mulish-Regular.ttf') format('truetype');
+  src: url('../fonts/Inter-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Mulish';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('../fonts/Mulish-Medium.ttf') format('truetype');
+  src: url('../fonts/Inter-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Mulish';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: bold;
   font-display: swap;
-  src: url('../fonts/Mulish-SemiBold.ttf') format('truetype');
+  src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
 }
 
 :root {
@@ -307,7 +307,7 @@ summary {
 }
 
 * {
-  font-family: 'Mulish', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
