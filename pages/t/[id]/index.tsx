@@ -12,6 +12,7 @@ import ContentHeader from '../../../components/Content/Header';
 import ContentFooter from '../../../components/Content/Footer';
 import TrackInfoCard from '../../../components/TrackDetail/TrackInfoCard';
 import TrackPlatformGroup from '../../../components/TrackDetail/TrackPlatformGroup';
+import SpecialLayout from '../../../components/SpecialLayout';
 
 
 const { publicRuntimeConfig } = getConfig();
@@ -49,7 +50,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
         imageUrl={image_url}
         keywords={keywords}
       />
-      <div style={{ flex: 1 }}>
+      <SpecialLayout>
         <ContentHeader />
         <Spacer h="40px" mh="50px" />
         <TrackInfoCard
@@ -68,7 +69,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
           year={year}
           platforms={platforms}
         />
-      </div>
+      </SpecialLayout>
       <ContentFooter />
     </Fragment>
   );
