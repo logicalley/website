@@ -31,6 +31,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
 
   const [playlistTracks, setPlaylistTracks] = useState<PlaylistTrackMetaData[]>([]);
   const [nextUrl, setNextUrl] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { tracks, ...playlistInfo } = playlistDetails;
 
@@ -46,6 +47,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
 
   const fetchMoreTracks = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(nextUrl);
 
       if (response.ok) {
@@ -59,6 +61,8 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
     } catch (error) {
       // show some form of notification <Toast>
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -93,7 +97,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
 
         {nextUrl ? (<LoadMoreButton
           fetchMore={fetchMoreTracks}
-          isLoading={false}
+          isLoading={isLoading}
         />) : null}
       </SpecialLayout>
       <ContentFooter />

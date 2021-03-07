@@ -54,6 +54,7 @@ interface PlaylistInfo {
   total: number;
   count: number;
   next: string;
+  originalUrl: string;
 }
 
 interface Playlist extends PlaylistInfo {
