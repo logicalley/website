@@ -57,8 +57,7 @@
 .playlistImage {
   height: 100%;
   width: 150px;
-  border-radius: 5px;
-  border: 1px solid var(--dark);
+  object-fit: contain;
 }
 
 .loadMoreBtn {
