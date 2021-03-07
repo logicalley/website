@@ -4,13 +4,12 @@ import type { LoadMoreProps } from '../..';
 
 import styles from './styles.module.css';
 
-import Spinner from '../Spinner';
+import CircleSpinner from '../Spinner/CircleSpinner';
 
 
-const LoadMoreButton = (props: LoadMoreProps) => (
-  <button className={styles.loadMoreBtn} onClick={props.fetchMore} disabled={props.isLoading}>
-    Load More
-    {/* <Spinner /> */}
+const LoadMoreButton = ({ fetchMore, isLoading }: LoadMoreProps) => (
+  <button className={styles.loadMoreBtn} onClick={fetchMore} disabled={isLoading}>
+    {isLoading ? <CircleSpinner /> : <span>Load More</span>}
   </button>
 );
 

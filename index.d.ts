@@ -51,7 +51,7 @@ interface PlaylistInfo {
   image_url: string;
   title: string;
   apple_url: string;
-  track_count: number;
+  total: number;
   count: number;
   next: string;
 }
@@ -175,9 +175,16 @@ export interface PlaylistInfoCard {
 };
 
 export interface PlaylistTrack {
-  track: Track;
+  track: PlaylistTrackMetaData
 };
 
+export interface PlaylistTrackMetaData {
+  id: number;
+  title: string;
+  artiste: string;
+  image_url: string;
+  annieUrl: string;
+}
 export interface TrackDisplayProps extends PlaylistTrack {}
 
 export interface LoadMoreProps {
