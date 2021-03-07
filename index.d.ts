@@ -57,7 +57,7 @@ interface PlaylistInfo {
 }
 
 interface Playlist extends PlaylistInfo {
-  tracks: Track[]
+  tracks: PlaylistTrackMetaData[]
 }
 
 export interface TrackPageProps {

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, useRef, forwardRef } from 'react'
 import { NextPage, GetServerSideProps } from 'next';
 import getConfig from 'next/config';
 
-import type { PlaylistPageProps, Track, ActiveTrack } from '../..';
+import type { PlaylistPageProps, PlaylistTrackMetaData, ActiveTrack } from '../..';
 
 import ContentHeader from '../../components/Content/Header';
 import ContentFooter from '../../components/Content/Footer';
@@ -29,7 +29,7 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
 
   if (error || !playlistDetails) return <Page404 />;
 
-  const [playlistTracks, setPlaylistTracks] = useState<Track[]>([]);
+  const [playlistTracks, setPlaylistTracks] = useState<PlaylistTrackMetaData[]>([]);
   const [nextUrl, setNextUrl] = useState<string>('');
 
   const { tracks, ...playlistInfo } = playlistDetails;
