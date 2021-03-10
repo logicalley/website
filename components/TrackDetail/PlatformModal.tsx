@@ -15,8 +15,6 @@ import {
   DEEZER_TYPE,
   APPLE_MUSIC_TYPE,
   GA_ACTION_OPEN_LINK_BUTTON_CLICK,
-  GA_ACTION_LINKEDIN_LINK_SHARE,
-  GA_ACTION_REDDIT_LINK_SHARE,
   GA_ACTION_TWITTER_LINK_SHARE,
   GA_ACTION_FACEBOOK_LINK_SHARE,
   GA_ACTION_WHATSAPP_LINK_SHARE,
@@ -74,25 +72,15 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   const label = `${title} - ${artiste}`;
   const encodedUrl = encodeURI(trackUrl);
 
-  const fbAndTwitterShareText = `Here's a song for you ...
-  %0a%0a
-${title} by ${artiste}.%0a%0a
-Shared via @anniemusicapp%0a%0a`;
-
-  const shareText = `Here's a song for you ...
-  %0a%0a
-${title} by ${artiste}.%0a
+  const shareText = `Check out ${title} by ${artiste}.%0a
 ${trackUrl}
-%0a%0a
+%0a%0a`;
+
+const twitterShareText = `${shareText}
 Shared via @anniemusicapp%0a%0a`;
 
-  const emailSubject = `Listen to ${title} by ${artiste}`;
-  const emailShareLink = `mailto:?body=${shareText}&subject=${emailSubject}`;
-
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=${fbAndTwitterShareText}&url=${encodedUrl}`;
-  const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&t=${fbAndTwitterShareText}`;
-  const linkedInShareLink = `https://www.linkedin.com/shareArticle?mini=true&summary=a&title=${emailSubject}&url=${encodedUrl}`;
-  const redditShareLink = `https://reddit.com/submit?url=${encodedUrl}&title=${emailSubject}`;
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
+  const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&t=${shareText}`;
 
   const whatsappShareLink = `whatsapp://send?text=${shareText}`;
 
@@ -217,24 +205,9 @@ Shared via @anniemusicapp%0a%0a`;
         <span>Facebook</span>
       </a>
 
-      <a href={linkedInShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_LINKEDIN_LINK_SHARE)}>
-        <LinkedInIcon />
-        <span>LinkedIn</span>
-      </a>
-
-      <a href={redditShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_REDDIT_LINK_SHARE)}>
-        <RedditIcon />
-        <span>Reddit</span>
-      </a>
-
       <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_WHATSAPP_LINK_SHARE)}>
         <WhatsappIcon />
         <span>Whatsapp</span>
-      </a>
-
-      <a href={emailShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_EMAIL_LINK_SHARE)}>
-        <EmailIcon />
-        <span>Email</span>
       </a>
     </Fragment>
   );
