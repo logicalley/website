@@ -76,7 +76,7 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
 ${trackUrl}
 %0a%0a`;
 
-const twitterShareText = `${shareText}
+const twitterShareText = `Check out ${title} by ${artiste}.%0a
 Shared via @anniemusicapp%0a%0a`;
 
   const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
