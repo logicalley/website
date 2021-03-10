@@ -199,10 +199,6 @@ export interface ActiveTrack {
   analyticsLabel: string;
 }
 
-export interface PlaylistAudioProps {
-  isPlaying: boolean;
-  activeTrack: ActiveTrack | null;
-  setActiveTrack: React.Dispatch<React.SetStateAction<ActiveTrack | null>>;
-  trackId: number;
-  previewUrl: string;
+export interface ClonePlaylistModalProps {
+  playlistId: number;
 }
