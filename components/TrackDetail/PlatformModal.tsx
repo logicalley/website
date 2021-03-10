@@ -192,6 +192,21 @@ Shared via @anniemusicapp%0a%0a`;
 
   const renderShareOptions = (): JSX.Element => (
     <Fragment>
+      {isAnnieLink ? null : (
+        <a href={trackUrl} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
+           onClick={sendOpenLinkAnalytics}>
+          <OpenIcon/>
+          <span>Open Link</span>
+        </a>
+      )}
+
+      {showButton ? (
+        <button className={styles.copyLinkBtn} onClick={copyLink}>
+          <CopyIcon />
+          <span>Copy Link</span>
+        </button>
+      ) : null}
+
       <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}>
         <TwitterIcon />
         <span>Twitter</span>
@@ -221,25 +236,10 @@ Shared via @anniemusicapp%0a%0a`;
         <EmailIcon />
         <span>Email</span>
       </a>
-
-      {showButton ? (
-        <button className={styles.copyLinkBtn} onClick={copyLink}>
-          <CopyIcon />
-          <span>Copy Link</span>
-        </button>
-      ) : null}
-
-      {isAnnieLink ? null : (
-        <a href={trackUrl} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
-           onClick={sendOpenLinkAnalytics}>
-          <OpenIcon/>
-          <span>Open Link</span>
-        </a>
-      )}
     </Fragment>
   );
 
-  const lsLoadedNoSelectedUserStorefront = isAppleLink && fetchedStorefront && (!userStorefront);
+  const isLoadedNoSelectedUserStorefront = isAppleLink && fetchedStorefront && (!userStorefront);
 
   return (
     <section className={styles.platformModalContainer}>
@@ -253,7 +253,7 @@ Shared via @anniemusicapp%0a%0a`;
       <Spacer h="10px" mh="10px" />
 
       {
-        lsLoadedNoSelectedUserStorefront ? (
+        isLoadedNoSelectedUserStorefront ? (
           <Fragment>
             <p>
               Apple Music requires users to select a storefront which corresponds to their home location or the country
