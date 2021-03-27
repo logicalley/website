@@ -24,7 +24,6 @@ module.exports = {
             "'self'",
             '*.dzcdn.net',
             'api.anniemusic.app',
-            'localhost:5000/api/v1',
             'data:'
           ],
           styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
@@ -55,7 +54,6 @@ module.exports = {
       xssProtection: 'block-rendering'
     });
 
-    console.log(headers);
     return [{ source: '/(.*)', headers }];
   },
   poweredByHeader: false,
