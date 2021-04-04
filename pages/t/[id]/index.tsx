@@ -23,7 +23,7 @@ const { publicRuntimeConfig } = getConfig();
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
   const { trackDetails, trackId, error } = props;
 
-  if (error) return <Page404 />;
+  if (error || !trackDetails) return <Page404 />;
 
   const {
     title,
@@ -84,12 +84,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     if (context.params && context.params.id) {
       const { id: trackId } = context.params;
-      let trackDetails;
+      let trackDetails = null;
       const trackApiEndpoint: string = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}`;
       const res = await fetch(trackApiEndpoint);
       const { data } = await res.json();
 
-      if (data) {
+      if (data && data.track_details) {
         trackDetails = data.track_details;
       }
 

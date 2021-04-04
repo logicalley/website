@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import styles from './styles.module.css';
@@ -30,10 +30,13 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement('#modal');
 
 const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    Modal.setAppElement('#modal');
+  }, []);
 
   const iconAlt: string = `${props.name} icon`;
   const iconToUse = props.name === 'Apple Music' ? props.darkIcon : props.icon;
