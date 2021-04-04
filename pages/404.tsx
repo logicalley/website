@@ -24,7 +24,7 @@ const Page404: React.FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 1440 1024"
-        style={{ height: '100%' }}
+        style={{ height: '100%', margin: '0 auto', width: '50%' }}
       >
         <path fill="#fff" d="M0 0H1440V1024H0z"></path>
         <path
