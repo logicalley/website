@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import styles from './styles.module.css';
@@ -21,10 +21,12 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement('#modal');
-
 const AppleAppStoreButton: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    Modal.setAppElement('#modal');
+  }, []);
 
   const popUpModal = () => {
     registerEvent({
