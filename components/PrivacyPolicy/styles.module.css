@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.privacyPolicyContainer p {
+  font-size: 0.9rem;
+}
+
 @media (min-width: 48em) {
   .privacyPolicyHeader {
     text-align: left;
