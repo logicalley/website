@@ -10,8 +10,24 @@
   font-size: 0.9rem;
 }
 
+.effectiveDate {
+  font-size: 0.8rem;
+  color: #6f6f6f;
+  text-align: center;
+  display: block;
+}
+
+.warrantyLimitationText {
+  text-transform: capitalize;
+}
+
 @media (min-width: 48em) {
   .privacyPolicyHeader {
+    text-align: left;
+  }
+
+  .effectiveDate {
+    display: inline;
     text-align: left;
   }
 }
