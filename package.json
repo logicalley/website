@@ -43,6 +43,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ts": "tsc"
+    "ts": "tsc",
+    "postbuild": "next-on-netlify"
   }
 }
