@@ -1,7 +1,18 @@
 [build]
-  command   = "npm run build"
+  command   = 'sed -i "s|NONCE_PLACEHOLDER|${COMMIT_REF}|g" netlify.toml && npm run build'
   functions = "out_functions"
   publish   = "out_publish"
 
 [[plugins]]
 package = "netlify-plugin-cache-nextjs"
+
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=345600; includeSubDomains"
+    X-Download-Options = "noopen"
+    X-Content-Type-Options =  "nosniff"
+    Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"

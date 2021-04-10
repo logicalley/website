@@ -1,10 +1,16 @@
 const { createSecureHeaders } = require('next-secure-headers');
 const SriPlugin = require('webpack-subresource-integrity');
+const  { randomBytes } = require('crypto');
 
 // @ts-check
 const isDev = process.env.NODE_ENV === 'development';
+const COMMIT_REF = process.env.COMMIT_REF || 'r@nd0m';
 
 module.exports = {
+  future: {
+    webpack5: false,
+  },
+  // reactStrictMode: isDev,
   pageExtensions: ['tsx', 'ts'],
   devIndicators: {
     autoPrerender: isDev,
@@ -24,18 +30,19 @@ module.exports = {
             "'self'",
             '*.dzcdn.net',
             'api.anniemusic.app',
-            'data:'
+            // 'googletagmanager.com',
+            'https://www.google-analytics.com'
           ],
-          styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+          styleSrc: ["'self'", `'nonce-${COMMIT_REF}'`],
+          scriptSrc: ["'self'", `'nonce-${COMMIT_REF}'`],
+          objectSrc: ["'none'"],
           fontSrc: ["'self'"],
+          baseURI: ["'self'"],
           imgSrc: [
             "'self'",
             'res.cloudinary.com',
             '*.scdn.co',
             '*.dzcdn.net',
-            'data:image/png;base64',
-            'data:'
           ],
           frameSrc: ['airtable.com'],
           reportURI: `${process.env.ANNIE_API_BASE_URL}/complaint/csp`,
@@ -55,6 +62,11 @@ module.exports = {
     });
 
     return [{ source: '/(.*)', headers }];
+  },
+  env: {
+    COMMIT_REF,
+    NONCE: COMMIT_REF,
+    ENV: process.env.NODE_ENV || 'development'
   },
   poweredByHeader: false,
   webpack: (config) => {
