@@ -72,11 +72,11 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   const label = `${title} - ${artiste}`;
   const encodedUrl = encodeURI(trackUrl);
 
-  const shareText = `Check out ${title} by ${artiste}.%0a
+  const shareText = `Check out "${title}" by ${artiste}.%0a
 ${trackUrl}
 %0a%0a`;
 
-const twitterShareText = `Check out ${title} by ${artiste}.%0a
+const twitterShareText = `Check out "${title}" by ${artiste}.%0a
 Shared via @anniemusicapp%0a%0a`;
 
   const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
