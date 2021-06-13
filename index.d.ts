@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {
   ContactFormReducerEnum,
   ANNIE_TYPE,
@@ -201,4 +203,9 @@ export interface ActiveTrack {
 
 export interface ClonePlaylistModalProps {
   playlistId: number;
+}
+
+export interface SpecialLayoutProps {
+  shouldBePadded?: boolean;
+  children: React.ReactChild | React.ReactFragment | React.ReactPortal | boolean | null | undefined;
 }
