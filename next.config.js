@@ -60,7 +60,13 @@ module.exports = {
       xssProtection: 'block-rendering'
     });
 
-    return [{ source: '/(.*)', headers }];
+    return [
+      { source: '/(.*)', headers },
+      {
+        source: '/.well-known/apple-app-site-association',
+        headers: [{ key: 'Content-Type', value: 'application/json' }]
+      }
+    ];
   },
   env: {
     COMMIT_REF,
