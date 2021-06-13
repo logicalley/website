@@ -20,3 +20,14 @@ package = "netlify-plugin-cache-nextjs"
     X-Download-Options = "noopen"
     X-Content-Type-Options =  "nosniff"
     Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+
+  [headers.values]
+    X-XSS-Protection = "1; mode=block"
+    Strict-Transport-Security = "max-age=345600; includeSubDomains"
+    X-Download-Options = "noopen"
+    X-Content-Type-Options =  "nosniff"
+    Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+    Content-Type = "application/json"
