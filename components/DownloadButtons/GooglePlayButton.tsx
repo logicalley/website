@@ -84,11 +84,10 @@ const GooglePlayButton: React.FC = () => {
         contentLabel="Beta Modal!"
       >
         <section className={styles.modalContainer}>
-          {/* <h3>Annie is currently in Beta!</h3> */}
-          {/* <a href="/beta/volunteer" className={styles.betaLink}>
+          <h3>Annie is currently in Beta for Android!</h3>
+          <a href="https://airtable.com/shrKB0oRCBFFjQZA3?backgroundColor=purple" className={styles.betaLink}>
             Sign up for Beta access here.
-          </a> */}
-          <span>Annie is currently unavailable on Android at the moment.</span>
+          </a>
           <span className={styles.socialMedia}>
             Follow us on <a {...twitterLinkProps}>Twitter</a> and <a {...instagramLinkProps}>Instagram</a>: @anniemusicapp
           </span>
