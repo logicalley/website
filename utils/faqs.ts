@@ -18,7 +18,7 @@ const faqs: Faq[] = [
     answer: 'Annie is only available on iOS devices at this time.'
   },
   {
-    question: 'What will happen if the shared song isn\'t on the streaming platform the recipient uses?',
+    question: 'What happens when the shared song isn\'t on the streaming platform the recipient uses?',
     answer: 'In the case that the song is unavailable on a streaming platform, the Annie link would convey access to other platforms, but said platform would be omitted from the result.'
   }
 ];
