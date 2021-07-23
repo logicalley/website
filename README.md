@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6379935d-afc7-453f-8c6d-ab8adbfa057d/deploy-status)](https://app.netlify.com/sites/angry-northcutt-0dcebf/deploys)
+
 # ANNIE-WEB
 
 The web platform that powers the landing page for Annie and all things web.

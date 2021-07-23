@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles.module.css';
 
 
-const Spinner: React.FC = () => (
+const TwelveBoxSpinner: React.FC = () => (
   <section className={styles.spinnerContainer}>
     <div></div>
     <div></div>
@@ -17,4 +17,4 @@ const Spinner: React.FC = () => (
   </section>
 );
 
-export default Spinner;
+export default TwelveBoxSpinner;

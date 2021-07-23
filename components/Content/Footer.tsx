@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import styles from './styles.module.css';
+import styles from '../TrackDetail/styles.module.css';
 
 const TrackDetailFooter: React.FC = () => {
   const currentYear: number = new Date().getFullYear();

@@ -7,7 +7,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Is Annie free or subscription based?',
-    answer: 'Annie is free to use. You don\'t need a subscription to use Annie.'
+    answer: 'Annie is free to use. You do not need a subscription to use Annie.'
   },
   {
     question: 'Can I convert playlists via Annie?',
@@ -15,7 +15,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Can I convert a track with Annie on my PC?',
-    answer: 'Annie is only available on iOS devices at this time.'
+    answer: 'Annie is only available on iOS devices at this time. However, you can access the Beta version on Android via the home page.'
   },
   {
     question: 'What happens when the shared song isn\'t on the streaming platform the recipient uses?',

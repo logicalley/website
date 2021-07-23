@@ -1,5 +1,6 @@
 const { createSecureHeaders } = require('next-secure-headers');
 const SriPlugin = require('webpack-subresource-integrity');
+const  { randomBytes } = require('crypto');
 
 // @ts-check
 const isDev = process.env.NODE_ENV === 'development';
