@@ -3,22 +3,22 @@ import {
   ANNIE_TYPE,
   SPOTIFY_TYPE,
   DEEZER_TYPE,
-  APPLE_MUSIC_TYPE
-} from './utils/constants';
+  APPLE_MUSIC_TYPE,
+} from "./utils/constants";
 
 export interface NavProps {
-  isHomePage: boolean
-};
+  isHomePage: boolean;
+}
 
 export interface SpacerProps {
-  h: string,
-  mh: string
-};
+  h: string;
+  mh: string;
+}
 
 export interface AnnieLogoProps {
   height?: string;
   width?: string;
-};
+}
 
 interface Platform {
   name: string;
@@ -31,62 +31,61 @@ interface Platform {
 }
 
 interface Track {
-  id: number,
-  isrc: string,
-  title: string,
-  artiste: string,
-  image_url: string,
-  genre: string | null,
-  year: string | null,
-  preview_url: string,
-  platforms: Platform[]
+  id: number;
+  isrc: string;
+  title: string;
+  artiste: string;
+  image_url: string;
+  genre: string | null;
+  year: string | null;
+  preview_url: string;
+  platforms: Platform[];
 }
 
 export interface TrackPageProps {
-  trackDetails: Track,
-  trackId: string,
-  error?: string
+  trackDetails: Track;
+  trackId: string;
+  error?: string;
 }
 
 export interface SEOProps {
-  title: string
-  keywords: string
-  description?: string
-  url: string
-  imageUrl?: string
+  title: string;
+  keywords: string;
+  description?: string;
+  url: string;
+  imageUrl?: string;
 }
 
-
 export interface TrackHeaderProps {
-  title: string
+  title: string;
 }
 
 interface TrackInfoProps {
-  title: string
-  artiste: string
-  year: string | null
-  genre: string | null
-  imageUrl: string
+  title: string;
+  artiste: string;
+  year: string | null;
+  genre: string | null;
+  imageUrl: string;
 }
 
 export interface TrackInfoCardProps extends TrackInfoProps {
-  previewUrl: string | null
+  previewUrl: string | null;
 }
 
 export interface PlatformGroup extends TrackInfoProps {
-  platforms: Platform[]
+  platforms: Platform[];
 }
 
 export interface PlatformCardProps extends TrackInfoProps, Platform {}
 
 export interface AudioPlayerProps {
-  previewUrl: string
-  analyticsLabel: string
+  previewUrl: string;
+  analyticsLabel: string;
 }
 
 export interface Faq {
-  question: string
-  answer: string
+  question: string;
+  answer: string;
 }
 
 export interface AccordionProps extends Faq {}
@@ -103,16 +102,16 @@ export interface ContactFormState {
 type ContactFormReducerAction = {
   type: ContactFormReducerEnum;
   payload: string;
-}
+};
 
 export type ComplaintFormPayload = {
   name?: string;
   email?: string;
   issue: string;
-}
+};
 
 export interface IFrameLoaderProps {
-  url: string
+  url: string;
 }
 
 type GTagEvent = {
@@ -125,8 +124,8 @@ type GTagEvent = {
 export interface OembedProps {
   trackId: string;
   title: string;
-  type: 'track' | 'playlist';
-};
+  type: "track" | "playlist";
+}
 
 export interface PlatformModalProps {
   title: string;
@@ -135,7 +134,7 @@ export interface PlatformModalProps {
   closeFn: () => void;
   platformName: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE;
   shortUrl: string | null;
-};
+}
 
 export interface Storefront {
   id: string;
