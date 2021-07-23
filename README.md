@@ -28,4 +28,5 @@ yarn dev
 
 #### Notes
 
-This project is hosted on Netlify.
+The production build for this project is hosted on Netlify.
+The staging build for this project is hosted on Netlify.
