@@ -53,6 +53,8 @@ const FAQs: React.FC = () => {
             loading="lazy"
           />
         </picture> */}
+        {/* I commented the above out because for some reason, the mesh was making the buttons
+        unclickable, so until we figure out how to fix that, there's no mesh for anyone haha. */}
       </section>
     </section>
   );

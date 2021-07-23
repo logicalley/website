@@ -83,7 +83,7 @@
     display: block;
   }
   .faqsContentContainer {
-    padding: 10px 50px;
+    padding: 10px 0;
   }
   .faqContactLinkGroup {
     flex-direction: row;
