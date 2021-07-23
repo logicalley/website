@@ -20,6 +20,7 @@ package = "netlify-plugin-cache-nextjs"
     X-Download-Options = "noopen"
     X-Content-Type-Options =  "nosniff"
     Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+    # Content-Security-Policy-Report-Only = "default-src 'self' *.dzcdn.net api.anniemusic.app https://www.google-analytics.com; style-src 'self' 'nonce-r@nd0m'; script-src 'self' 'nonce-r@nd0m'; object-src 'none'; font-src 'self'; img-src 'self' res.cloudinary.com *.scdn.co *.dzcdn.net; frame-src airtable.com; base-uri 'self'; frame-ancestors airtable.com; report-uri https://api.anniemusic.app/api/v1/complaint/csp"
 
 [[headers]]
   for = "/.well-known/apple-app-site-association"
