@@ -28,17 +28,6 @@ const FAQs: React.FC = () => {
       </section>
 
       <section className={styles.unansweredQuestions}>
-        <picture className={styles.faqMeshImageContainer}>
-          <source srcSet="
-              /images/raw-mesh.webp 1x,
-              /images/raw-mesh.webp 2x" type="image/webp" />
-          <img
-            src={imageFallback}
-            alt="image of mesh"
-            className={styles.faqMeshImage}
-            loading="lazy"
-          />
-        </picture>
         <h3 className={styles.unasweredQuestionsHeader}>
           Still got unanswered questions?
         </h3>
@@ -53,6 +42,17 @@ const FAQs: React.FC = () => {
             Email Support
           </a>
         </section>
+        {/* <picture className={styles.faqMeshImageContainer}>
+          <source srcSet="
+              /images/raw-mesh.webp 1x,
+              /images/raw-mesh.webp 2x" type="image/webp" />
+          <img
+            src={imageFallback}
+            alt="image of mesh"
+            className={styles.faqMeshImage}
+            loading="lazy"
+          />
+        </picture> */}
       </section>
     </section>
   );
