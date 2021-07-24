@@ -2,7 +2,8 @@ name: Annie Web Production CI
 
 on:
   push:
-    branches: [ master ]
+    tags:
+    - v-*
 
 steps:
   deployToProd:
