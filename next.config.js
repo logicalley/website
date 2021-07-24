@@ -4,7 +4,7 @@ const SriPlugin = require('webpack-subresource-integrity');
 // @ts-check
 const isDev = process.env.NODE_ENV === 'development';
 const COMMIT_REF = process.env.COMMIT_REF || 'r@nd0m';
-console.log(process.env.ANNIE_API_BASE_URL);
+
 module.exports = {
   future: {
     webpack5: false,
@@ -18,7 +18,7 @@ module.exports = {
   target: 'serverless',
   publicRuntimeConfig: {
     isDev,
-    apiBaseUrl: 'http://localhost:5000/api/v1',
+    apiBaseUrl: process.env.ANNIE_API_BASE_URL,
   },
   async headers() {
     const headers = createSecureHeaders({
