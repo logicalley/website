@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {
   ContactFormReducerEnum,
   ANNIE_TYPE,
@@ -42,9 +44,34 @@ interface Track {
   platforms: Platform[];
 }
 
+interface PlaylistInfo {
+  id: number;
+  owner: string;
+  origin: string;
+  origin_id: string;
+  description: string;
+  image_url: string;
+  title: string;
+  apple_url: string;
+  total: number;
+  count: number;
+  next: string;
+  originalUrl: string;
+}
+
+interface Playlist extends PlaylistInfo {
+  tracks: PlaylistTrackMetaData[]
+}
+
 export interface TrackPageProps {
   trackDetails: Track;
   trackId: string;
+  error?: string;
+}
+
+export interface PlaylistPageProps {
+  playlistDetails: Playlist;
+  playlistId: string;
   error?: string;
 }
 
@@ -54,10 +81,6 @@ export interface SEOProps {
   description?: string;
   url: string;
   imageUrl?: string;
-}
-
-export interface TrackHeaderProps {
-  title: string;
 }
 
 interface TrackInfoProps {
@@ -149,4 +172,40 @@ export interface SelectableStorefront {
 export interface StorefrontSelectorProps {
   setUserStorefront: Dispatch<SetStateAction<SelectableStorefront | undefined>>;
   userStorefront: SelectableStorefront | undefined;
+}
+export interface PlaylistInfoCard {
+  info: PlaylistInfo;
+};
+
+export interface PlaylistTrack {
+  track: PlaylistTrackMetaData
+};
+
+export interface PlaylistTrackMetaData {
+  id: number;
+  title: string;
+  artiste: string;
+  image_url: string;
+  annieUrl: string;
+}
+export interface TrackDisplayProps extends PlaylistTrack {}
+
+export interface LoadMoreProps {
+  fetchMore: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  isLoading: boolean;
+}
+
+export interface ActiveTrack {
+  id: number;
+  previewUrl: string;
+  analyticsLabel: string;
+}
+
+export interface ClonePlaylistModalProps {
+  playlistId: number;
+}
+
+export interface SpecialLayoutProps {
+  shouldBePadded?: boolean;
+  children: React.ReactChild | React.ReactFragment | React.ReactPortal | boolean | null | undefined;
 }
