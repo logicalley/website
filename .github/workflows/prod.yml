@@ -5,7 +5,7 @@ on:
     tags:
     - v-*
 
-steps:
+jobs:
   deployToProd:
     name: 'Deploy to Netlify'
 
