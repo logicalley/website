@@ -20,3 +20,4 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_MESSAGE: "Production deploy v${{ github.ref }}"
           NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: '.next'
