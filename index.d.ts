@@ -4,7 +4,7 @@ import {
   SPOTIFY_TYPE,
   DEEZER_TYPE,
   APPLE_MUSIC_TYPE,
-} from "./utils/constants";
+} from './utils/constants';
 
 export interface NavProps {
   isHomePage: boolean;
@@ -124,7 +124,7 @@ type GTagEvent = {
 export interface OembedProps {
   trackId: string;
   title: string;
-  type: "track" | "playlist";
+  type: 'track' | 'playlist';
 }
 
 export interface PlatformModalProps {

@@ -4,12 +4,12 @@ import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
 const Page404: React.FC = () => {
   const pageTitle: string = '404';
   const description: string = 'This page does not exist.';
   const url: string = 'https://anniemusic.app';
-  const keywords: string = 'music song annie share spotify deezer apple sharing faq';
+  const keywords: string =
+    'music song annie share spotify deezer apple sharing faq';
 
   return (
     <Fragment>

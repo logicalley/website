@@ -13,10 +13,9 @@ import {
   TrackHeader,
   TrackInfoCard,
   TrackDetailFooter,
-  TrackPlatformGroup
+  TrackPlatformGroup,
 } from '../../../components/TrackDetail';
-import SpecialLayout from "../../../components/SpecialLayout";
-
+import SpecialLayout from '../../../components/SpecialLayout';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -25,15 +24,8 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
   if (error || !trackDetails) return <Page404 />;
 
-  const {
-    title,
-    artiste,
-    image_url,
-    genre,
-    year,
-    preview_url,
-    platforms,
-  } = trackDetails;
+  const { title, artiste, image_url, genre, year, preview_url, platforms } =
+    trackDetails;
   const pageTitle: string = `${title} - ${artiste}`;
   const description: string = `Listen to "${title}" by ${artiste}`;
   const keywords: string = `${title} ${artiste} music song annie share spotify deezer apple music`;
@@ -41,11 +33,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
   return (
     <Fragment>
-      <Oembed
-        trackId={trackId}
-        title={pageTitle}
-        type="track"
-      />
+      <Oembed trackId={trackId} title={pageTitle} type="track" />
       <SEO
         title={pageTitle}
         description={description}
@@ -93,14 +81,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         trackDetails = data.track_details;
       }
 
-      return { props: { trackDetails, trackId } }
+      return { props: { trackDetails, trackId } };
     }
   } catch (error) {
-    const errorMessage = error.message || `There was an error fetching track with ID: ${trackId}`
-    return { props: { error: errorMessage } }
+    const errorMessage =
+      error.message || `There was an error fetching track with ID: ${trackId}`;
+    return { props: { error: errorMessage } };
   }
 
-  return { props: { error: 'Track ID isn\'t included in URL params' } }
+  return { props: { error: "Track ID isn't included in URL params" } };
 };
 
 export default TrackDetail;
