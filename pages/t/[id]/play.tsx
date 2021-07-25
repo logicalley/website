@@ -7,7 +7,6 @@ import Page404 from '../../404';
 
 import type { TrackPageProps } from '../../..';
 
-
 const { publicRuntimeConfig } = getConfig();
 
 const PlayTrack: NextPage<TrackPageProps> = (props: TrackPageProps) => {
@@ -15,14 +14,7 @@ const PlayTrack: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
   if (error) return <Page404 />;
 
-  const {
-    title,
-    image_url,
-    artiste,
-    genre,
-    year,
-    preview_url
-  } = trackDetails;
+  const { title, image_url, artiste, genre, year, preview_url } = trackDetails;
 
   return (
     <TrackInfoCard
@@ -51,14 +43,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         trackDetails = data.track_details;
       }
 
-      return { props: { trackDetails, trackId } }
+      return { props: { trackDetails, trackId } };
     }
   } catch (error) {
-    const errorMessage = error.message || `There was an error fetching track with ID: ${trackId}`
-    return { props: { error: errorMessage } }
+    const errorMessage =
+      error.message || `There was an error fetching track with ID: ${trackId}`;
+    return { props: { error: errorMessage } };
   }
 
-  return { props: { error: 'Track ID isn\'t included in URL params' } }
+  return { props: { error: "Track ID isn't included in URL params" } };
 };
 
 export default PlayTrack;

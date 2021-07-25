@@ -3,33 +3,32 @@ import Document, {
   Head,
   Main,
   NextScript,
-  Html
+  Html,
 } from 'next/document';
 import { ServerPortal } from '@jesstelford/react-portal-universal/server';
 
 import { GA_TRACKING_ID } from '../utils/googleAnalytics';
 import { Fragment } from 'react';
 
-
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const portals = new ServerPortal()
-    const originalRenderPage = ctx.renderPage
+    const portals = new ServerPortal();
+    const originalRenderPage = ctx.renderPage;
 
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App) => (props) =>
           portals.collectPortals(<App {...props} />),
-      })
+      });
 
-    const { html, ...props } = await Document.getInitialProps(ctx)
+    const { html, ...props } = await Document.getInitialProps(ctx);
 
-    const htmlWithPortals = portals.appendUniversalPortals(html)
+    const htmlWithPortals = portals.appendUniversalPortals(html);
 
     return {
       html: htmlWithPortals,
       ...props,
-    }
+    };
   }
 
   render() {
@@ -41,8 +40,7 @@ class MyDocument extends Document {
 
     return (
       <Html>
-        <Head nonce={NONCE}>
-        </Head>
+        <Head nonce={NONCE}></Head>
         <body>
           <Main />
           <NextScript nonce={NONCE} />
@@ -59,7 +57,7 @@ class MyDocument extends Document {
                 gtag('config', '${GA_TRACKING_ID}', {
                   page_path: window.location.pathname,
                 });
-            `
+            `,
                 }}
               />
             </Fragment>

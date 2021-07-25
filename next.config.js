@@ -8,17 +8,17 @@ module.exports = {
   pageExtensions: ['tsx', 'ts'],
   devIndicators: {
     autoPrerender: isDev,
-    buildActivity: isDev
+    buildActivity: isDev,
   },
   target: 'serverless',
   publicRuntimeConfig: {
     isDev,
-    apiBaseUrl: process.env.ANNIE_API_BASE_URL
+    apiBaseUrl: process.env.ANNIE_API_BASE_URL,
   },
   env: {
     COMMIT_REF,
     NONCE: COMMIT_REF,
-    ENV: process.env.NODE_ENV || 'development'
+    ENV: process.env.NODE_ENV || 'development',
   },
   poweredByHeader: false
 };

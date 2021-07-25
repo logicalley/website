@@ -9,7 +9,6 @@ import type { AppProps } from 'next/app';
 import '../assets/css/global.css';
 import { registerPageView } from '../utils/googleAnalytics';
 
-
 if (typeof window !== 'undefined') {
   // On the client, we have to run this once before React attempts a render.
   // Here in _app is a great place to do it as this file is only required once,
@@ -26,10 +25,10 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     if (process.env.NODE_ENV !== 'development') {
       const handleRouteChange = (url: URL) => registerPageView(url);
 
-      router.events.on("routeChangeComplete", handleRouteChange);
+      router.events.on('routeChangeComplete', handleRouteChange);
 
       return () => {
-        router.events.off("routeChangeComplete", handleRouteChange);
+        router.events.off('routeChangeComplete', handleRouteChange);
       };
     }
   }, [router.events]);
@@ -55,6 +54,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       <section id="modal" />
     </Fragment>
   );
-}
+};
 
 export default App;
