@@ -16,7 +16,7 @@ const CookieForm: React.FC = ({ children }) => {
 
   useEffect(() => {
     const cookieValue = cookie.get('ANNIE_USER_COOKIE_ACCEPT');
-    if (cookieValue === 1) {
+    if (cookieValue == 1) {
       setShowCookieForm(false);
     } else {
       setShowCookieForm(true);
