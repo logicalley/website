@@ -9,7 +9,7 @@
   align-items: center;
   padding: 10px;
   background-color: var(--white);
-  box-shadow: 3px 3px 7px var(--primary3);
+  box-shadow: 2px 2px 7px var(--primary3);
   border-radius: var(--borderRadius);
   z-index: 5;
 }
@@ -30,7 +30,9 @@
   color: var(--white);
   border-radius: var(--borderRadius);
 }
-
+.acceptBtn:hover {
+  cursor: pointer;
+}
 .privacyText {
   font-size: 14px;
   width: 64%;
