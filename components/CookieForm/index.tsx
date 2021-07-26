@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCookie } from 'next-cookie';
@@ -12,7 +12,7 @@ const CookieForm: React.FC = () => {
   const cookie = useCookie();
 
   const handleSubmit = (): void => {
-    cookie.set('ANNIE_USER_COOKIE_ACCEPT', 1);
+    cookie.set(ANNIE_USER_COOKIE_ACCEPT, 1);
     setShowCookieForm(false);
   };
 
@@ -27,15 +27,17 @@ const CookieForm: React.FC = () => {
 
   return showCookieForm ? (
     <section className={styles.cookieContainer}>
-      <div className={styles.cookieImage}>
+      <section className={styles.cookieImage}>
         <Image src="/images/cookie.jpg" alt="cookie" width="36" height="36" />
-      </div>
-      <div className={styles.privacyText}>
+      </section>
+
+      <section className={styles.privacyText}>
         By using Annie, you agree to our
         <Link href="/privacy-policy">
           <a>Privacy Policy</a>
         </Link>
-      </div>
+      </section>
+
       <button className={styles.acceptBtn} onClick={handleSubmit}>
         ACCEPT
       </button>
