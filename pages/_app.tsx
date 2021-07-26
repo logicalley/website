@@ -50,9 +50,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <meta name="google-site-verification" content="" />
         <title>Annie</title>
       </Head>
-      <CookieForm>
-        <Component {...pageProps} />
-      </CookieForm>
+      <Component {...pageProps} />
+      <CookieForm />
       <Toaster position={toastPosition} reverseOrder={false} />
       <section id="modal" />
     </Fragment>

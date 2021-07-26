@@ -3,11 +3,11 @@
   top: 90vh;
   transform: translateX(-50%);
   left: 50%;
-  width: 550px;
+  width: 34rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px;
+  padding: 0.6rem;
   background-color: var(--white);
   box-shadow: 2px 2px 7px var(--primary3);
   border-radius: var(--borderRadius);
@@ -26,7 +26,7 @@
   background-color: var(--primary);
   border: none;
   padding: 2px 14px;
-  height: 34px;
+  height: 2.1rem;
   color: var(--white);
   border-radius: var(--borderRadius);
 }
@@ -34,12 +34,13 @@
   cursor: pointer;
 }
 .privacyText {
-  font-size: 14px;
+  font-size: 0.8rem;
+  text-align: center;
   width: 64%;
 }
 .privacyText a {
   color: var(--primary);
-  font-size: 14px;
+  font-size: 0.8rem;
 }
 
 @media screen and (max-width: 600px) {

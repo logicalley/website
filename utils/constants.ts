@@ -57,3 +57,5 @@ export const OEMBED_BASE_URL: string =
 
 export const ANNIE_USER_SELECTED_STOREFRONT_KEY: string =
   'ANNIE_STOREFRONT_USER_KEY';
+
+export const ANNIE_USER_COOKIE_ACCEPT: string = 'ANNIE_USER_COOKIE_ACCEPT';
