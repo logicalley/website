@@ -1,7 +1,7 @@
 .trackHeaderContainer {
   width: 100%;
   height: 70px;
-  background: #F9F7FD;
+  background: #f9f7fd;
   position: absolute;
   top: 0;
   left: 0;
@@ -72,7 +72,7 @@
 }
 
 .genreYear span {
-  color: #5A6479;
+  color: #5a6479;
   font-size: 11px;
 }
 
@@ -83,6 +83,9 @@
   padding: 20px 0;
   justify-content: space-between;
   margin-top: auto;
+}
+.trackFooter span {
+  text-align: center;
 }
 
 .footerLinks {
@@ -139,14 +142,14 @@
   margin: 20px 0;
   outline: 0;
   cursor: pointer;
-  border: 1px solid #FFE9F4;
+  border: 1px solid #ffe9f4;
   box-shadow: 0 4px 4px rgba(90, 100, 121, 0.05);
   background: none;
 }
 
 .annieCardContainer {
   composes: platformCardContainerBase;
-  background: #F3EEFD;
+  background: #f3eefd;
 }
 
 .shareGroup {

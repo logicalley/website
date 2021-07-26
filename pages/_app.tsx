@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app';
 
 import '../assets/css/global.css';
 import { registerPageView } from '../utils/googleAnalytics';
+import CookieForm from '../components/CookieForm';
 
 if (typeof window !== 'undefined') {
   // On the client, we have to run this once before React attempts a render.
@@ -50,6 +51,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <title>Annie</title>
       </Head>
       <Component {...pageProps} />
+      <CookieForm />
       <Toaster position={toastPosition} reverseOrder={false} />
       <section id="modal" />
     </Fragment>
