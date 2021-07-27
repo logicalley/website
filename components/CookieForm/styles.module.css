@@ -1,6 +1,6 @@
 .cookieContainer {
   position: fixed;
-  top: 90vh;
+  bottom: 6%;
   transform: translateX(-50%);
   left: 50%;
   width: 34rem;
