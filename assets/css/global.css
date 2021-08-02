@@ -31,34 +31,34 @@
 }
 
 :root {
-  --primary: #6525EC;
-  --primary2: #FBF4F9;
-  --primary3: #DDC6E7;
+  --primary: #6525ec;
+  --primary2: #fbf4f9;
+  --primary3: #ddc6e7;
   --bodyText: #575758;
   --dark: #140929;
-  --light: #F6F4FB;
+  --light: #f6f4fb;
   --black: #000;
-  --white: #FFF;
+  --white: #fff;
   --descriptionText: rgba(79, 62, 111, 0.9);
-  --footerText: #EEE8FD;
+  --footerText: #eee8fd;
   -moz-tab-size: 4;
   tab-size: 4;
-  --gradient: linear-gradient(0deg, #6525EC 0%, #EB85B6 100%);
+  --gradient: linear-gradient(0deg, #6525ec 0%, #eb85b6 100%);
   --borderRadius: 4px;
-  --footerStrokeColor: #D7D7D7;
+  --footerStrokeColor: #d7d7d7;
   --bodyPadding: 50px;
 
-  --anniePlatformColor: #F4F7FF;
+  --anniePlatformColor: #f4f7ff;
   --platformBorderRadius: 18px;
-  --appleMusicPlatformColor: #FFE9F4;
-  --spotifyPlatformColor: #E5F4EB;
-  --deezerPlatformColor: #F9F2DE;
+  --appleMusicPlatformColor: #ffe9f4;
+  --spotifyPlatformColor: #e5f4eb;
+  --deezerPlatformColor: #f9f2de;
   --platformCardHeight: 80px;
   --platformCardPadding: 20px;
 
-  --lightBorder: #EAEBEE;
-  --textColor: #2E2E2E;
-  --playlistMetaColor: #8A8A8A;
+  --lightBorder: #eaebee;
+  --textColor: #2e2e2e;
+  --playlistMetaColor: #8a8a8a;
 }
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -72,7 +72,9 @@ Document
 Use a better box model (opinionated).
 */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -129,7 +131,8 @@ abbr[title] {
 Add the correct font weight in Edge and Safari.
 */
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
@@ -138,8 +141,12 @@ b, strong {
 2. Correct the odd 'em' font sizing in all browsers.
 */
 
-code, kbd, samp, pre {
-  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -157,7 +164,8 @@ small {
 Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
 */
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -199,7 +207,11 @@ Forms
 2. Remove the margin in Firefox and Safari.
 */
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: inherit;
   /* 1 */
   font-size: 100%;
@@ -215,7 +227,8 @@ Remove the inheritance of text transform in Edge and Firefox.
 1. Remove the inheritance of text transform in Firefox.
 */
 
-button, select {
+button,
+select {
   /* 1 */
   text-transform: none;
 }
@@ -224,7 +237,10 @@ button, select {
 Correct the inability to style clickable types in iOS and Safari.
 */
 
-button, [type='button'], [type='reset'], [type='submit'] {
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 
@@ -274,7 +290,8 @@ progress {
 Correct the cursor style of increment and decrement buttons in Safari.
 */
 
-::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -339,34 +356,45 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, h1 > *, h2 > *, h3 > *, h4 > *, h5 > *, h6 > * {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 > *,
+h2 > *,
+h3 > *,
+h4 > *,
+h5 > *,
+h6 > * {
   color: var(--dark);
   font-weight: bold;
 }
 
 h1 {
   font-size: 2em;
-  margin: .67em 0
+  margin: 0.67em 0;
 }
 
 h2 {
   font-size: 1.5em;
-  margin: .75em 0
+  margin: 0.75em 0;
 }
 
 h3 {
   font-size: 1.17em;
-  margin: .83em 0
+  margin: 0.83em 0;
 }
 
 h5 {
-  font-size: .83em;
-  margin: 1.5em 0
+  font-size: 0.83em;
+  margin: 1.5em 0;
 }
 
 h6 {
-  font-size: .75em;
-  margin: 1.67em 0
+  font-size: 0.75em;
+  margin: 1.67em 0;
 }
 
 img {
@@ -392,4 +420,9 @@ img {
     padding: var(--bodyPadding);
     padding-bottom: 0;
   }
+}
+
+.react-contexify {
+  background-color: red;
+  color: pink;
 }

@@ -28,7 +28,7 @@
 .playlistCtas > a {
   margin-right: 10px;
   background: var(--white);
-  border: 1px solid #7960C3;
+  border: 1px solid #7960c3;
   color: var(--textColor);
   display: flex;
   justify-content: center;
@@ -126,7 +126,7 @@
 }
 
 .pauseButton {
-  composes: audioPlayBtn
+  composes: audioPlayBtn;
 }
 
 .trackTitle {

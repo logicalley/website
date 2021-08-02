@@ -1,25 +1,21 @@
 import React, { memo } from 'react';
 import Link from 'next/link';
-
 import type { TrackDisplayProps } from '../..';
 
 import styles from './styles.module.css';
+import PlaylistContextMenu from './PlaylistContextMenu';
 
-
-const TrackDisplay: React.FC<TrackDisplayProps> = (props: TrackDisplayProps) => {
-  const {
-    title,
-    artiste,
-    image_url,
-    annieUrl
-  } = props.track;
+const TrackDisplay: React.FC<TrackDisplayProps> = (
+  props: TrackDisplayProps
+) => {
+  const { title, artiste, image_url, annieUrl } = props.track;
   const analyticsLabel = `${title} - ${artiste}`;
   const imageAlt = `Artwork for ${title}`;
 
   const linkProps = {
     className: styles.moreOptionsBtn,
     target: '_blank',
-    rel: 'noopener'
+    rel: 'noopener',
   };
 
   return (
@@ -36,18 +32,7 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (props: TrackDisplayProps) => 
         <span className={styles.trackArtiste}>{artiste}</span>
       </section>
 
-      <Link href={annieUrl}>
-        <a {...linkProps}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
-            <path
-              fill="#1D1D1D"
-              fillRule="evenodd"
-              d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </a>
-      </Link>
+      <PlaylistContextMenu url={annieUrl} linkProps={linkProps} />
     </section>
   );
 };
