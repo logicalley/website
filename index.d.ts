@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MenuId } from 'react-contexify';
 
 import {
   ContactFormReducerEnum,
@@ -99,7 +100,7 @@ export interface PlatformGroup extends TrackInfoProps {
   platforms: Platform[];
 }
 
-export interface PlatformCardProps extends TrackInfoProps, Platform {}
+export interface PlatformCardProps extends TrackInfoProps, Platform { }
 
 export interface AudioPlayerProps {
   previewUrl: string;
@@ -111,7 +112,7 @@ export interface Faq {
   answer: string;
 }
 
-export interface AccordionProps extends Faq {}
+export interface AccordionProps extends Faq { }
 
 export interface ContactFormState {
   email: string;
@@ -188,7 +189,7 @@ export interface PlaylistTrackMetaData {
   image_url: string;
   annieUrl: string;
 }
-export interface TrackDisplayProps extends PlaylistTrack {}
+export interface TrackDisplayProps extends PlaylistTrack { }
 
 export interface LoadMoreProps {
   fetchMore: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -208,4 +209,23 @@ export interface ClonePlaylistModalProps {
 export interface SpecialLayoutProps {
   shouldBePadded?: boolean;
   children: React.ReactChild | React.ReactFragment | React.ReactPortal | boolean | null | undefined;
+}
+
+export interface PlaylistContextProps {
+  url: string;
+  linkProps: {
+    className: string;
+    target: string;
+    rel: string;
+  };
+  getClientRect: () => DOMRect | undefined;
+}
+
+export interface ContextMenuOpts {
+  id: MenuId;
+  props?: any;
+  position?: {
+    x: number;
+    y: number;
+  } | null;
 }

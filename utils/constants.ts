@@ -60,4 +60,4 @@ export const ANNIE_USER_SELECTED_STOREFRONT_KEY: string =
 
 export const ANNIE_USER_COOKIE_ACCEPT: string = 'ANNIE_USER_COOKIE_ACCEPT';
 
-export const PLAYLIST_ID: string = 'PLAYLIST_ID';
+export const PLAYLIST_CONTEXT_ID: string = 'PLAYLIST_CONTEXT_ID';

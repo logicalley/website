@@ -157,6 +157,10 @@
   align-items: center;
 }
 
+.contextBtn {
+  cursor: pointer;
+}
+
 @media (min-width: 48em) {
   .playlistTrackContainer:hover {
     box-shadow: 5px 10px 40px#d1d1d1;

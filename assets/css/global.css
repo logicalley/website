@@ -423,6 +423,7 @@ img {
 }
 
 .react-contexify {
-  background-color: red;
-  color: pink;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: 1px solid var(--dark);
 }

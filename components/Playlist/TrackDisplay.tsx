@@ -1,16 +1,21 @@
-import React, { memo } from 'react';
-import Link from 'next/link';
+import React, { memo, useRef, useEffect } from 'react';
 import type { TrackDisplayProps } from '../..';
 
 import styles from './styles.module.css';
 import PlaylistContextMenu from './PlaylistContextMenu';
 
+
 const TrackDisplay: React.FC<TrackDisplayProps> = (
   props: TrackDisplayProps
 ) => {
+  const sectionRef = useRef<HTMLTableSectionElement>(null);
+
   const { title, artiste, image_url, annieUrl } = props.track;
-  const analyticsLabel = `${title} - ${artiste}`;
   const imageAlt = `Artwork for ${title}`;
+
+  const getClientRect = (): DOMRect | undefined => {
+    return sectionRef.current?.getBoundingClientRect();
+  };
 
   const linkProps = {
     className: styles.moreOptionsBtn,
@@ -19,7 +24,7 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (
   };
 
   return (
-    <section className={styles.playlistTrackContainer}>
+    <section className={styles.playlistTrackContainer} ref={sectionRef}>
       <img
         src={image_url}
         alt={imageAlt}
@@ -32,7 +37,7 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (
         <span className={styles.trackArtiste}>{artiste}</span>
       </section>
 
-      <PlaylistContextMenu url={annieUrl} linkProps={linkProps} />
+      <PlaylistContextMenu url={annieUrl} linkProps={linkProps} getClientRect={getClientRect} />
     </section>
   );
 };

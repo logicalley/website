@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef, forwardRef } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import getConfig from 'next/config';
 
