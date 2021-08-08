@@ -427,3 +427,7 @@ img {
   -webkit-box-shadow: none !important;
   border: 1px solid var(--dark);
 }
+
+.react-contexify a {
+  margin-left: 0;
+}
