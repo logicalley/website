@@ -4,7 +4,6 @@ import type { TrackDisplayProps } from '../..';
 import styles from './styles.module.css';
 import PlaylistContextMenu from './PlaylistContextMenu';
 
-
 const TrackDisplay: React.FC<TrackDisplayProps> = (
   props: TrackDisplayProps
 ) => {
@@ -37,7 +36,13 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (
         <span className={styles.trackArtiste}>{artiste}</span>
       </section>
 
-      <PlaylistContextMenu url={annieUrl} linkProps={linkProps} getClientRect={getClientRect} />
+      <PlaylistContextMenu
+        url={annieUrl}
+        artiste={artiste}
+        title={title}
+        linkProps={linkProps}
+        getClientRect={getClientRect}
+      />
     </section>
   );
 };

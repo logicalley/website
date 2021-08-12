@@ -4,13 +4,21 @@ import { Menu, Item, useContextMenu } from 'react-contexify';
 import Link from 'next/link';
 import 'react-contexify/dist/ReactContexify.css';
 
-import { PLAYLIST_CONTEXT_ID } from '../../utils/constants';
+import {
+  GA_ACTION_ANNIE_LINK_COPY,
+  GA_ACTION_OPEN_LINK_BUTTON_CLICK,
+  GA_CATEGORY_TRACK_ACTIONS,
+  PLAYLIST_CONTEXT_ID,
+} from '../../utils/constants';
 import styles from './styles.module.css';
 import type { PlaylistContextProps, ContextMenuOpts } from '../..';
+import copyLink from '../../utils/copyLink';
+import { registerEvent } from '../../utils/googleAnalytics';
 
-
-const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistContextProps) => {
-  const { url, getClientRect } = props;
+const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
+  props: PlaylistContextProps
+) => {
+  const { url, title, artiste, getClientRect } = props;
 
   const { show } = useContextMenu({
     id: PLAYLIST_CONTEXT_ID,
@@ -21,7 +29,7 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
   const displayMenu = (e: React.MouseEvent) => {
     const showOptions: ContextMenuOpts = {
       id: PLAYLIST_CONTEXT_ID,
-      props: { url }
+      props: { url },
     };
 
     const clientRect = getClientRect();
@@ -30,20 +38,45 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
 
       showOptions.position = {
         x: right - 200,
-        y: top
-      }
+        y: top,
+      };
     }
 
     show(e, showOptions);
   };
+  const registerCopyLink = (): void => {
+    const action = GA_ACTION_ANNIE_LINK_COPY;
+    const label = `${title} - ${artiste}`;
+    const analyticsLabel = `${action}: ${label} `;
+    console.log(analyticsLabel);
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_ACTIONS,
+      label: analyticsLabel,
+      value: 1,
+    });
+  };
+
+  const registerOpenLink = (): void => {
+    const action = GA_ACTION_OPEN_LINK_BUTTON_CLICK;
+    const label = `${title} - ${artiste}`;
+    const analyticsLabel = `${action}: ${label} `;
+    console.log(analyticsLabel);
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_ACTIONS,
+      label: analyticsLabel,
+      value: 1,
+    });
+  };
 
   const handleItemClick = ({ event, props }: any) => {
     if (event.currentTarget.id === 'open_link') {
-      router.push(props.url);
-      return;
+      registerOpenLink();
+      window.open(props.url);
+    } else {
+      copyLink(props.url, registerCopyLink);
     }
-    const link = props.url;
-    navigator.clipboard.writeText(link);
   };
 
   return (
@@ -63,10 +96,8 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
       </svg>
       <Menu id={PLAYLIST_CONTEXT_ID}>
         <Item onClick={handleItemClick}>Copy Link</Item>
-        <Item>
-          <Link href={props.url}>
-            <a {...props.linkProps}>Open Link</a>
-          </Link>
+        <Item onClick={handleItemClick} id="open_link">
+          Open link
         </Item>
       </Menu>
     </section>
