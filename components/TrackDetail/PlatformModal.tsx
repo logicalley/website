@@ -204,7 +204,8 @@ Shared via @anniemusicapp%0a%0a`;
         <button
           className={styles.copyLinkBtn}
           onClick={() => {
-            copyLink(trackUrl, registerLinkCopy);
+            registerLinkCopy()
+            copyLink(trackUrl);
           }}
         >
           <CopyIcon />
