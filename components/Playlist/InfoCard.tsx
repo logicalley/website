@@ -70,7 +70,7 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
             <span>View Original</span>
           </a>
 
-          <button className={styles.playlistAction} onClick={openCardOptions}>
+          <button className={styles.playlistAction} onClick={openCardOptions} disabled>
             Clone Playlist
           </button>
         </section>
