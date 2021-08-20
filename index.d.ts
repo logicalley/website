@@ -208,17 +208,6 @@ export interface ClonePlaylistModalProps {
   playlistId: number;
 }
 
-export interface SpecialLayoutProps {
-  shouldBePadded?: boolean;
-  children:
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal
-    | boolean
-    | null
-    | undefined;
-}
-
 export interface PlaylistContextProps {
   url: string;
   artiste: string;
