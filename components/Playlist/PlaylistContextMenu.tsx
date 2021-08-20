@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { Menu, Item, useContextMenu } from 'react-contexify';
-import Link from 'next/link';
+import { Menu, Item, useContextMenu, Separator } from 'react-contexify';
 import 'react-contexify/dist/ReactContexify.css';
 
-import { PLAYLIST_CONTEXT_ID } from '../../utils/constants';
+import {
+  ContextMenuChildName,
+  GA_ACTION_ANNIE_LINK_COPY,
+  GA_ACTION_OPEN_LINK_BUTTON_CLICK,
+  GA_CATEGORY_TRACK_ACTIONS,
+  PLAYLIST_CONTEXT_ID,
+} from '../../utils/constants';
 import styles from './styles.module.css';
-import type { PlaylistContextProps, ContextMenuOpts } from '../..';
+import type {
+  PlaylistContextProps,
+  ContextMenuOpts,
+  ContextMenuClickEvent
+} from '../..';
+import copyLink from '../../utils/copyLink';
+import { registerEvent } from '../../utils/googleAnalytics';
 
 
-const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistContextProps) => {
-  const { url, getClientRect } = props;
+const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
+  props: PlaylistContextProps
+) => {
+  const { url, title, artiste, getClientRect } = props;
 
   const { show } = useContextMenu({
     id: PLAYLIST_CONTEXT_ID,
@@ -21,7 +34,7 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
   const displayMenu = (e: React.MouseEvent) => {
     const showOptions: ContextMenuOpts = {
       id: PLAYLIST_CONTEXT_ID,
-      props: { url }
+      props: { url },
     };
 
     const clientRect = getClientRect();
@@ -30,20 +43,41 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
 
       showOptions.position = {
         x: right - 200,
-        y: top
-      }
+        y: top,
+      };
     }
 
     show(e, showOptions);
   };
 
-  const handleItemClick = ({ event, props }: any) => {
-    if (event.currentTarget.id === 'open_link') {
-      router.push(props.url);
-      return;
+  const sendAnalytics = (action: string): void => {
+    const label = `${title} - ${artiste}`;
+    const analyticsLabel = `${action}: ${label} `;
+
+    registerEvent({
+      action,
+      category: GA_CATEGORY_TRACK_ACTIONS,
+      label: analyticsLabel,
+      value: 1,
+    });
+  }
+
+  const handleItemClick = ({ event, props, data } : ContextMenuClickEvent): void => {
+    if (data && props) {
+      const { url } = props;
+      switch (data.name) {
+        case ContextMenuChildName.COPY_LINK:
+          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          copyLink(url);
+          break;
+        case ContextMenuChildName.OPEN_LINK:
+          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          window.open(url, 'blank');
+          break;
+        default:
+          break;
+      }
     }
-    const link = props.url;
-    navigator.clipboard.writeText(link);
   };
 
   return (
@@ -62,11 +96,10 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (props: PlaylistCont
         />
       </svg>
       <Menu id={PLAYLIST_CONTEXT_ID}>
-        <Item onClick={handleItemClick}>Copy Link</Item>
-        <Item>
-          <Link href={props.url}>
-            <a {...props.linkProps}>Open Link</a>
-          </Link>
+        <Item onClick={handleItemClick} data={{ name: ContextMenuChildName.COPY_LINK }}>Copy Link</Item>
+        <Separator />
+        <Item onClick={handleItemClick} data={{ name: ContextMenuChildName.OPEN_LINK }}>
+          Open link
         </Item>
       </Menu>
     </section>

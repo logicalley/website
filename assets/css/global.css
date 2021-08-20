@@ -415,19 +415,15 @@ img {
   color: red;
 }
 
+.react-contexify {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
 @media (min-width: 48em) {
   #__next {
     padding: var(--bodyPadding);
     padding-bottom: 0;
   }
-}
-
-.react-contexify {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border: 1px solid var(--dark);
-}
-
-.react-contexify a {
-  margin-left: 0;
 }

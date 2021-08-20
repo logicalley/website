@@ -3,21 +3,20 @@ import Head from 'next/head';
 
 import type { SEOProps } from '../..';
 
-
 const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   const {
     title,
     keywords,
     description = 'Annie helps you share your favorite songs and playlists between music platforms.',
     url,
-    imageUrl = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1603713396/icons/annie-logo-white_g6obnp.png'
+    imageUrl = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1603713396/icons/annie-logo-white_g6obnp.png',
   } = props;
   const pageTitle = title || 'Annie';
 
   return (
     <Head>
       <title>{pageTitle}</title>
-      <meta name="keywordes" content={keywords} />
+      <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
 
       <meta property="og:type" content="website" />
@@ -37,6 +36,6 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
       <meta name="twitter:data1" content={description} />
     </Head>
   );
-}
+};
 
 export default memo(SEO);

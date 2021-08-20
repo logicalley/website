@@ -1,8 +1,10 @@
 import React from 'react';
 
+import styles from './styles.module.css';
+
 
 const PlaylistContainer: React.FC = ({ children }) => (
-  <section>
+  <section className={styles.mainPlaylistContainer}>
     {children}
   </section>
 );

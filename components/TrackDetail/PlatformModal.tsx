@@ -19,7 +19,8 @@ import {
   GA_ACTION_FACEBOOK_LINK_SHARE,
   GA_ACTION_WHATSAPP_LINK_SHARE,
   GA_ACTION_EMAIL_LINK_SHARE,
-  GA_CATEGORY_TRACK_SHARE_ACTIONS, ANNIE_USER_SELECTED_STOREFRONT_KEY
+  GA_CATEGORY_TRACK_SHARE_ACTIONS,
+  ANNIE_USER_SELECTED_STOREFRONT_KEY,
 } from '../../utils/constants';
 
 import TwitterIcon from '../icons/Twitter';
@@ -34,9 +35,11 @@ import CloseIcon from '../icons/Close';
 
 import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
+import copyLink from '../../utils/copyLink';
 
-
-const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) => {
+const PlatformModal: React.FC<PlatformModalProps> = (
+  props: PlatformModalProps
+) => {
   const { artiste, platformName, title, url, closeFn, shortUrl } = props;
 
   const [showButton, setShowButton] = useState<boolean>(false);
@@ -48,20 +51,27 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
   const isAnnieLink = platformName === ANNIE_TYPE;
   const isAppleLink = platformName === APPLE_MUSIC_TYPE;
 
-  const storefrontUsable: boolean = isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
-  const trackUrl: string = storefrontUsable ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}` : url;
+  const storefrontUsable: boolean =
+    isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
+  const trackUrl: string = storefrontUsable
+    ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}`
+    : url;
 
   useEffect(() => {
-    const shouldShowCopyLinkButton: boolean = document.queryCommandSupported('copy');
+    const shouldShowCopyLinkButton: boolean =
+      document.queryCommandSupported('copy');
     setShowButton(shouldShowCopyLinkButton);
   }, []);
 
   useEffect(() => {
     if (process.browser) {
-      const selectedStorefront: string | null = localStorage.getItem(ANNIE_USER_SELECTED_STOREFRONT_KEY);
+      const selectedStorefront: string | null = localStorage.getItem(
+        ANNIE_USER_SELECTED_STOREFRONT_KEY
+      );
 
       if (selectedStorefront) {
-        const parsedSelectedStorefront: SelectableStorefront = JSON.parse(selectedStorefront);
+        const parsedSelectedStorefront: SelectableStorefront =
+          JSON.parse(selectedStorefront);
         setUserStorefront(parsedSelectedStorefront);
       }
 
@@ -76,7 +86,7 @@ const PlatformModal: React.FC<PlatformModalProps> = (props: PlatformModalProps) 
 ${trackUrl}
 %0a%0a`;
 
-const twitterShareText = `Check out "${title}" by ${artiste}.%0a
+  const twitterShareText = `Check out "${title}" by ${artiste}.%0a
 Shared via @anniemusicapp%0a%0a`;
 
   const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
@@ -108,27 +118,8 @@ Shared via @anniemusicapp%0a%0a`;
       action,
       category: GA_CATEGORY_TRACK_ACTIONS,
       label: analyticsLabel,
-      value: 1
+      value: 1,
     });
-  };
-
-  const copyLink = (): Promise<void> => {
-    let status: string;
-
-    return navigator.clipboard.writeText(trackUrl)
-      .then(() => {
-        status = 'success';
-        registerLinkCopy();
-      })
-      .catch(() => {
-        status = 'failure';
-      })
-      .finally(() => {
-        const isSuccess = status === 'success';
-        const toastFn = isSuccess ? toast.success : toast.error;
-        const toastMessage = isSuccess ? 'Link Copied.' : 'Failed to copy link.';
-        toastFn(toastMessage);
-      })
   };
 
   const registerShareLink = (action: string): void => {
@@ -138,7 +129,7 @@ Shared via @anniemusicapp%0a%0a`;
       action,
       category: GA_CATEGORY_TRACK_SHARE_ACTIONS,
       label: analyticsLabel,
-      value: 1
+      value: 1,
     });
   };
 
@@ -148,28 +139,44 @@ Shared via @anniemusicapp%0a%0a`;
       action,
       category: GA_CATEGORY_TRACK_ACTIONS,
       label: `${action}: ${title} - ${artiste}`,
-      value: 1
+      value: 1,
     });
   };
 
   const confirmUserStorefront = (data: SelectableStorefront) => {
-    setUserStorefront((data));
+    setUserStorefront(data);
     setEditStorefront(false);
   };
 
-  const toggleDisplayStorefrontSelector = () => setEditStorefront((prevState) => !prevState);
+  const toggleDisplayStorefrontSelector = () =>
+    setEditStorefront((prevState) => !prevState);
 
   const renderStoreFront = (): JSX.Element => {
     if (isAppleLink && fetchedStorefront) {
       if (editStorefront) {
-        return <StorefrontSelector setUserStorefront={confirmUserStorefront} userStorefront={userStorefront} />;
+        return (
+          <StorefrontSelector
+            setUserStorefront={confirmUserStorefront}
+            userStorefront={userStorefront}
+          />
+        );
       }
 
       if (userStorefront) {
         return (
           <section className={styles.storefrontTextContainer}>
-            <span className={styles.storefrontText}>Selected Storefront: <span className={styles.storefrontLabel}>{userStorefront?.label}</span></span>
-            <button className={styles.storefrontTextBtn} onClick={toggleDisplayStorefrontSelector}>Change Storefront</button>
+            <span className={styles.storefrontText}>
+              Selected Storefront:{' '}
+              <span className={styles.storefrontLabel}>
+                {userStorefront?.label}
+              </span>
+            </span>
+            <button
+              className={styles.storefrontTextBtn}
+              onClick={toggleDisplayStorefrontSelector}
+            >
+              Change Storefront
+            </button>
           </section>
         );
       }
@@ -181,38 +188,67 @@ Shared via @anniemusicapp%0a%0a`;
   const renderShareOptions = (): JSX.Element => (
     <Fragment>
       {isAnnieLink ? null : (
-        <a href={trackUrl} target="_blank" rel="noopener noreferrer" className={styles.shareGroup}
-           onClick={sendOpenLinkAnalytics}>
-          <OpenIcon/>
+        <a
+          href={trackUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.shareGroup}
+          onClick={sendOpenLinkAnalytics}
+        >
+          <OpenIcon />
           <span>Open Link</span>
         </a>
       )}
 
       {showButton ? (
-        <button className={styles.copyLinkBtn} onClick={copyLink}>
+        <button
+          className={styles.copyLinkBtn}
+          onClick={() => {
+            copyLink(trackUrl, registerLinkCopy);
+          }}
+        >
           <CopyIcon />
           <span>Copy Link</span>
         </button>
       ) : null}
 
-      <a href={twitterShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}>
+      <a
+        href={twitterShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}
+      >
         <TwitterIcon />
         <span>Twitter</span>
       </a>
 
-      <a href={facebookShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_FACEBOOK_LINK_SHARE)}>
+      <a
+        href={facebookShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(GA_ACTION_FACEBOOK_LINK_SHARE)}
+      >
         <FacebookIcon />
         <span>Facebook</span>
       </a>
 
-      <a href={whatsappShareLink} target="_blank" rel="noopener noreferrer" className={styles.shareGroup} onClick={() => registerShareLink(GA_ACTION_WHATSAPP_LINK_SHARE)}>
+      <a
+        href={whatsappShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(GA_ACTION_WHATSAPP_LINK_SHARE)}
+      >
         <WhatsappIcon />
         <span>Whatsapp</span>
       </a>
     </Fragment>
   );
 
-  const isLoadedNoSelectedUserStorefront = isAppleLink && fetchedStorefront && (!userStorefront);
+  const isLoadedNoSelectedUserStorefront =
+    isAppleLink && fetchedStorefront && !userStorefront;
 
   return (
     <section className={styles.platformModalContainer}>
@@ -225,27 +261,28 @@ Shared via @anniemusicapp%0a%0a`;
 
       <Spacer h="10px" mh="10px" />
 
-      {
-        isLoadedNoSelectedUserStorefront ? (
-          <Fragment>
-            <p>
-              Apple Music requires users to select a storefront which corresponds to their home location or the country
-              selected when creating their apple account.
-            </p>
-            <p>This is used to generate the apple music link for the song requested.</p>
-            <StorefrontSelector setUserStorefront={confirmUserStorefront} userStorefront={userStorefront} />
-          </Fragment>
-        ) : (
-          <Fragment>
-            {renderStoreFront()}
-            {renderShareOptions()}
-          </Fragment>
-        )
-      }
-
-
-
-
+      {isLoadedNoSelectedUserStorefront ? (
+        <Fragment>
+          <p>
+            Apple Music requires users to select a storefront which corresponds
+            to their home location or the country selected when creating their
+            apple account.
+          </p>
+          <p>
+            This is used to generate the apple music link for the song
+            requested.
+          </p>
+          <StorefrontSelector
+            setUserStorefront={confirmUserStorefront}
+            userStorefront={userStorefront}
+          />
+        </Fragment>
+      ) : (
+        <Fragment>
+          {renderStoreFront()}
+          {renderShareOptions()}
+        </Fragment>
+      )}
     </section>
   );
 };
