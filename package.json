@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@bolajiolajide/utils": "1.0.15",
+    "@headlessui/react": "^1.4.0",
     "@jesstelford/react-portal-universal": "1.0.6",
     "@netlify/plugin-nextjs": "3.7.1",
     "@react-spring/parallax": "9.0.0-rc.3",

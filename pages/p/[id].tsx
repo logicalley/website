@@ -13,14 +13,6 @@ import TrackDisplay from '../../components/Playlist/TrackDisplay';
 import LoadMoreButton from '../../components/Playlist/LoadMoreButton';
 import SEO from '../../components/SEO';
 import SpecialLayout from '../../components/SpecialLayout';
-import PlaylistContainer from '../../components/Playlist/Container';
-import Oembed from '../../components/Oembed';
-
-import {
-  GA_ACTION_MUSIC_PLAYER,
-  GA_CATEGORY_TRACK_ACTIONS,
-} from '../../utils/constants';
-import { registerEvent } from '../../utils/googleAnalytics';
 
 
 const { publicRuntimeConfig } = getConfig();
@@ -81,26 +73,24 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
         imageUrl={playlistInfo.image_url}
         keywords={keywords}
       />
-      <SpecialLayout>
-        <ContentHeader />
-        <Spacer h="40px" mh="50px" />
-        <InfoCard info={playlistInfo} />
-        <Spacer h="20px" mh="20px" />
+      <ContentHeader />
+      <Spacer h="40px" mh="50px" />
+      <InfoCard info={playlistInfo} />
+      <Spacer h="20px" mh="20px" />
 
-        {playlistTracks.map((track) => {
-          const trackDisplayProps = {
-            key: track.id,
-            track,
-          }
+      {playlistTracks.map((track) => {
+        const trackDisplayProps = {
+          key: track.id,
+          track,
+        }
 
-          return <TrackDisplay {...trackDisplayProps} />;
-        })}
+        return <TrackDisplay {...trackDisplayProps} />;
+      })}
 
-        {nextUrl ? (<LoadMoreButton
-          fetchMore={fetchMoreTracks}
-          isLoading={isLoading}
-        />) : null}
-      </SpecialLayout>
+      {nextUrl ? (<LoadMoreButton
+        fetchMore={fetchMoreTracks}
+        isLoading={isLoading}
+      />) : null}
       <ContentFooter />
     </Fragment>
   );
