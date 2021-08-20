@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { MenuId } from 'react-contexify';
 
+import { ContextMenuChildName } from './utils/constants';
+
 import {
   ContactFormReducerEnum,
   ANNIE_TYPE,
@@ -236,4 +238,10 @@ export interface ContextMenuOpts {
     x: number;
     y: number;
   } | null;
+}
+
+export interface ContextMenuClickEvent {
+  props?: { url: string };
+  data?: { name: ContextMenuChildName },
+  event: any
 }

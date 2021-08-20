@@ -1,15 +1,12 @@
 import toast from 'react-hot-toast';
 
-type fn = () => void;
-
-const copyLink = (url: string, registerCopy: fn): Promise<void> => {
+const copyLink = (url: string): Promise<void> => {
   let status: string;
 
   return navigator.clipboard
     .writeText(url)
     .then(() => {
       status = 'success';
-      registerCopy();
     })
     .catch(() => {
       status = 'failure';
@@ -21,4 +18,5 @@ const copyLink = (url: string, registerCopy: fn): Promise<void> => {
       toastFn(toastMessage);
     });
 };
+
 export default copyLink;

@@ -25,6 +25,11 @@ export enum FetchStatus {
   LOADING,
 }
 
+export enum ContextMenuChildName {
+  COPY_LINK,
+  OPEN_LINK
+}
+
 export const GA_ACTION_APP_STORE_DOWNLOAD: string = 'APP_STORE_DOWNLOAD';
 export const GA_ACTION_PLAY_STORE_DOWNLOAD: string = 'PLAY_STORE_DOWNLOAD';
 export const GA_ACTION_FOOTER_TWITTER_LINK: string = 'FOOTER_TWITTER_LINK';

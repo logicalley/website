@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { Menu, Item, useContextMenu } from 'react-contexify';
-import Link from 'next/link';
+import { Menu, Item, useContextMenu, Separator } from 'react-contexify';
 import 'react-contexify/dist/ReactContexify.css';
 
 import {
+  ContextMenuChildName,
   GA_ACTION_ANNIE_LINK_COPY,
   GA_ACTION_OPEN_LINK_BUTTON_CLICK,
   GA_CATEGORY_TRACK_ACTIONS,
   PLAYLIST_CONTEXT_ID,
 } from '../../utils/constants';
 import styles from './styles.module.css';
-import type { PlaylistContextProps, ContextMenuOpts } from '../..';
+import type {
+  PlaylistContextProps,
+  ContextMenuOpts,
+  ContextMenuClickEvent
+} from '../..';
 import copyLink from '../../utils/copyLink';
 import { registerEvent } from '../../utils/googleAnalytics';
+
 
 const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
   props: PlaylistContextProps
@@ -44,38 +49,34 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
 
     show(e, showOptions);
   };
-  const registerCopyLink = (): void => {
-    const action = GA_ACTION_ANNIE_LINK_COPY;
+
+  const sendAnalytics = (action: string): void => {
     const label = `${title} - ${artiste}`;
     const analyticsLabel = `${action}: ${label} `;
-    console.log(analyticsLabel);
+
     registerEvent({
       action,
       category: GA_CATEGORY_TRACK_ACTIONS,
       label: analyticsLabel,
       value: 1,
     });
-  };
+  }
 
-  const registerOpenLink = (): void => {
-    const action = GA_ACTION_OPEN_LINK_BUTTON_CLICK;
-    const label = `${title} - ${artiste}`;
-    const analyticsLabel = `${action}: ${label} `;
-    console.log(analyticsLabel);
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_ACTIONS,
-      label: analyticsLabel,
-      value: 1,
-    });
-  };
-
-  const handleItemClick = ({ event, props }: any) => {
-    if (event.currentTarget.id === 'open_link') {
-      registerOpenLink();
-      window.open(props.url);
-    } else {
-      copyLink(props.url, registerCopyLink);
+  const handleItemClick = ({ event, props, data } : ContextMenuClickEvent): void => {
+    if (data && props) {
+      const { url } = props;
+      switch (data.name) {
+        case ContextMenuChildName.COPY_LINK:
+          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          copyLink(url);
+          break;
+        case ContextMenuChildName.OPEN_LINK:
+          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          window.open(url, 'blank');
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -95,8 +96,9 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
         />
       </svg>
       <Menu id={PLAYLIST_CONTEXT_ID}>
-        <Item onClick={handleItemClick}>Copy Link</Item>
-        <Item onClick={handleItemClick} id="open_link">
+        <Item onClick={handleItemClick} data={{ name: ContextMenuChildName.COPY_LINK }}>Copy Link</Item>
+        <Separator />
+        <Item onClick={handleItemClick} data={{ name: ContextMenuChildName.OPEN_LINK }}>
           Open link
         </Item>
       </Menu>
