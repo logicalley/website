@@ -46,7 +46,8 @@
     "build": "next build",
     "start": "next start",
     "ts": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "lint": "next lint"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.15.0",
