@@ -1,13 +1,13 @@
-export const ANNIE_TYPE: string = 'Annie';
-export const SPOTIFY_TYPE: string = 'Spotify';
-export const DEEZER_TYPE: string = 'Deezer';
-export const APPLE_MUSIC_TYPE: string = 'Apple Music';
+export const ANNIE_TYPE = 'Annie';
+export const SPOTIFY_TYPE = 'Spotify';
+export const DEEZER_TYPE = 'Deezer';
+export const APPLE_MUSIC_TYPE = 'Apple Music';
 
 export enum PlayStatus {
   PLAY,
   PAUSE,
   STOP,
-}
+};
 
 export enum ContactFormReducerEnum {
   EMAIL,
@@ -16,19 +16,19 @@ export enum ContactFormReducerEnum {
   LOADING,
   FORM_SUBMITTED,
   ERROR,
-}
+};
 
 export enum FetchStatus {
   IDLE,
   SUCCESS,
   ERROR,
   LOADING,
-}
+};
 
 export enum ContextMenuChildName {
   COPY_LINK,
   OPEN_LINK
-}
+};
 
 export const GA_ACTION_APP_STORE_DOWNLOAD: string = 'APP_STORE_DOWNLOAD';
 export const GA_ACTION_PLAY_STORE_DOWNLOAD: string = 'PLAY_STORE_DOWNLOAD';
@@ -64,5 +64,7 @@ export const ANNIE_USER_SELECTED_STOREFRONT_KEY: string =
   'ANNIE_STOREFRONT_USER_KEY';
 
 export const ANNIE_USER_COOKIE_ACCEPT: string = 'ANNIE_USER_COOKIE_ACCEPT';
+export const ANNIE_USER_TOKEN_KEY: string = 'ANNIE_USER_TOKEN';
+export const ANNIE_USER_PLATFORM_TOKEN: string = 'ANNIE_USER_PLATFORM_TOKEN';
 
 export const PLAYLIST_CONTEXT_ID: string = 'PLAYLIST_CONTEXT_ID';

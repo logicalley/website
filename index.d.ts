@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { MenuId } from 'react-contexify';
 
-import { ContextMenuChildName } from './utils/constants';
+import {
+  ContextMenuChildName,
+  APPLE_MUSIC_TYPE,
+  SPOTIFY_TYPE,
+  DEEZER_TYPE
+} from './utils/constants';
 
 import {
   ContactFormReducerEnum,
@@ -204,7 +209,7 @@ export interface ActiveTrack {
   analyticsLabel: string;
 }
 
-export interface ClonePlaylistModalProps {
+export interface ClonePlaylistProps {
   playlistId: number;
 }
 
@@ -233,4 +238,26 @@ export interface ContextMenuClickEvent {
   props?: { url: string };
   data?: { name: ContextMenuChildName },
   event: any
+}
+
+export interface LoginPlatform {
+  id: PlatformOptions;
+  name: PlatformOptions;
+  borderColor: string;
+}
+
+export interface CheckIconProps {
+  className?: string;
+}
+
+export type RadioGroupRenderProps = { active: boolean, checked: boolean };
+
+export type PlatformOptions = typeof SPOTIFY_TYPE | typeof DEEZER_TYPE | typeof APPLE_MUSIC_TYPE;
+
+export interface ModalProps {
+  children: React.ReactNode;
+  onClose: () => void;
+  isOpen: boolean;
+  title: string;
+  description?: string;
 }

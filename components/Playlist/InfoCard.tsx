@@ -1,35 +1,28 @@
 import React, { useState, Fragment } from 'react';
 import senticize from '@bolajiolajide/utils/dist/sentencize';
-import Modal from 'react-modal';
+import { useRouter } from 'next/router';
+import qs from 'qs';
 
-import ClonePlaylistModal from './ClonePlaylistModal';
-
+import ClonePlaylist from './ClonePlaylist';
+import Modal from '../Modal';
 import type { PlaylistInfoCard } from '../..';
-
 import styles from './styles.module.css';
 
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-
-Modal.setAppElement('#modal');
-
 const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const { query, pathname, replace: replaceUrl } = useRouter();
+  const { modalState = 'close', id: playlistId } = query;
+  const [modalIsOpen, setIsOpen] = useState<boolean>(modalState === 'open');
 
   const { image_url, title, owner, origin, total, originalUrl, id } = props.info;
   const imageAlt: string = `Cover picture for playlist: ${title}`;
   const source = senticize(origin, '_');
 
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+
+    replaceUrl(updateUrlParam({ modalState: 'close' }));
+  };
 
   const linkProps = {
     className: styles.playlistAction,
@@ -38,18 +31,32 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
     href: originalUrl
   };
 
+  const generateCurrentPathname = (): string => {
+    return pathname.replace(/\[id\]/, props.info.id.toString());
+  }
+
+  const updateUrlParam = (updatedParam: Record<string, string>): string => {
+    const { id, ...remainingQuery } = query;
+    const basePath = generateCurrentPathname();
+    const newQueryParams = qs.stringify({
+      ...remainingQuery,
+      ...updatedParam
+    });
+
+    return `${basePath}?${newQueryParams}`;
+  }
+
   const openCardOptions = () => {
     setIsOpen(true);
+
+    replaceUrl(updateUrlParam({ modalState: 'open' }));
   };
 
   const modalProps = {
+    onClose: closeModal,
     isOpen: modalIsOpen,
-    onRequestClose: closeModal,
-    style: customStyles,
-    contentLabel: 'Beta Modal!',
-    onAfterOpen: () => document.body.style.overflow = 'hidden',
-    onAfterClose: () => document.body.style.overflow = 'unset'
-  };
+    title: 'Clone Playlist',
+  }
 
   return (
     <Fragment>
@@ -70,14 +77,14 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
             <span>View Original</span>
           </a>
 
-          <button className={styles.playlistAction} onClick={openCardOptions} disabled>
+          <button className={styles.playlistAction} onClick={openCardOptions}>
             Clone Playlist
           </button>
         </section>
       </section>
 
       <Modal {...modalProps}>
-        <ClonePlaylistModal playlistId={id} />
+        <ClonePlaylist playlistId={id} />
       </Modal>
     </Fragment>
   );
