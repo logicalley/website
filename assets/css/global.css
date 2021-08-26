@@ -59,6 +59,8 @@
   --lightBorder: #eaebee;
   --textColor: #2e2e2e;
   --playlistMetaColor: #8a8a8a;
+
+  --disabledCtaBg: #a385e1;
 }
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -323,6 +325,14 @@ Remove the inner padding in Chrome and Safari on macOS.
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 summary {

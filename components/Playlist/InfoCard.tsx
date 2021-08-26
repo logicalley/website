@@ -1,26 +1,12 @@
 import React, { useState, Fragment } from 'react';
 import senticize from '@bolajiolajide/utils/dist/sentencize';
-import Modal from 'react-modal';
+import { Dialog, Transition } from '@headlessui/react';
 
 import ClonePlaylistModal from './ClonePlaylistModal';
-
+import Modal from '../Modal';
 import type { PlaylistInfoCard } from '../..';
-
 import styles from './styles.module.css';
 
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-
-Modal.setAppElement('#modal');
 
 const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -43,13 +29,11 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
   };
 
   const modalProps = {
+    onClose: closeModal,
     isOpen: modalIsOpen,
-    onRequestClose: closeModal,
-    style: customStyles,
-    contentLabel: 'Beta Modal!',
-    onAfterOpen: () => document.body.style.overflow = 'hidden',
-    onAfterClose: () => document.body.style.overflow = 'unset'
-  };
+    title: 'Clone Playlist',
+    description: 'Select a platform to clone the playlist.'
+  }
 
   return (
     <Fragment>
@@ -70,7 +54,7 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
             <span>View Original</span>
           </a>
 
-          <button className={styles.playlistAction} onClick={openCardOptions} disabled>
+          <button className={styles.playlistAction} onClick={openCardOptions}>
             Clone Playlist
           </button>
         </section>

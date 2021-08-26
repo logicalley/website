@@ -12,6 +12,7 @@
 
 .playlistCtas {
   display: flex;
+  margin-top: 1.5rem;
 }
 
 .playlistAction {
@@ -26,11 +27,11 @@
   margin-left: 10px;
   background: var(--primary);
   color: var(--white);
-  cursor: not-allowed;
 }
 
 .playlistAction:disabled {
   background: #b39ce3;
+  cursor: not-allowed;
 }
 
 .playlistCtas > a {
@@ -41,10 +42,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.playlistCtas > * {
-  max-width: 30rem;
 }
 
 .playlistMetadatum {
@@ -69,15 +66,6 @@
   font-weight: 500;
   margin-top: 0;
   position: relative;
-}
-
-.playlistTitle::after {
-  content: 'BETA';
-  font-size: 0.7rem;
-  margin-left: 1rem;
-  background: var(--primary);
-  color: var(--light);
-  padding: 0.3rem 1rem;
 }
 
 .playlistImage {
@@ -178,8 +166,79 @@
   cursor: pointer;
 }
 
+.platformSelect {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 0;
+  color: var(--light);
+  background: var(--primary);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  border-radius: var(--borderRadius);
+}
+
+.platformSelect:disabled {
+  background: var(--disabledCtaBg);
+}
+
+.loginBtn {
+  margin: 1rem 0;
+  width: 100%;
+  padding: .8rem .5rem;
+  border: none;
+  background: var(--primary);
+  color: var(--light);
+  border-radius: var(--borderRadius);
+}
+
+.loginBtn:disabled {
+  background: var(--disabledCtaBg);
+}
+
+.platformOption {
+  position: relative;
+  border-radius: .5rem;
+  box-shadow: 0 0 transparent,
+              0 0 transparent,
+              0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.platformOption:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.checkedPlatformOption {
+  color: rgba(255, 255, 255, 1);
+  background: rgba(12, 74, 110, 0.75)
+}
+
+.uncheckedPlatformOption {
+  background: rgba(255, 255, 255, 1);
+}
+
+.clonePlaylistContainer {
+  background: var(--white);
+  width: 100%;
+}
+
+.radioGroupOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.checkIcon {
+  width: 2rem;
+}
+
 @media (min-width: 48em) {
-  .playlistTrackContainer:hover {
-    /* box-shadow: 5px 10px 40px#d1d1d1; */
-  }
 }
