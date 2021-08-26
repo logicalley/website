@@ -216,8 +216,8 @@
 }
 
 .checkedPlatformOption {
-  color: rgba(255, 255, 255, 1);
-  background: rgba(12, 74, 110, 0.75)
+  color: var(--white);
+  background: #220101;
 }
 
 .uncheckedPlatformOption {
@@ -238,6 +238,88 @@
 
 .checkIcon {
   width: 2rem;
+}
+
+.cloneSuccessSVG,
+.cloneFailureSVG {
+  width: 100px;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.cloneResponseSVGPath {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+}
+
+.cloneSuccessCirclePath {
+  composes: cloneResponseSVGPath;
+  -webkit-animation: dash .9s ease-in-out;
+  animation: dash .9s ease-in-out;
+}
+
+.cloneSuccessCheckPath {
+  composes: cloneResponseSVGPath;
+  stroke-dashoffset: -100;
+  -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+  animation: dash-check .9s .35s ease-in-out forwards;
+}
+
+.cloneFailureCirclePath {
+  composes: cloneResponseSVGPath;
+  -webkit-animation: dash .9s ease-in-out;
+  animation: dash .9s ease-in-out;
+}
+
+.cloneFailureLinePath {
+  composes: cloneResponseSVGPath;
+  stroke-dashoffset: 1000;
+  -webkit-animation: dash .9s .35s ease-in-out forwards;
+  animation: dash .9s .35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+.activePlatformName {
+  font-weight: bold;
+}
+
+.platformName {
+  text-transform: uppercase;
 }
 
 @media (min-width: 48em) {

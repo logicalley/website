@@ -10,7 +10,10 @@ import {
   ANNIE_USER_PLATFORM_TOKEN
 } from '../../utils/constants';
 import Spinner from '../Spinner';
+import CircleSpinner from '../Spinner/CircleSpinner';
 import SelectPlatform from './SelectPlatform';
+import CloneSuccess from './CloneSuccess';
+import CloneFailure from './CloneFailure';
 
 
 const ClonePlaylist: React.FC<ClonePlaylistProps> = (props: ClonePlaylistProps) => {
@@ -25,11 +28,19 @@ const ClonePlaylist: React.FC<ClonePlaylistProps> = (props: ClonePlaylistProps) 
 
   const { playlistId } = props;
 
-    if (fetchState === FetchStatus.LOADING) {
-      return <Spinner />
-    }
+  if (fetchState === FetchStatus.LOADING) {
+    return <CircleSpinner />;
+  }
 
-    return <SelectPlatform />;
+  if (fetchState === FetchStatus.SUCCESS) {
+    return <CloneSuccess />;
+  }
+
+  if (fetchState === FetchStatus.ERROR) {
+    return <CloneFailure />;
+  }
+
+  return <SelectPlatform />;
 };
 
 export default memo(ClonePlaylist);

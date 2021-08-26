@@ -24,6 +24,7 @@ const SelectPlatform: React.FC = () => {
   return (
     <section className={styles.selectPlatformContainer}>
       <section className={styles.platformsSelectContainer}>
+        <RadioGroup.Description>Select a platform to clone the playlist.</RadioGroup.Description>
         <RadioGroup value={userPlatform} onChange={setUserPlatform}>
           {SupportedPlatformsForLogin.map((platform) => {
             const derivedOptionClassName = ({ checked }: RadioGroupRenderProps) => cn(styles.platformOption, {

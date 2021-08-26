@@ -30,6 +30,8 @@
   margin-right: auto;
   padding: 2rem;
   z-index: 15;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapperHeader {
