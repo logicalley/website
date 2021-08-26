@@ -45,11 +45,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ts": "tsc"
+    "ts": "tsc",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
     "@testing-library/react": "^12.0.0",
     "@types/jest": "^27.0.1",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.0",
     "jest": "^27.0.6",
     "prettier": "2.3.2",
     "ts-jest": "^27.0.5"
