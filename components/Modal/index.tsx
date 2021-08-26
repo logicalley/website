@@ -19,7 +19,7 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
 
         <section className={styles.wrapper}>
           <section className={styles.wrapperHeader}>
-            <Dialog.Title as="h3" className={styles.modalTitle}>{title}</Dialog.Title>
+            <Dialog.Title as="h2" className={styles.modalTitle}>{title}</Dialog.Title>
             <button onClick={onClose} className={styles.closeBtn}>&times;</button>
           </section>
 

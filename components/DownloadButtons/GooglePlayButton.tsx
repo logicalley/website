@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import Modal from 'react-modal';
 
 import styles from './styles.module.css';
-
+import Modal from '../Modal';
 import { registerEvent } from '../../utils/googleAnalytics';
 import {
   GA_ACTION_PLAY_STORE_DOWNLOAD,
@@ -10,23 +9,8 @@ import {
 } from '../../utils/constants';
 
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-
 const GooglePlayButton: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    Modal.setAppElement('#modal');
-  }, []);
 
   const popUpModal = () => {
     registerEvent({
@@ -36,7 +20,8 @@ const GooglePlayButton: React.FC = () => {
       value: 1
     });
     setIsOpen(true);
-  }
+  };
+
   const closeModal = () => setIsOpen(false);
 
   const baseLinkProps = {
@@ -77,14 +62,13 @@ const GooglePlayButton: React.FC = () => {
           <span className={styles.storeName}>Google Play</span>
         </article>
       </button>
+
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Beta Modal!"
+        onClose={closeModal}
+        title="Annie is currently in Beta for Android!"
       >
         <section className={styles.modalContainer}>
-          <h3>Annie is currently in Beta for Android!</h3>
           <a href="https://airtable.com/shrKB0oRCBFFjQZA3?backgroundColor=purple" className={styles.betaLink}>
             Sign up for Beta access here.
           </a>

@@ -1,8 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import Modal from 'react-modal';
 
 import styles from './styles.module.css';
-
 import type { PlatformCardProps } from '../..';
 import {
   ANNIE_TYPE,
@@ -15,40 +13,16 @@ import {
   GA_CATEGORY_TRACK_ACTIONS
 } from '../../utils/constants';
 import { registerEvent } from '../../utils/googleAnalytics';
-
 import PlatformModal from './PlatformModal';
-
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
+import Modal from '../Modal';
 
 
 const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    Modal.setAppElement('#modal');
-  }, []);
-
   const iconAlt: string = `${props.name} icon`;
   const iconToUse = props.name === 'Apple Music' ? props.darkIcon : props.icon;
   const closeModal = () => setIsOpen(false);
-  const modalProps = {
-    isOpen: modalIsOpen,
-    onRequestClose: closeModal,
-    style: customStyles,
-    contentLabel: 'Beta Modal!',
-    onAfterOpen: () => document.body.style.overflow = 'hidden',
-    onAfterClose: () => document.body.style.overflow = 'unset'
-  };
 
   const sendTrackAnalytics = (): void => {
     const platform = props.name;
@@ -100,7 +74,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
         ) : <div />}
       </button>
 
-      <Modal {...modalProps}>
+      <Modal isOpen={modalIsOpen} onClose={closeModal} title="Share to ...">
         <PlatformModal
           closeFn={closeModal}
           title={props.title}

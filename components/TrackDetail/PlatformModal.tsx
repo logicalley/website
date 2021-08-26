@@ -253,13 +253,6 @@ Shared via @anniemusicapp%0a%0a`;
 
   return (
     <section className={styles.platformModalContainer}>
-      <section className={styles.shareModalHeader}>
-        <span className={styles.shareModalDescription}>Share to...</span>
-        <button className={styles.closeIconBtn} onClick={closeFn}>
-          <CloseIcon />
-        </button>
-      </section>
-
       <Spacer h="10px" mh="10px" />
 
       {isLoadedNoSelectedUserStorefront ? (

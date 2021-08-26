@@ -41,9 +41,9 @@
 .closeBtn {
   background: transparent;
   border-radius: 3rem;
-  padding: 0.2rem 0.5rem;
   font-size: 1.5rem;
-  border: 1px dotted gray;
+  border: none;
+  margin-left: 2rem;
 }
 
 .modalTitle {
