@@ -9,11 +9,6 @@ import type {
   RadioGroupRenderProps
 } from '../..';
 import CheckIcon from '../icons/CheckIcon';
-import {
-  SPOTIFY_TYPE,
-  DEEZER_TYPE,
-  APPLE_MUSIC_TYPE
-} from '../../utils/constants';
 
 
 const SelectPlatform: React.FC = () => {
