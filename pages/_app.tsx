@@ -53,7 +53,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       <Component {...pageProps} />
       <CookieForm />
       <Toaster position={toastPosition} reverseOrder={false} />
-      <section id="modal" />
     </Fragment>
   );
 };
