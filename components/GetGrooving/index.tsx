@@ -15,6 +15,7 @@ const GetGrooving: React.FC = () => {
         <source srcSet="
             /images/annie-screenshot.webp 1x,
             /images/annie-screenshot.webp 2x" type="image/webp" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imageFallback}
           alt="login screen for annie"

@@ -24,8 +24,10 @@ const _Parallax: React.FC = () => {
     }
 
     return () => {
-      if (observer && sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      const sectionRefDuplicate = sectionRef;
+
+      if (observer && sectionRefDuplicate.current) {
+        observer.unobserve(sectionRefDuplicate.current)
       }
     }
   }, []);

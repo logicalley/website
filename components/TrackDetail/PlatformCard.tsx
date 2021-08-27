@@ -69,8 +69,8 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
           ) : null}
         </section>
 
-        {iconToUse ? (
-          <img src={iconToUse} alt={iconAlt} className={styles.platformIcon} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+        {iconToUse ? (<img src={iconToUse} alt={iconAlt} className={styles.platformIcon} />
         ) : <div />}
       </button>
 

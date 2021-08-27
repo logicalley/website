@@ -62,6 +62,7 @@ const InfoCard: React.FC<PlaylistInfoCard> = (props: PlaylistInfoCard) => {
     <Fragment>
       <section className={styles.infoCardContainer}>
         <section className={styles.playlistDetailsContainer}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={image_url} alt={imageAlt} className={styles.playlistImage} />
 
           <section className={styles.playlistDetails}>

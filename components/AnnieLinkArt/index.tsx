@@ -19,6 +19,7 @@ const AnnieLinkArt: React.FC = () => {
         <source srcSet="
             /images/annie-link.webp 1x,
             /images/annie-link.webp 2x" type="image/webp" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imageFallback}
           alt="image showing links between platforms"

@@ -26,7 +26,7 @@ const TermsOfUse: React.FC = () => {
           <ul>
             <li>
               <span className={styles.docText}>
-                By using Annie, Permission is granted to access the materials (information or software) on Anniemusic's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                By using Annie, Permission is granted to access the materials (information or software) on Anniemusic&apos;s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
               </span>
 
               <ul>
@@ -50,7 +50,7 @@ const TermsOfUse: React.FC = () => {
 
                 <li>
                   <span className={styles.docText}>
-                    attempt to decompile or reverse engineer any software contained on anniemusic's website;
+                    attempt to decompile or reverse engineer any software contained on anniemusic&apos;s website;
                   </span>
                 </li>
 
@@ -75,7 +75,7 @@ const TermsOfUse: React.FC = () => {
           <ul>
             <li>
               <span className={styles.docText}>
-                The materials on Anniemusic's website are provided on an 'as is' basis. we make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                The materials on Anniemusic&apos;s website are provided on an &apos;as is&apos; basis. we make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
               </span>
             </li>
 
@@ -90,7 +90,7 @@ const TermsOfUse: React.FC = () => {
         <li>Limitations</li>
         <div className={styles.textGroup}>
           <span className={styles.docText}>
-            In no event shall we or our data source be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on anniemusic's website, even if Anniemusic or a "Anniemusic" authorized representative has been notified orally or in writing of the possibility of such damage.<br />
+            In no event shall we or our data source be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on anniemusic&apos;s website, even if Anniemusic or a &quot;Anniemusic&quot; authorized representative has been notified orally or in writing of the possibility of such damage.<br />
             Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
           </span>
         </div>
@@ -98,7 +98,7 @@ const TermsOfUse: React.FC = () => {
         <li>Accuracy of Information</li>
         <div className={styles.textGroup}>
           <span className={styles.docText}>
-            The materials appearing on anniemusic's website could include technical, typographical, or photographic errors.<br />
+            The materials appearing on anniemusic&apos;s website could include technical, typographical, or photographic errors.<br />
             We do not warrant that any of the materials on its website are accurate, complete or current.
             We may make changes to the materials contained on its website at any time without notice. However anniemusic does not make any commitment to update the materials.
           </span>
@@ -109,14 +109,14 @@ const TermsOfUse: React.FC = () => {
           <span className={styles.docText}>
             We have not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site.<br />
             The inclusion of any link does not imply endorsement by anniemusic of the site.
-            Use of any such linked website is at the user's own risk.
+            Use of any such linked website is at the user&apos;s own risk.
           </span>
         </div>
 
         <li>Modifications</li>
         <div className={styles.textGroup}>
           <span className={styles.docText}>
-            We may revise these terms of service for Anniemusic's website at any time without notice.
+            We may revise these terms of service for Anniemusic&apos;s website at any time without notice.
             By using this website you are agreeing to be bound by the then current version of these terms of service.
           </span>
         </div>
@@ -131,14 +131,14 @@ const TermsOfUse: React.FC = () => {
         <li>Third Party Terms of Service</li>
         <div className={styles.textGroup}>
           <span className={styles.docText}>
-            <span className="bold">Youtube</span> - By using anniemusic, You are agreeing to be bound by the YouTube Terms Of Service. Anniemusic uses the YouTube API Services.
+            <span className="bold">Youtube</span> - By using Anniemusic, You are agreeing to be bound by the YouTube Terms Of Service. Anniemusic uses the YouTube API Services.
             Please also checkout <a href={googlePrivacyUrl} className={styles.plainLink}>Google Privacy Policy</a>.
-            Anniemusic uses YouTube user information to access, provide and display YouTube data on Anniemusic. Anniemusic will be able to retrieve user YouTube username, user private playlists, liked videos, uploaded videos and subscribed channels. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic's access to your data via the Google security settings page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
+            Anniemusic uses YouTube user information to access, provide and display YouTube data on Anniemusic. Anniemusic will be able to retrieve user YouTube username, user private playlists, liked videos, uploaded videos and subscribed channels. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Google security settings page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
           </span>
 
           <span className={styles.docText}>
             <span className="bold">Spotify</span> - By using Anniemusic, You are agreeing to be bound by the Spotify Terms and Conditions of Use.
-            Anniemusic uses the Spotify API Services. Anniemusic uses Spotify user information to access, provide and display Spotify datas on anniemusic. Anniemusic will be able to retrieve user Spotify username, user private playlists, liked tracks, liked albums and liked artists. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic's access to your data via the Spotify Apps with access to your Spotify information page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
+            Anniemusic uses the Spotify API Services. Anniemusic uses Spotify user information to access, provide and display Spotify datas on anniemusic. Anniemusic will be able to retrieve user Spotify username, user private playlists, liked tracks, liked albums and liked artists. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Spotify Apps with access to your Spotify information page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
           </span>
         </div>
       </ol>

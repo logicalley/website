@@ -39,6 +39,7 @@ const HomePage: React.FC = () => {
         <source srcSet="
           /images/song-board.webp 1x,
           /images/song-board.webp 2x" type="image/webp" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={songBoardImageFallback} alt="Different Songs shared via Annie" className={styles.songLink} />
       </picture>
 

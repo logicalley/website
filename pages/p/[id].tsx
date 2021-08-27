@@ -19,18 +19,20 @@ const { publicRuntimeConfig } = getConfig();
 const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => {
   const { error, playlistDetails, playlistId } = props;
 
-  if (error || !playlistDetails) return <Page404 />;
-
   const [playlistTracks, setPlaylistTracks] = useState<PlaylistTrackMetaData[]>([]);
   const [nextUrl, setNextUrl] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { tracks, ...playlistInfo } = playlistDetails;
+  const { tracks = [], ...playlistInfo } = playlistDetails;
 
   useEffect(() => {
-    setPlaylistTracks(tracks);
-    setNextUrl(playlistInfo.next);
-  }, []);
+    if (tracks.length > 0 && playlistInfo) {
+      setPlaylistTracks(tracks);
+      setNextUrl(playlistInfo?.next);
+    }
+  }, [playlistInfo, tracks]);
+
+  if (error || !playlistDetails) return <Page404 />;
 
   const pageTitle: string = `Listen to Playlist: ${playlistInfo.title} by ${playlistInfo.owner}`;
   const description: string = `Listen to the Playlist "${playlistInfo.title}" by ${playlistInfo.owner}`;
@@ -77,14 +79,12 @@ const PlaylistPage: NextPage<PlaylistPageProps> = (props: PlaylistPageProps) => 
       <InfoCard info={playlistInfo} />
       <Spacer h="20px" mh="20px" />
 
-      {playlistTracks.map((track) => {
-        const trackDisplayProps = {
-          key: track.id,
-          track,
-        }
-
-        return <TrackDisplay {...trackDisplayProps} />;
-      })}
+      {playlistTracks.map((track) => (
+        <TrackDisplay
+          key={track.id}
+          track={track}
+        />
+      ))}
 
       {nextUrl ? (<LoadMoreButton
         fetchMore={fetchMoreTracks}
@@ -108,10 +108,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   } catch (error) {
     const errorMessage = error.message || `There was an error fetching track with ID: ${playlistId}`
-    return { props: { error: errorMessage } }
+    return {
+      props: {
+        error: errorMessage,
+        playlistDetails: {},
+        playlistId
+      }
+    }
   }
 
-  return { props: { error: 'Track ID isn\'t included in URL params' } }
+  return {
+    props: {
+      error: 'Track ID isn\'t included in URL params',
+      playlistDetails: {},
+      playlistId
+    }
+  }
 };
 
 export default PlaylistPage;

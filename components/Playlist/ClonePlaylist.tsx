@@ -23,7 +23,7 @@ const ClonePlaylist: React.FC<ClonePlaylistProps> = (props: ClonePlaylistProps) 
   useEffect(() => {
     const userPlatform = cookie.get(ANNIE_USER_PLATFORM_TOKEN);
     const userToken = cookie.get(ANNIE_USER_TOKEN_KEY);
-  }, []); // do some funny meandering here to check token and see if valid
+  }, [cookie]); // do some funny meandering here to check token and see if valid
   // TODO: check for token stuff on first load.
 
   const { playlistId } = props;

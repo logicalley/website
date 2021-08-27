@@ -18,6 +18,7 @@ const Description: React.FC = () => (
       <source srcSet="
           /images/share-illustration.webp 1x,
           /images/share-illustration.webp2x" type="image/webp" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600212881/landing-page-assets/share-illustration_fdq5ys.jpg"
         alt="How to share songs on Annie"
