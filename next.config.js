@@ -22,5 +22,8 @@ module.exports = {
     BASE_URL: process.env.ANNIE_CLIENT_BASE_URL,
     API_BASE_URL: process.env.ANNIE_API_BASE_URL
   },
-  poweredByHeader: false
+  poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true
+  }
 };
