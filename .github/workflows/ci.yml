@@ -1,14 +1,37 @@
-name: Annie Web Staging CI
+name: Annie Web CI
 
 on:
   push:
     branches: [ master ]
 
 jobs:
+  runTests:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_ENV: 'test'
+      ANNIE_API_BASE_URL: 'localhost:5000/api'
+      ANNIE_CLIENT_BASE_URL: 'localhost:3000'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run test for Annie Web
+        run: yarn test
   deployToStaging:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
+
+    needs: runTests
 
     steps:
       - uses: actions/checkout@v2

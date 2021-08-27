@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
   });
 
   return (
-    <footer className={styles.footerContainer}>
+    <footer className={styles.footerContainer} data-testid="annie-main-footer">
       <div className={styles.footerTopBorder} />
       <AnnieLogo height="47px" width="56px" />
 
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         </section>
 
         <section className={styles.socialLinks}>
-          <a href={twitterLink} target="_blank" rel="noopener">
+          <a href={twitterLink} target="_blank" rel="noopener noreferrer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21"
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
             </svg>
           </a>
 
-          <a href={instagramLink} target="_blank" rel="noopener">
+          <a href={instagramLink} target="_blank" rel="noopener noreferrer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

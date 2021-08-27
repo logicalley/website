@@ -12,7 +12,13 @@ const CookieForm: React.FC = () => {
   const cookie = useCookie();
 
   const handleSubmit = (): void => {
-    cookie.set(ANNIE_USER_COOKIE_ACCEPT, 1);
+    cookie.set(ANNIE_USER_COOKIE_ACCEPT, 1, {
+      domain: window.location.host,
+      httpOnly: true,
+      maxAge: 10400000, // four months time
+      secure: true,
+      sameSite: 'lax'
+    });
     setShowCookieForm(false);
   };
 
