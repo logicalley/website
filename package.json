@@ -47,7 +47,8 @@
     "start": "next start",
     "ts": "tsc",
     "test": "jest",
-    "lint": "next lint"
+    "lint": "next lint",
+    "purge": "rm -rf {.next,yarn.lock,node_modules}"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.15.0",
