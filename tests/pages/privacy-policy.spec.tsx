@@ -8,14 +8,19 @@ import { renderWithReactRouter } from '../../jest.helper';
 const PAGE_URL = '/privacy-policy';
 
 describe('Page: PrivacyPolicyPage', (): void => {
-  test('renders an header', (): void => {
+  test('renders Annie\'s main header', (): void => {
     renderWithReactRouter(PrivacyPolicyPage, {
       pathname: PAGE_URL
     });
 
-    const h = screen.queryByTestId('annie-main-header')
-    console.log(h);
-
     expect(screen.queryByTestId('annie-main-header')).toBeInTheDocument();
+  });
+
+  test('renders Annie\'s main footer', (): void => {
+    renderWithReactRouter(PrivacyPolicyPage, {
+      pathname: PAGE_URL
+    });
+
+    expect(screen.queryByTestId('annie-main-footer')).toBeInTheDocument();
   });
 });
