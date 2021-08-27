@@ -15,6 +15,7 @@ const HowToUse: React.FC = () => {
           <source srcSet="
             /images/phone-mockup.webp 1x,
             /images/phone-mockup.webp 2x" type="image/webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={phoneMockup}
             alt="Annie mockup on iPhone"

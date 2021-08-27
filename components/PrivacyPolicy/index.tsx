@@ -58,7 +58,7 @@ const PrivacyPolicy: React.FC = () => {
 
       <h3>Warranty and Limitation of Liability</h3>
       <p className={styles.warrantyLimitationText}>
-        The APPLICATION DEVELOPER PROVIDES THE SOFTWARE AND THE SERVICES "AS IS" WITHOUT
+        The APPLICATION DEVELOPER PROVIDES THE SOFTWARE AND THE SERVICES &quot;AS IS&quot; WITHOUT
         WARRANTY OF ANY KIND EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING BUT NOT LIMITED TO THE
         IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. ALL RISK OF
         QUALITY AND PERFORMANCE OF THE SOFTWARE OR SERVICES REMAINS WITH YOU.
@@ -77,7 +77,7 @@ const PrivacyPolicy: React.FC = () => {
 
       <p className={styles.warrantyLimitationText}>
         BECAUSE SOME STATES OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR THE LIMITATION OF LIABILITY FOR CONSEQUENTIAL
-        OR INCIDENTAL DAMAGES, IN SUCH STATES OR JURISDICTIONS, THE APPLICATION DEVELOPER'S LIABILITY
+        OR INCIDENTAL DAMAGES, IN SUCH STATES OR JURISDICTIONS, THE APPLICATION DEVELOPER&apos;S LIABILITY
         SHALL BE LIMITED TO THE EXTENT PERMITTED BY LAW.
       </p>
 
@@ -86,6 +86,8 @@ const PrivacyPolicy: React.FC = () => {
         privacy and personal information. If you have any questions about how we handle user data and
         personal information, feel free to contact us.
       </p>
+      <br />
+      <br />
     </section>
   )
 }

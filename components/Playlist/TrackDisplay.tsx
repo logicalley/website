@@ -24,6 +24,7 @@ const TrackDisplay: React.FC<TrackDisplayProps> = (
 
   return (
     <section className={styles.playlistTrackContainer} ref={sectionRef}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={image_url}
         alt={imageAlt}

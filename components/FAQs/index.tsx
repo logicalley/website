@@ -31,14 +31,14 @@ const FAQs: React.FC = () => {
         <h3 className={styles.unasweredQuestionsHeader}>
           Still got unanswered questions?
         </h3>
-        <span>Get in touch directly if you can't find answers to your questions above.</span>
+        <span>Get in touch directly if you can&apos;t find answers to your questions above.</span>
 
         <section className={styles.faqContactLinkGroup}>
-          <a href={twitterLink} target="_blank" className={styles.faqContactLink}>
+          <a href={twitterLink} target="_blank" className={styles.faqContactLink} rel="noreferrer">
             Twitter Support
           </a>
 
-          <a href={emailLink} target="_blank" className={styles.faqContactLink}>
+          <a href={emailLink} target="_blank" className={styles.faqContactLink} rel="noreferrer">
             Email Support
           </a>
         </section>

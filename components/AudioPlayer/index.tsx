@@ -122,7 +122,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
       const { duration } = audioPlayerRef.current;
       setAudioDuration(duration || 29);
     }
-  }, []);
+  }, [previewUrl]);
 
   return (
     <section className={styles.audioPlayerContainer}>

@@ -107,7 +107,7 @@ const Contact: React.FC = () => {
           <p>Your response has been successfully submitted.</p>
           <span role="img" aria-label="Celebrate">🎉🎉</span>
 
-          <p>If you provided an email address, we'll email you as soon as we resolve your query.</p>
+          <p>If you provided an email address, we&apos;ll email you as soon as we resolve your query.</p>
         </Fragment>
       );
     }

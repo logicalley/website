@@ -26,7 +26,7 @@ const CookieForm: React.FC = () => {
     const cookieValue = cookie.get(ANNIE_USER_COOKIE_ACCEPT);
     const isCookieAccepted = cookieValue == 1;
     setShowCookieForm(!isCookieAccepted)
-  }, []);
+  }, [cookie]);
 
   return showCookieForm ? (
     <section className={styles.cookieContainer}>

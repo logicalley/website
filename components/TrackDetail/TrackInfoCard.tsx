@@ -16,6 +16,7 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
 
       <section className={styles.trackInfoGroup}>
         <section className={styles.trackInfo}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={imageUrl} className={styles.trackImage} alt={imageAlt} />
 
           <section className={styles.trackDetails}>

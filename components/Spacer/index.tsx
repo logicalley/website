@@ -15,12 +15,12 @@ const Spacer: React.FC<SpacerProps> = ({ h, mh }: SpacerProps) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     }
-  }, []);
+  }, [h, mh]);
 
   useEffect(() => {
     const heightToUse = window.innerWidth < 768 ? mh : h;
     setHeight(heightToUse);
-  }, []);
+  }, [h, mh]);
 
   return <div style={{height, width: '100%'}}/>;
 }
