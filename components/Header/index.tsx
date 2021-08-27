@@ -9,11 +9,12 @@ import styles from './styles.module.css';
 
 
 const Header: React.FC = () => {
-  const route: NextRouter = useRouter();
-  const isHomePage = route.pathname === '/';
+  const router: NextRouter = useRouter();
+
+  const isHomePage = router.pathname === '/';
 
   return (
-    <header className={styles.headerContainer}>
+    <header className={styles.headerContainer} data-testid="annie-main-header">
       <section className={styles.logo}>
         {isHomePage ? null : <AnnieLogo />}
       </section>
