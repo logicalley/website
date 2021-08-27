@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  runTests:
+  lint:
     runs-on: ubuntu-latest
 
     env:
@@ -24,14 +24,56 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: annie-ci-cache
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-annie-
+
+      - name: Run Linter for Annie-Web
+        run: yarn lint
+
+  test:
+    runs-on: ubuntu-latest
+
+    needs: lint
+
+    env:
+      NODE_ENV: 'test'
+      ANNIE_API_BASE_URL: 'localhost:5000/api'
+      ANNIE_CLIENT_BASE_URL: 'localhost:3000'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+
+      - uses: actions/cache@v2
+        id: annie-ci-cache
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-annie-
+
       - name: Run test for Annie Web
         run: yarn test
+
   deployToStaging:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
-    needs: runTests
+    needs: test
 
     steps:
       - uses: actions/checkout@v2
