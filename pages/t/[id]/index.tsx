@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, GetServerSideProps, NextPageContext, GetServerSidePropsContext } from 'next';
 import getConfig from 'next/config';
 
 import type { TrackPageProps } from '../../..';
@@ -61,14 +61,14 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
   let trackId;
 
   try {
     if (context.params && context.params.id) {
       const { id: trackId } = context.params;
       let trackDetails = null;
-      const trackApiEndpoint: string = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}`;
+      const trackApiEndpoint = `${publicRuntimeConfig.apiBaseUrl}/track/${trackId}`;
       const res = await fetch(trackApiEndpoint);
       const { data } = await res.json();
 

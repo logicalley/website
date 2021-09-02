@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import cn from 'classnames';
+import getConfig from 'next/config';
 
 import styles from './styles.module.css';
-import { SupportedPlatformsForLogin } from '../../utils/platforms';
+import { SupportedPlatformsForLogin, getPlatformLabelForLogin } from '../../utils/platforms';
 import type {
   LoginPlatform,
   RadioGroupRenderProps
@@ -11,13 +12,37 @@ import type {
 import CheckIcon from '../icons/CheckIcon';
 
 
+const { publicRuntimeConfig } = getConfig();
+
 const SelectPlatform: React.FC = () => {
+  const { apiBaseUrl } = publicRuntimeConfig;
+
   const [userPlatform, setUserPlatform] = useState<LoginPlatform | null>(null);
 
   const isUserPlatformSelected = userPlatform !== null;
 
+  const handlePlatformSelect = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+
+    if (userPlatform) {
+      const platformLabel = getPlatformLabelForLogin(userPlatform.name);
+      const currentUrl = window.location.href;
+
+      const apiEndpoint = new URL(`${apiBaseUrl}/auth/example`);
+      apiEndpoint.searchParams.append('provider', platformLabel);
+      apiEndpoint.searchParams.append('type', 'web');
+      apiEndpoint.searchParams.append('next', currentUrl);
+
+      const redirectUrl = apiEndpoint.toString();
+      window.location.href = redirectUrl;
+      return;
+    }
+
+    console.error('Invalid platform selection. You have to select a platfrom before proceeding.');
+  };
+
   return (
-    <section className={styles.selectPlatformContainer}>
+    <form className={styles.selectPlatformContainer} onSubmit={handlePlatformSelect}>
       <section className={styles.platformsSelectContainer}>
         <RadioGroup.Description>Select a platform to clone the playlist.</RadioGroup.Description>
         <RadioGroup value={userPlatform} onChange={setUserPlatform}>
@@ -48,8 +73,14 @@ const SelectPlatform: React.FC = () => {
         </RadioGroup>
       </section>
 
-      <button className={styles.loginBtn} disabled={!isUserPlatformSelected}>LOGIN</button>
-    </section>
+      <button
+        className={styles.loginBtn}
+        disabled={!isUserPlatformSelected}
+        type="submit"
+      >
+        LOGIN
+      </button>
+    </form>
   );
 }
 

@@ -3,7 +3,7 @@ import {
   DEEZER_TYPE,
   APPLE_MUSIC_TYPE
 } from './constants';
-import type { LoginPlatform } from '..';
+import type { LoginPlatform, PlatformOptions } from '..';
 
 
 export const SupportedPlatformsForLogin: LoginPlatform[] = [
@@ -23,3 +23,16 @@ export const SupportedPlatformsForLogin: LoginPlatform[] = [
   //   borderColor: '#FFE9F4'
   // }
 ];
+
+export const getPlatformLabelForLogin = (platformName: PlatformOptions): string => {
+  switch(platformName) {
+    case SPOTIFY_TYPE:
+      return 'spotify';
+    case DEEZER_TYPE:
+      return 'deezer';
+    case APPLE_MUSIC_TYPE:
+      return 'apple_music';
+    default:
+      return '';
+  }
+}

@@ -1,0 +1,31 @@
+.container {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.backBtn {
+  background: var(--primary);
+  border: none;
+  border-radius: var(--borderRadius);
+  color: var(--white);
+  padding: 0.7rem 2rem;
+}
+
+.errorText {
+  color: red;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.skullIcon {
+  font-size: 4.5rem;
+  margin: 0;
+}
+
+.redirectText {
+  text-align: center;
+}

@@ -261,3 +261,15 @@ export interface ModalProps {
   title: string;
   description?: string;
 }
+
+export interface AuthExampleProps {
+  error?: string;
+  url: string;
+  type: string;
+  provider: string;
+  nextUrl: string;
+}
+
+export interface AuthExampleServerSideProps {
+  props: AuthExampleProps;
+}

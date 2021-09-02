@@ -14,10 +14,9 @@ module.exports = {
   publicRuntimeConfig: {
     isDev,
     apiBaseUrl: process.env.ANNIE_API_BASE_URL,
+    NONCE: COMMIT_REF,
   },
   env: {
-    COMMIT_REF,
-    NONCE: COMMIT_REF,
     ENV: process.env.NODE_ENV || 'development',
     BASE_URL: process.env.ANNIE_CLIENT_BASE_URL,
     API_BASE_URL: process.env.ANNIE_API_BASE_URL
