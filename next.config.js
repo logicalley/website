@@ -15,6 +15,7 @@ module.exports = {
     isDev,
     apiBaseUrl: process.env.ANNIE_API_BASE_URL,
     NONCE: COMMIT_REF,
+    ENV: process.env.NODE_ENV || 'development',
   },
   env: {
     ENV: process.env.NODE_ENV || 'development',
