@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import next, { NextPage, GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { NextPage, GetServerSideProps, GetServerSidePropsContext } from 'next';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 import { useTitle, useLocalStorage } from 'react-use';
@@ -82,32 +82,38 @@ export const getServerSideProps: GetServerSideProps = async (
   let lowerCasedType = '';
   let nextUrl = '';
 
-  if (context.params && context.params.provider) {
-    const { provider } = context.params;
-    const { type = 'mobile', next } = context.query;
+  try {
+    if (context.params && context.params.provider) {
+      const { provider } = context.params;
+      const { type = 'mobile', next } = context.query;
 
-    lowerCasedProvider = (provider as string).toLowerCase();
-    lowerCasedType = (type as string).toLowerCase();
-    nextUrl = (next as string).toLowerCase();
+      lowerCasedProvider = (provider as string).toLowerCase();
+      lowerCasedType = (type as string).toLowerCase();
+      nextUrl = (next as string).toLowerCase();
 
-    if (isValidProvider(lowerCasedProvider)) {
-      const authExampleEndpoint = `${publicRuntimeConfig.apiBaseUrl}/auth/example?provider=${lowerCasedProvider}`;
+      if (isValidProvider(lowerCasedProvider)) {
+        const authExampleEndpoint = `${publicRuntimeConfig.apiBaseUrl}/auth/example?provider=${lowerCasedProvider}`;
 
-      const response = await fetch(authExampleEndpoint);
+        const response = await fetch(authExampleEndpoint);
 
-      if (response.ok) {
-        const { data } = await response.json();
+        if (response.ok) {
+          const { data } = await response.json();
 
-        return {
-          props: {
-            url: data.url,
-            type: lowerCasedType,
-            provider: lowerCasedProvider,
-            nextUrl
-          }
+          return {
+            props: {
+              url: data.url,
+              type: lowerCasedType,
+              provider: lowerCasedProvider,
+              nextUrl
+            }
+          };
         }
       }
     }
+  } catch (error) {
+    // need to figure out something to do with the error
+    // TODO: log this to sentry
+    console.warn(error);
   }
 
   return {
@@ -118,7 +124,7 @@ export const getServerSideProps: GetServerSideProps = async (
       nextUrl,
       error: 'The provider is not valid. Please enter a provider supported by Annie.'
     }
-  }
+  };
 };
 
 export default AuthExampleWithProvider;
