@@ -3,12 +3,6 @@ import { MenuId } from 'react-contexify';
 
 import {
   ContextMenuChildName,
-  APPLE_MUSIC_TYPE,
-  SPOTIFY_TYPE,
-  DEEZER_TYPE
-} from './utils/constants';
-
-import {
   ContactFormReducerEnum,
   ANNIE_TYPE,
   SPOTIFY_TYPE,
@@ -260,4 +254,35 @@ export interface ModalProps {
   isOpen: boolean;
   title: string;
   description?: string;
+}
+
+export interface AuthExampleProps {
+  error?: string;
+  url: string;
+  type: string;
+  provider: string;
+  nextUrl: string;
+}
+
+export interface AuthExampleServerSideProps {
+  props: AuthExampleProps;
+}
+
+export interface AuthRedirectProps {
+  error: string | null;
+  url: string | null;
+}
+
+export interface AuthRedirectServerSideProps {
+  props: AuthRedirectProps;
+}
+
+export interface AuthVerifyProps {
+  error: string | null;
+  code: string | null;
+  provider: string | null;
+}
+
+export interface AuthVerifyServerSideProps {
+  props: AuthVerifyProps;
 }
