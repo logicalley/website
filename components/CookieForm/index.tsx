@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCookie } from 'next-cookie';
+import { parseCookies, setCookie } from 'nookies'
 
 import styles from './styles.module.css';
 
-import { ANNIE_USER_COOKIE_ACCEPT } from '../../utils/constants';
+import { ANNIE_USER_COOKIE_ACCEPT, ANNIE_USER_COOKIE_STATUS } from '../../utils/constants';
 
 const CookieForm: React.FC = () => {
   const [showCookieForm, setShowCookieForm] = useState<boolean>(false);
-  const cookie = useCookie();
 
   const handleSubmit = (): void => {
-    cookie.set(ANNIE_USER_COOKIE_ACCEPT, 1, {
-      domain: window.location.host,
-      httpOnly: true,
+    const s = setCookie(null, ANNIE_USER_COOKIE_ACCEPT, ANNIE_USER_COOKIE_STATUS.ACCEPTED, {
+      domain: window.location.hostname,
       maxAge: 10400000, // four months time
       secure: true,
-      sameSite: 'lax'
+      sameSite: 'lax',
+      path: '/'
     });
+    console.log({ s })
     setShowCookieForm(false);
   };
 
   useEffect(() => {
-    const cookieValue = cookie.get(ANNIE_USER_COOKIE_ACCEPT);
-    const isCookieAccepted = cookieValue == 1;
-    setShowCookieForm(!isCookieAccepted)
-  }, [cookie]);
+    const cookies = parseCookies();
+    const privacyCookieValue = cookies[ANNIE_USER_COOKIE_ACCEPT];
+    setShowCookieForm(privacyCookieValue !== ANNIE_USER_COOKIE_STATUS.ACCEPTED);
+  }, []);
 
   return showCookieForm ? (
     <section className={styles.cookieContainer}>
