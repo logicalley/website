@@ -45,6 +45,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "./scripts/generate_sentry_conf.sh",
     "build": "next build",
     "start": "next start",
     "ts": "tsc",
