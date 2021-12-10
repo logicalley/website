@@ -33,7 +33,6 @@ const HomePage: React.FC = () => {
       </section>
 
       <Spacer h="54px" mh="64px" />
-      {/* <Parallax /> */}
       <picture className={styles.songLinkContainer}>
         <source srcSet="
           /images/song-board.webp 1x,
