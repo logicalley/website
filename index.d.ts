@@ -89,6 +89,8 @@ export interface SEOProps {
   description?: string;
   url: string;
   imageUrl?: string;
+  resourceId?: number;
+  previewUrl?: string;
 }
 
 interface TrackInfoProps {

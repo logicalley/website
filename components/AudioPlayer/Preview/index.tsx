@@ -17,8 +17,6 @@ const AudioPlayerPreview: React.FC<TrackAudioPreviewProps> = (props: TrackAudioP
     autoPlay: false,
   });
 
-  console.log({ state })
-
   const playOrPauseFn = state.playing ? controls.pause : controls.play;
 
   return (

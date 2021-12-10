@@ -37,6 +37,8 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
         url={trackUrl}
         imageUrl={image_url}
         keywords={keywords}
+        resourceId={trackDetails.id}
+        previewUrl={trackDetails.preview_url}
       />
       <ContentHeader />
       <Spacer h="40px" mh="50px" />

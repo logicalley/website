@@ -2,8 +2,7 @@
   background: linear-gradient(217deg, #e5f3e6, rgba(255,0,0,0) 70.71%),
             linear-gradient(127deg, #f3f5fa, rgba(0,255,0,0) 70.71%),
             linear-gradient(336deg, #dceef8, rgba(0,0,255,0) 70.71%);
-  width: 500px;
-  max-width: 600px;
+  width: 435px;
   height: 500px;
   padding: 1.5rem;
   position: absolute;

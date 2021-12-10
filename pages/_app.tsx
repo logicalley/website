@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { prepareClientPortals } from '@jesstelford/react-portal-universal';
 import { useRouter } from 'next/router';
 import { Toaster } from 'react-hot-toast';
+import getConfig from 'next/config';
 
 import type { AppProps } from 'next/app';
 
@@ -17,13 +18,15 @@ if (typeof window !== 'undefined') {
   prepareClientPortals();
 }
 
+const { publicRuntimeConfig } = getConfig();
+
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   const toastPosition = 'top-center';
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== 'development') {
+    if (!publicRuntimeConfig.isDev) {
       const handleRouteChange = (url: URL) => registerPageView(url);
 
       router.events.on('routeChangeComplete', handleRouteChange);
