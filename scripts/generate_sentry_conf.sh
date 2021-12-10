@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "[auth]\ntoken=$NODE_ENV" >> .sentryclirc
+echo "[auth]\ntoken=$SENTRY_TOKEN" >> .sentryclirc
