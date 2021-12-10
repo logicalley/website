@@ -10,7 +10,6 @@ import Description from '../Description';
 import HowToUse from '../HowToUse';
 import AnnieLinkArt from '../AnnieLinkArt';
 import GetGrooving from '../GetGrooving';
-import Parallax from '../Parallax';
 
 const HomePage: React.FC = () => {
   const songBoardImageFallback: string = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1600213041/landing-page-assets/song-board_ihkqtb.jpg';

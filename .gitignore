@@ -4,3 +4,5 @@ node_modules
 .next
 out_*
 *.log
+# Sentry
+.sentryclirc
