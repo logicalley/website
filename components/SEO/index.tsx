@@ -1,11 +1,8 @@
 import React, { memo, Fragment } from 'react';
 import Head from 'next/head';
-import getConfig from 'next/config';
 
 import type { SEOProps } from '../..';
 
-
-const { publicRuntimeConfig } = getConfig();
 
 const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   const {
@@ -59,7 +56,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:preview_url:url" content={previewUrl} />
           <meta property="music:preview_url:secure_url" content={previewUrl} />
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
-          <meta property="twitter:player" content={`${publicRuntimeConfig.baseUrl}/t/${resourceId}/embed`} />
+          <meta property="twitter:player" content={`${window.location.origin}/t/${resourceId}/embed`} />
           <meta property="twitter:player:width" content="435" />
           <meta property="twitter:player:height" content="500" />
         </Fragment>
