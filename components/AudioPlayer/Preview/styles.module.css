@@ -1,0 +1,63 @@
+.previewContainer {
+  background: linear-gradient(217deg, #e5f3e6, rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, #f3f5fa, rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, #dceef8, rgba(0,0,255,0) 70.71%);
+  width: 500px;
+  max-width: 600px;
+  height: 500px;
+  padding: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.trackDetails {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+}
+
+.trackTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.trackArtiste {
+  font-size: .9rem;
+  display: block;
+  margin-top: 0.5rem;
+  color: #b7bbc4;
+}
+
+.actionBtn {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 3.5rem;
+  border-color: transparent transparent transparent #202020;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+}
+
+.actionBtn.paused {
+  border-style: double;
+  border-width: 0px 0 0px 60px;
+}
+
+.actionBtn:hover {
+  border-color: transparent transparent transparent #404040;
+}
+
+
+.previewImage {
+  border-radius: var(--borderRadius);
+}

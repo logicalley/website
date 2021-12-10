@@ -1,4 +1,10 @@
-import React, { useRef, useState, SyntheticEvent, useEffect, memo } from 'react';
+import React, {
+  useRef,
+  useState,
+  SyntheticEvent,
+  useEffect,
+  memo
+} from 'react';
 
 import styles from './styles.module.css';
 

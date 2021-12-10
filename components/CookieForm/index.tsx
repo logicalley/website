@@ -5,7 +5,10 @@ import { parseCookies, setCookie } from 'nookies'
 
 import styles from './styles.module.css';
 
-import { ANNIE_USER_COOKIE_ACCEPT, ANNIE_USER_COOKIE_STATUS } from '../../utils/constants';
+import {
+  ANNIE_USER_COOKIE_ACCEPT,
+  ANNIE_USER_COOKIE_STATUS
+} from '../../utils/constants';
 
 const CookieForm: React.FC = () => {
   const [showCookieForm, setShowCookieForm] = useState<boolean>(false);
@@ -18,7 +21,6 @@ const CookieForm: React.FC = () => {
       sameSite: 'lax',
       path: '/'
     });
-    console.log({ s })
     setShowCookieForm(false);
   };
 
