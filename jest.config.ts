@@ -1,12 +1,12 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 
-module.exports = {
+const config = {
   preset: 'ts-jest/presets/js-with-babel',
   testEnvironment: 'jsdom',
   testRegex: "spec\\.tsx?$",
   setupFilesAfterEnv: [
     "@testing-library/jest-dom/extend-expect",
-    "<rootDir>/jest.setup.js"
+    "<rootDir>/jest.setup.ts"
   ],
   testPathIgnorePatterns: [
     "<rootDir>/.next/",
@@ -23,3 +23,5 @@ module.exports = {
     "^.+\\.(css|less|scss|svg)$": "babel-jest"
   }
 };
+
+export default config;

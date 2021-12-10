@@ -18,6 +18,7 @@ if (typeof window !== 'undefined') {
   prepareClientPortals();
 }
 
+console.log(getConfig, '<====');
 const { publicRuntimeConfig } = getConfig();
 
 const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
