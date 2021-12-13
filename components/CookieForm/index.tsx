@@ -32,7 +32,7 @@ const CookieForm: React.FC = () => {
     const privacyCookieValue = cookies[ANNIE_USER_COOKIE_ACCEPT];
     const shouldntShowCookie = (
       (privacyCookieValue === ANNIE_USER_COOKIE_STATUS.ACCEPTED)
-      &&
+      ||
       (NON_COOKIE_PERMISSION_ROUTES.includes(router.pathname))
     );
     setShowCookieForm(!shouldntShowCookie);
