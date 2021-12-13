@@ -59,4 +59,7 @@
 
 .previewImage {
   border-radius: var(--borderRadius);
+  object-fit: contain;
+  width: 250px;
+  height: 250px;
 }

@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { useAudio } from 'react-use';
-import Image from 'next/image';
 import classNames from 'classnames';
 
 import styles from './styles.module.css';
@@ -21,15 +20,10 @@ const AudioPlayerPreview: React.FC<TrackAudioPreviewProps> = (props: TrackAudioP
 
   return (
     <section className={styles.previewContainer}>
-      <Image
+      <img
         className={styles.previewImage}
-        layout="fixed"
-        objectFit="contain"
-        width={250}
-        height={250}
         src={track.image_url}
         alt={`Cover art for ${track.title}'s ${track.artiste}`}
-        quality={100}
       />
       <section className={styles.trackDetails}>
         <span className={styles.trackTitle}>{track.title}</span>
