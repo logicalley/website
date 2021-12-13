@@ -4,6 +4,8 @@ import getConfig from 'next/config';
 
 import type { SEOProps } from '../..';
 
+import { ANNIE_APPLE_STORE_ID, ANNIE_APPLE_STORE_URL } from '../../utils/constants';
+
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -46,10 +48,21 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
       <meta name="twitter:url" content={url} />
       <meta name="twitter:label1" content={pageTitle} />
       <meta name="twitter:data1" content={description} />
-      <meta property="twitter:app:name:iphone" content="Annie Music" />
 
       <meta property="al:ios:app_name" content="Annie Music" />
-      <meta property="al:ios:app_store_id" content="1536561102" />
+      <meta property="al:ios:app_store_id" content={ANNIE_APPLE_STORE_ID} />
+
+      <meta property="twitter:app:name:iphone" content="Annie Music" />
+      <meta property="twitter:app:id:iphone" content={ANNIE_APPLE_STORE_ID} />
+      <meta property="twitter:app:url:iphone" content={ANNIE_APPLE_STORE_URL} />
+
+      <meta property="twitter:app:name:ipad" content="Annie Music" />
+      <meta property="twitter:app:id:ipad" content={ANNIE_APPLE_STORE_ID} />
+      <meta property="twitter:app:url:ipad" content={ANNIE_APPLE_STORE_URL} />
+
+      {/* <meta property="twitter:app:name:googleplay" content="Annie Music" /> */}
+      {/* <meta property="twitter:app:id:googleplay" content={ANNIE_APPLE_STORE_ID} /> */}
+      {/* <meta property="twitter:app:url:googleplay" content={ANNIE_APPLE_STORE_URL} /> */}
 
       {(activateAudioSEO) ? (
         <Fragment>
@@ -60,8 +73,9 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:preview_url:secure_url" content={previewUrl} />
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
           <meta property="twitter:player" content={`${publicRuntimeConfig.baseUrl}/t/${resourceId}/embed`} />
-          <meta property="twitter:player:width" content="435" />
-          <meta property="twitter:player:height" content="500" />
+          <meta property="twitter:player:stream" content={previewUrl} />
+          <meta property="twitter:player:width" content="600" />
+          <meta property="twitter:player:height" content="600" />
         </Fragment>
       ) : null}
     </Head>

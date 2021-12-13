@@ -73,3 +73,10 @@ export enum ANNIE_USER_COOKIE_STATUS {
   ACCEPTED = 'ACCEPTED',
   REJECTED = 'REJECTED'
 }
+
+export const NON_COOKIE_PERMISSION_ROUTES = [
+  '/t/[id]/embed'
+];
+
+export const ANNIE_APPLE_STORE_ID = '1536561102';
+export const ANNIE_APPLE_STORE_URL = 'https://apps.apple.com/ng/app/annie-music/id1536561102';

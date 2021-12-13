@@ -17,6 +17,7 @@ const AudioPlayerPreview: React.FC<TrackAudioPreviewProps> = (props: TrackAudioP
   });
 
   const playOrPauseFn = state.playing ? controls.pause : controls.play;
+  const trackUrl = track.platforms[0].url;
 
   return (
     <section className={styles.previewContainer}>
@@ -35,6 +36,7 @@ const AudioPlayerPreview: React.FC<TrackAudioPreviewProps> = (props: TrackAudioP
         [styles.paused]: state.playing
       })} onClick={playOrPauseFn}>
       </button>
+      <a href={trackUrl} className={styles.seeMore}>See More ...</a>
     </section>
   );
 };

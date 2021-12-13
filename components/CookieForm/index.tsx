@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { parseCookies, setCookie } from 'nookies'
+import { parseCookies, setCookie } from 'nookies';
+import { useRouter } from 'next/router';
 
 import styles from './styles.module.css';
 
 import {
   ANNIE_USER_COOKIE_ACCEPT,
-  ANNIE_USER_COOKIE_STATUS
+  ANNIE_USER_COOKIE_STATUS,
+  NON_COOKIE_PERMISSION_ROUTES
 } from '../../utils/constants';
 
 const CookieForm: React.FC = () => {
   const [showCookieForm, setShowCookieForm] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleSubmit = (): void => {
     const s = setCookie(null, ANNIE_USER_COOKIE_ACCEPT, ANNIE_USER_COOKIE_STATUS.ACCEPTED, {
@@ -27,7 +30,12 @@ const CookieForm: React.FC = () => {
   useEffect(() => {
     const cookies = parseCookies();
     const privacyCookieValue = cookies[ANNIE_USER_COOKIE_ACCEPT];
-    setShowCookieForm(privacyCookieValue !== ANNIE_USER_COOKIE_STATUS.ACCEPTED);
+    const shouldntShowCookie = (
+      (privacyCookieValue === ANNIE_USER_COOKIE_STATUS.ACCEPTED)
+      &&
+      (NON_COOKIE_PERMISSION_ROUTES.includes(router.pathname))
+    );
+    setShowCookieForm(!shouldntShowCookie);
   }, []);
 
   return showCookieForm ? (
@@ -50,4 +58,4 @@ const CookieForm: React.FC = () => {
   ) : null;
 };
 
-export default CookieForm;
+export default memo(CookieForm);
