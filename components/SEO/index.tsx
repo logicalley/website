@@ -73,7 +73,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:preview_url:secure_url" content={previewUrl} />
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
           <meta property="twitter:player" content={`${publicRuntimeConfig.baseUrl}/t/${resourceId}/embed`} />
-          <meta property="twitter:player:stream" content={previewUrl} />
+          {/* <meta property="twitter:player:stream" content={previewUrl} /> */}
           <meta property="twitter:player:width" content="600" />
           <meta property="twitter:player:height" content="600" />
         </Fragment>
