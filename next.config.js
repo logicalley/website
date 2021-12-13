@@ -26,9 +26,6 @@ const moduleExports = {
   poweredByHeader: false,
   eslint: {
     ignoreDuringBuilds: true
-  },
-  images: {
-    domains: ['i.scdn.co']
   }
 };
 

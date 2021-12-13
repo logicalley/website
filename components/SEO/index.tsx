@@ -18,6 +18,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
 
   const activateAudioSEO = previewUrl && resourceId;
   const twitterCardContent = activateAudioSEO ? 'player' : 'summary';
+  const tempBaseUrl = 'https://61b2da4adb858c0007020e23--annie-web-prod.netlify.app';
 
   return (
     <Head>
@@ -56,7 +57,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:preview_url:url" content={previewUrl} />
           <meta property="music:preview_url:secure_url" content={previewUrl} />
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
-          <meta property="twitter:player" content={`${window.location.origin}/t/${resourceId}/embed`} />
+          <meta property="twitter:player" content={`${tempBaseUrl}/t/${resourceId}/embed`} />
           <meta property="twitter:player:width" content="435" />
           <meta property="twitter:player:height" content="500" />
         </Fragment>
