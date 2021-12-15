@@ -22,7 +22,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   const pageTitle = title || 'Annie';
 
   const activateAudioSEO = previewUrl && resourceId;
-  //const twitterCardContent = activateAudioSEO ? 'player' : 'summary';
+  //const twitterCardContent = activateAudioSEO ? 'player' : 'summary_large_image';
   const twitterCardContent = 'summary';
 
   return (
@@ -75,8 +75,8 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
           {/* <meta property="twitter:player" content={`${publicRuntimeConfig.baseUrl}/t/${resourceId}/embed`} /> */}
           {/* <meta property="twitter:player:stream" content={previewUrl} /> */}
-          <meta property="twitter:player:width" content="600" />
-          <meta property="twitter:player:height" content="600" />
+          {/*<meta property="twitter:player:width" content="600" />
+          <meta property="twitter:player:height" content="600" /> */}
         </Fragment>
       ) : null}
     </Head>
