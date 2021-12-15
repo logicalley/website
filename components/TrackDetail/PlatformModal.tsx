@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import toast from 'react-hot-toast';
 
 import styles from './styles.module.css';
 import type { PlatformModalProps, SelectableStorefront } from '../..';
@@ -26,12 +25,8 @@ import {
 import TwitterIcon from '../icons/Twitter';
 import CopyIcon from '../icons/Copy';
 import WhatsappIcon from '../icons/Whatsapp';
-import EmailIcon from '../icons/Email';
 import FacebookIcon from '../icons/Facebook';
-import LinkedInIcon from '../icons/LinkedIn';
-import RedditIcon from '../icons/Reddit';
 import OpenIcon from '../icons/Open';
-import CloseIcon from '../icons/Close';
 
 import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
@@ -89,7 +84,7 @@ ${trackUrl}
   const twitterShareText = `Check out "${title}" by ${artiste}.%0a
 Shared via @anniemusicapp%0a%0a`;
 
-  const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}`;
+  const twitterShareLink = `https://twitter.com/intent/tweet?text=${twitterShareText}&url=${encodedUrl}&hashtags=ShareWithAnnie`;
   const facebookShareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&t=${shareText}`;
 
   const whatsappShareLink = `whatsapp://send?text=${shareText}`;
