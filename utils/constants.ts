@@ -80,3 +80,8 @@ export const NON_COOKIE_PERMISSION_ROUTES = [
 
 export const ANNIE_APPLE_STORE_ID = '1536561102';
 export const ANNIE_APPLE_STORE_URL = 'https://apps.apple.com/ng/app/annie-music/id1536561102';
+
+export enum ANALYTICS_EVENTS {
+  PAGE_VIEWED = 'page_viewed',
+  TRACK_AUDIO_PREVIEW = 'track_audio_preview'
+}

@@ -94,7 +94,7 @@ const Contact: React.FC = () => {
         dispatch({ type: ContactFormReducerEnum.ERROR, payload: errorObject.message || errorMessage });
       }
     } catch (error) {
-      dispatch({ type: ContactFormReducerEnum.ERROR, payload: error.message });
+      dispatch({ type: ContactFormReducerEnum.ERROR, payload: (error as Error).message });
     } finally {
       dispatch({ type: ContactFormReducerEnum.LOADING, payload: '' });
     }
@@ -117,7 +117,7 @@ const Contact: React.FC = () => {
     }
 
     return (
-      <form name="contact-form" onSubmit={submitForm}>
+      <form name="contact-form" onSubmit={submitForm} id="contact-form">
         <div className={styles.formGroup}>
           <label htmlFor="email">Email Address (optional)</label>
           <input

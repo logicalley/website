@@ -21,7 +21,8 @@ const moduleExports = {
     isDev,
     apiBaseUrl: process.env.ANNIE_API_BASE_URL,
     baseUrl: process.env.ANNIE_CLIENT_BASE_URL,
-    nonce: COMMIT_REF
+    nonce: COMMIT_REF,
+    mixpanelProjectToken: process.env.MIXPANEL_PROJECT_TOKEN || ''
   },
   poweredByHeader: false,
   eslint: {

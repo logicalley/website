@@ -11,6 +11,7 @@ import {
   ANNIE_USER_COOKIE_STATUS,
   NON_COOKIE_PERMISSION_ROUTES
 } from '../../utils/constants';
+import Analytics from '../../utils/analytics';
 
 const CookieForm: React.FC = () => {
   const [showCookieForm, setShowCookieForm] = useState<boolean>(false);
@@ -30,13 +31,13 @@ const CookieForm: React.FC = () => {
   useEffect(() => {
     const cookies = parseCookies();
     const privacyCookieValue = cookies[ANNIE_USER_COOKIE_ACCEPT];
-    const shouldntShowCookie = (
+    const shouldntShowCookieForm = (
       (privacyCookieValue === ANNIE_USER_COOKIE_STATUS.ACCEPTED)
       ||
       (NON_COOKIE_PERMISSION_ROUTES.includes(router.pathname))
     );
-    setShowCookieForm(!shouldntShowCookie);
-  }, []);
+    setShowCookieForm(!shouldntShowCookieForm);
+  }, [router.pathname]);
 
   return showCookieForm ? (
     <section className={styles.cookieContainer}>
