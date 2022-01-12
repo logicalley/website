@@ -4,17 +4,11 @@ import styles from './styles.module.css';
 import type { PlatformCardProps } from '../..';
 import {
   ANNIE_TYPE,
-  SPOTIFY_TYPE,
-  DEEZER_TYPE,
-  APPLE_MUSIC_TYPE,
-  GA_ACTION_SPOTIFY_CARD_CLICK,
-  GA_ACTION_APPLE_MUSIC_CARD_CLICK,
-  GA_ACTION_DEEZER_CARD_CLICK,
-  GA_CATEGORY_TRACK_ACTIONS
+  ANALYTICS_EVENTS
 } from '../../utils/constants';
-import { registerEvent } from '../../utils/googleAnalytics';
 import PlatformModal from './PlatformModal';
 import Modal from '../Modal';
+import Analytics from '../../utils/analytics';
 
 
 const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => {
@@ -25,25 +19,13 @@ const PlatformCard: React.FC<PlatformCardProps> = (props: PlatformCardProps) => 
   const closeModal = () => setIsOpen(false);
 
   const sendTrackAnalytics = (): void => {
-    const platform = props.name;
-    let action;
+    const { name: platform, title, artiste } = props;
 
-    if (platform === SPOTIFY_TYPE) {
-      action = GA_ACTION_SPOTIFY_CARD_CLICK;
-    } else if (platform === DEEZER_TYPE) {
-      action = GA_ACTION_DEEZER_CARD_CLICK;
-    } else if (platform === APPLE_MUSIC_TYPE) {
-      action = GA_ACTION_APPLE_MUSIC_CARD_CLICK;
-    } else {
-      action = 'UNDEFINED_CARD_CLICK';
-    }
-
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_ACTIONS,
-      label: `${action}: ${props.title} - ${props.artiste}`,
-      value: 1
-    });
+    Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.SHARE_MODAL_OPEN, {
+      title,
+      artiste,
+      platform: platform.toUpperCase()
+    })
   };
 
   const openCardOptions = () => {

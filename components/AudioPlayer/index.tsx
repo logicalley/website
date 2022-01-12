@@ -10,15 +10,14 @@ import styles from './styles.module.css';
 
 import type { AudioPlayerProps } from '../..';
 
-import { registerEvent } from '../../utils/googleAnalytics';
 import {
-  GA_ACTION_MUSIC_PLAYER,
-  GA_CATEGORY_TRACK_ACTIONS,
+  ANALYTICS_EVENTS,
   PlayStatus
 } from '../../utils/constants';
+import Analytics from '../../utils/analytics';
 
 
-const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }: AudioPlayerProps) => {
+const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, title, artiste }: AudioPlayerProps) => {
   const audioPlayerRef = useRef<HTMLAudioElement>(null);
   const [audioDuration, setAudioDuration] = useState<number>(0);
   const [strokeProgress, setStrokeProgress] = useState<string>("2,2000");
@@ -29,12 +28,10 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ previewUrl, analyticsLabel }:
   const radius: number = 40;
   const circumference: number = radius * 2 * Math.PI;
 
-  const sendAudioAnalytics = () => registerEvent({
-    action: GA_ACTION_MUSIC_PLAYER,
-    category: GA_CATEGORY_TRACK_ACTIONS,
-    label: `${GA_ACTION_MUSIC_PLAYER}: ${analyticsLabel}`,
-    value: 1
-  })
+  const sendAudioAnalytics = () => Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.TRACK_AUDIO_PREVIEW, {
+    title,
+    artiste
+  });
 
   const togglePlay = (): void => {
     if (audioPlayerRef.current) {

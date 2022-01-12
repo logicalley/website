@@ -2,24 +2,15 @@ import React, { useState, useEffect, Fragment } from 'react';
 
 import styles from './styles.module.css';
 import type { PlatformModalProps, SelectableStorefront } from '../..';
-import { registerEvent } from '../../utils/googleAnalytics';
 import {
-  GA_ACTION_ANNIE_LINK_COPY,
-  GA_ACTION_DEEZER_LINK_COPY,
-  GA_ACTION_APPLE_MUSIC_LINK_COPY,
-  GA_ACTION_SPOTIFY_LINK_COPY,
-  GA_CATEGORY_TRACK_ACTIONS,
+  ShareablePlatforms,
   ANNIE_TYPE,
-  SPOTIFY_TYPE,
-  DEEZER_TYPE,
   APPLE_MUSIC_TYPE,
-  GA_ACTION_OPEN_LINK_BUTTON_CLICK,
   GA_ACTION_TWITTER_LINK_SHARE,
   GA_ACTION_FACEBOOK_LINK_SHARE,
   GA_ACTION_WHATSAPP_LINK_SHARE,
-  GA_ACTION_EMAIL_LINK_SHARE,
-  GA_CATEGORY_TRACK_SHARE_ACTIONS,
   ANNIE_USER_SELECTED_STOREFRONT_KEY,
+  ANALYTICS_EVENTS,
 } from '../../utils/constants';
 
 import TwitterIcon from '../icons/Twitter';
@@ -31,6 +22,7 @@ import OpenIcon from '../icons/Open';
 import StorefrontSelector from '../StorefrontSelector';
 import Spacer from '../Spacer';
 import copyLink from '../../utils/copyLink';
+import Analytics from '../../utils/analytics';
 
 const PlatformModal: React.FC<PlatformModalProps> = (
   props: PlatformModalProps
@@ -90,51 +82,26 @@ Shared via @anniemusicapp%0a%0a`;
   const whatsappShareLink = `whatsapp://send?text=${shareText}`;
 
   const registerLinkCopy = () => {
-    let action, analyticsLabel;
-
-    if (platformName === ANNIE_TYPE) {
-      action = GA_ACTION_ANNIE_LINK_COPY;
-      analyticsLabel = `${GA_ACTION_ANNIE_LINK_COPY}: ${label}`;
-    } else if (platformName === SPOTIFY_TYPE) {
-      action = GA_ACTION_SPOTIFY_LINK_COPY;
-      analyticsLabel = `${GA_ACTION_SPOTIFY_LINK_COPY}: ${label}`;
-    } else if (platformName === DEEZER_TYPE) {
-      action = GA_ACTION_DEEZER_LINK_COPY;
-      analyticsLabel = `${GA_ACTION_DEEZER_LINK_COPY}: ${label}`;
-    } else if (platformName === APPLE_MUSIC_TYPE) {
-      action = GA_ACTION_APPLE_MUSIC_LINK_COPY;
-      analyticsLabel = `${GA_ACTION_APPLE_MUSIC_LINK_COPY}: ${label}`;
-    } else {
-      action = 'UNKNOWN_PLATFORM_LINK_CLICKED';
-      analyticsLabel = `${action}: ${label}`;
-    }
-
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_ACTIONS,
-      label: analyticsLabel,
-      value: 1,
+    Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_COPIED, {
+      title,
+      artiste,
+      platform: platformName.toUpperCase()
     });
   };
 
-  const registerShareLink = (action: string): void => {
-    const analyticsLabel = `${action}: ${label} - PLATFORM: ${platformName}`;
-
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_SHARE_ACTIONS,
-      label: analyticsLabel,
-      value: 1,
-    });
+  const registerShareLink = (platform: ShareablePlatforms): void => {
+    Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_SHARED, {
+      title,
+      artiste,
+      platform
+    })
   };
 
   const sendOpenLinkAnalytics = (): void => {
-    const action = GA_ACTION_OPEN_LINK_BUTTON_CLICK;
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_ACTIONS,
-      label: `${action}: ${title} - ${artiste}`,
-      value: 1,
+    Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_OPENED, {
+      title,
+      artiste,
+      platform: platformName.toUpperCase()
     });
   };
 
@@ -182,6 +149,39 @@ Shared via @anniemusicapp%0a%0a`;
 
   const renderShareOptions = (): JSX.Element => (
     <Fragment>
+      <a
+        href={twitterShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(ShareablePlatforms.TWITTER)}
+      >
+        <TwitterIcon />
+        <span>Twitter</span>
+      </a>
+
+      <a
+        href={facebookShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(ShareablePlatforms.FACEBOOK)}
+      >
+        <FacebookIcon />
+        <span>Facebook</span>
+      </a>
+
+      <a
+        href={whatsappShareLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.shareGroup}
+        onClick={() => registerShareLink(ShareablePlatforms.WHATSAPP)}
+      >
+        <WhatsappIcon />
+        <span>Whatsapp</span>
+      </a>
+
       {isAnnieLink ? null : (
         <a
           href={trackUrl}
@@ -207,39 +207,6 @@ Shared via @anniemusicapp%0a%0a`;
           <span>Copy Link</span>
         </button>
       ) : null}
-
-      <a
-        href={twitterShareLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.shareGroup}
-        onClick={() => registerShareLink(GA_ACTION_TWITTER_LINK_SHARE)}
-      >
-        <TwitterIcon />
-        <span>Twitter</span>
-      </a>
-
-      <a
-        href={facebookShareLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.shareGroup}
-        onClick={() => registerShareLink(GA_ACTION_FACEBOOK_LINK_SHARE)}
-      >
-        <FacebookIcon />
-        <span>Facebook</span>
-      </a>
-
-      <a
-        href={whatsappShareLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles.shareGroup}
-        onClick={() => registerShareLink(GA_ACTION_WHATSAPP_LINK_SHARE)}
-      >
-        <WhatsappIcon />
-        <span>Whatsapp</span>
-      </a>
     </Fragment>
   );
 

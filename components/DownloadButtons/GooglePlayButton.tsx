@@ -2,23 +2,19 @@ import React, { Fragment, useState, useEffect } from 'react';
 
 import styles from './styles.module.css';
 import Modal from '../Modal';
-import { registerEvent } from '../../utils/googleAnalytics';
-import {
-  GA_ACTION_PLAY_STORE_DOWNLOAD,
-  GA_CATEGORY_DOWNLOAD_BUTTONS
-} from '../../utils/constants';
+import { ANALYTICS_EVENTS, MOBILE_STORE_SOURCE } from '../../utils/constants';
+import Analytics from '../../utils/analytics';
 
 
 const GooglePlayButton: React.FC = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  // const sendAnalytics = () => Analytics.getInstance().trackLink('#googlePlayStoreLink', ANALYTICS_EVENTS.MOBILE_STORE_ACCESS, {
+  //   source: MOBILE_STORE_SOURCE.ANDROID
+  // });
+
   const popUpModal = () => {
-    registerEvent({
-      action: GA_ACTION_PLAY_STORE_DOWNLOAD,
-      category: GA_CATEGORY_DOWNLOAD_BUTTONS,
-      label: GA_ACTION_PLAY_STORE_DOWNLOAD,
-      value: 1
-    });
+    // sendAnalytics();
     setIsOpen(true);
   };
 

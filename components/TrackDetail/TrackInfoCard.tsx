@@ -34,7 +34,8 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
         {previewUrl && (
           <AudioPlayer
             previewUrl={previewUrl}
-            analyticsLabel={`${title} - ${artiste}`}
+            title={title}
+            artiste={artiste}
           />
         )}
       </section>

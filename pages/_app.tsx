@@ -8,8 +8,8 @@ import getConfig from 'next/config';
 import type { AppProps } from 'next/app';
 
 import '../assets/css/global.css';
-import { registerPageView } from '../utils/googleAnalytics';
 import CookieForm from '../components/CookieForm';
+import Analytics from '../utils/analytics';
 
 
 if (typeof window !== 'undefined') {
@@ -27,15 +27,21 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   const toastPosition = 'top-center';
 
   useEffect(() => {
-    if (!publicRuntimeConfig.isDev) {
-      const handleRouteChange = (url: URL) => registerPageView(url);
+    Analytics.getInstance().trackPage();
+  }, []);
+
+  useEffect(() => {
+      const handleRouteChange = (url: URL): void => {
+        return Analytics.getInstance().trackPage({
+          routerUrl: url.toString()
+        });
+      }
 
       router.events.on('routeChangeComplete', handleRouteChange);
 
       return () => {
         router.events.off('routeChangeComplete', handleRouteChange);
       };
-    }
   }, [router.events]);
 
   return (

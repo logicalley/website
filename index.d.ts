@@ -113,7 +113,8 @@ export interface PlatformCardProps extends TrackInfoProps, Platform {}
 
 export interface AudioPlayerProps {
   previewUrl: string;
-  analyticsLabel: string;
+  title: string;
+  artiste: string;
 }
 
 export interface Faq {

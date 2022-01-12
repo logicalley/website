@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   } catch (error) {
     const errorMessage =
-      error.message || `There was an error fetching track with ID: ${trackId}`;
+      (error as Error).message || `There was an error fetching track with ID: ${trackId}`;
     return { props: { error: errorMessage } };
   }
 

@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
 import getConfig from 'next/config';
 
-import type { PlaylistPageProps, PlaylistTrackMetaData, ActiveTrack } from '../..';
+import type { PlaylistPageProps, PlaylistTrackMetaData } from '../..';
 
 import ContentHeader from '../../components/Content/Header';
 import ContentFooter from '../../components/Content/Footer';
@@ -107,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return { props: { playlistDetails: data.details, playlistId } }
     }
   } catch (error) {
-    const errorMessage = error.message || `There was an error fetching track with ID: ${playlistId}`
+    const errorMessage = (error as Error).message || `There was an error fetching track with ID: ${playlistId}`
     return {
       props: {
         error: errorMessage,
