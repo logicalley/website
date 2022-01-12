@@ -1,20 +1,14 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React from 'react';
 
 import styles from './styles.module.css';
 
-import { registerEvent } from '../../utils/googleAnalytics';
-import {
-  GA_ACTION_APP_STORE_DOWNLOAD,
-  GA_CATEGORY_DOWNLOAD_BUTTONS
-} from '../../utils/constants';
+import { ANALYTICS_EVENTS, MOBILE_STORE_SOURCE } from '../../utils/constants';
+import Analytics from '../../utils/analytics';
 
 
 const AppleAppStoreButton: React.FC = () => {
-  const sendAnalytics = () => registerEvent({
-    action: GA_ACTION_APP_STORE_DOWNLOAD,
-    category: GA_CATEGORY_DOWNLOAD_BUTTONS,
-    label: GA_ACTION_APP_STORE_DOWNLOAD,
-    value: 1
+  const sendAnalytics = () => Analytics.getInstance().trackLink('#appleAppStoreLink', ANALYTICS_EVENTS.MOBILE_STORE_ACCESS, {
+    source: MOBILE_STORE_SOURCE.IOS
   });
 
   const appStoreUrl = 'https://apps.apple.com/us/app/annie/id1536561102';
@@ -23,7 +17,8 @@ const AppleAppStoreButton: React.FC = () => {
     rel: 'noopener noreferrer',
     className: styles.buttonContainer,
     href: appStoreUrl,
-    onClick: sendAnalytics
+    onClick: sendAnalytics,
+    id: 'appleAppStoreLink'
   };
 
   return (

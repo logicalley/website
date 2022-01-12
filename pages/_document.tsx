@@ -8,9 +8,6 @@ import Document, {
 import { ServerPortal } from '@jesstelford/react-portal-universal/server';
 import getConfig from 'next/config';
 
-import { GA_TRACKING_ID } from '../utils/googleAnalytics';
-import { Fragment } from 'react';
-
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -36,7 +33,6 @@ class MyDocument extends Document {
   }
 
   render() {
-    const analyticsUrl: string = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
     // const referrer = 'strict-origin';
     // const cspContent = `default-src 'self' *.dzcdn.net api.anniemusic.app googletagmanager.com; style-src 'strict-dynamic' 'nonce-w329sdada'; script-src 'strict-dynamic'; object-src 'none'; font-src 'self'; img-src 'self' res.cloudinary.com *.scdn.co *.dzcdn.net; frame-src airtable.com; base-uri 'self'; frame-ancestors airtable.com; report-uri http://localhost:5000/api/v1/complaint/csp`;
 
@@ -46,24 +42,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript nonce={publicRuntimeConfig.nonce} />
-          {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {publicRuntimeConfig.isDev ? null : (
-            <Fragment>
-              <script async src={analyticsUrl} />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-            `,
-                }}
-              />
-            </Fragment>
-          )}
         </body>
       </Html>
     );

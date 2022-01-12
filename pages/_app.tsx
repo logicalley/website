@@ -8,7 +8,6 @@ import getConfig from 'next/config';
 import type { AppProps } from 'next/app';
 
 import '../assets/css/global.css';
-import { registerPageView } from '../utils/googleAnalytics';
 import CookieForm from '../components/CookieForm';
 import Analytics from '../utils/analytics';
 

@@ -5,9 +5,8 @@ import 'react-contexify/dist/ReactContexify.css';
 
 import {
   ContextMenuChildName,
-  GA_ACTION_ANNIE_LINK_COPY,
-  GA_ACTION_OPEN_LINK_BUTTON_CLICK,
-  GA_CATEGORY_TRACK_ACTIONS,
+  ANALYTICS_EVENTS,
+  PlaylistContextActions,
   PLAYLIST_CONTEXT_ID,
 } from '../../utils/constants';
 import styles from './styles.module.css';
@@ -17,7 +16,7 @@ import type {
   ContextMenuClickEvent
 } from '../..';
 import copyLink from '../../utils/copyLink';
-import { registerEvent } from '../../utils/googleAnalytics';
+import Analytics from '../../utils/analytics';
 
 
 const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
@@ -51,15 +50,11 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
   };
 
   const sendAnalytics = (action: string): void => {
-    const label = `${title} - ${artiste}`;
-    const analyticsLabel = `${action}: ${label} `;
-
-    registerEvent({
-      action,
-      category: GA_CATEGORY_TRACK_ACTIONS,
-      label: analyticsLabel,
-      value: 1,
-    });
+    Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.PLAYLIST_CONTEXT_ACTIONS, {
+      trackTitle: title,
+      artiste,
+      action
+    })
   }
 
   const handleItemClick = ({ event, props, data } : ContextMenuClickEvent): void => {
@@ -67,11 +62,11 @@ const PlaylistContextMenu: React.FC<PlaylistContextProps> = (
       const { url } = props;
       switch (data.name) {
         case ContextMenuChildName.COPY_LINK:
-          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          sendAnalytics(PlaylistContextActions.COPY);
           copyLink(url);
           break;
         case ContextMenuChildName.OPEN_LINK:
-          sendAnalytics(GA_ACTION_OPEN_LINK_BUTTON_CLICK);
+          sendAnalytics(PlaylistContextActions.OPEN);
           window.open(url, 'blank');
           break;
         default:

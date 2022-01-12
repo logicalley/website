@@ -42,6 +42,10 @@ class Analytics {
     return this.track(name, attributes);
   }
 
+  public trackLink(linkQuery: string, name: ANALYTICS_EVENTS, attributes: Attributes = {}): void {
+    return mixpanel.track_links(linkQuery, name, attributes);
+  }
+
   public optOut(): void {
     return mixpanel.opt_out_tracking();
   }

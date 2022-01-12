@@ -5,7 +5,8 @@ import Select from 'react-select';
 import SimpleSpinner from '../Spinner/simple';
 
 import type { SelectableStorefront, Storefront, StorefrontSelectorProps } from '../..';
-import { ANNIE_USER_SELECTED_STOREFRONT_KEY, FetchStatus } from '../../utils/constants';
+import { ANALYTICS_EVENTS, ANNIE_USER_SELECTED_STOREFRONT_KEY, FetchStatus } from '../../utils/constants';
+import Analytics from '../../utils/analytics';
 
 
 const { publicRuntimeConfig } = getConfig();
@@ -47,6 +48,11 @@ const StorefrontSelector: React.FC<StorefrontSelectorProps> = (props: Storefront
   const selectProps: any = {
     options: storefrontData,
     onChange: (payload: any): void => {
+      Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.STORE_FRONT_SELECT, {
+        storefront: payload.label,
+        identifier: payload.value
+      });
+
       localStorage.setItem(ANNIE_USER_SELECTED_STOREFRONT_KEY, JSON.stringify(payload));
       setUserStorefront(payload as SelectableStorefront);
     }
