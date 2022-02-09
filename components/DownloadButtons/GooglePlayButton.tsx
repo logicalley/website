@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 import styles from './styles.module.css';
-import Modal from '../Modal';
 import { ANALYTICS_EVENTS, MOBILE_STORE_SOURCE } from '../../utils/constants';
 import Analytics from '../../utils/analytics';
 
