@@ -80,6 +80,8 @@ export const NON_COOKIE_PERMISSION_ROUTES = [
 
 export const ANNIE_APPLE_STORE_ID = '1536561102';
 export const ANNIE_APPLE_STORE_URL = 'https://apps.apple.com/ng/app/annie-music/id1536561102';
+export const ANNIE_PLAYSTORE_ID = 'com.annie.annie_android';
+export const ANNIE_PLAYSTORE_URL = 'https://play.google.com/store/apps/details?id=com.annie.annie_android';
 
 export enum ANALYTICS_EVENTS {
   PAGE_VIEWED = 'PAGE_VIEWED',

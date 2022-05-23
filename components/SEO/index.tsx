@@ -4,7 +4,12 @@ import getConfig from 'next/config';
 
 import type { SEOProps } from '../..';
 
-import { ANNIE_APPLE_STORE_ID, ANNIE_APPLE_STORE_URL } from '../../utils/constants';
+import { 
+  ANNIE_APPLE_STORE_ID, 
+  ANNIE_APPLE_STORE_URL, 
+  ANNIE_PLAYSTORE_URL,
+  ANNIE_PLAYSTORE_ID
+} from '../../utils/constants';
 
 
 const { publicRuntimeConfig } = getConfig();
@@ -61,9 +66,9 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
       <meta property="twitter:app:id:ipad" content={ANNIE_APPLE_STORE_ID} />
       <meta property="twitter:app:url:ipad" content={ANNIE_APPLE_STORE_URL} />
 
-      {/* <meta property="twitter:app:name:googleplay" content="Annie Music" /> */}
-      {/* <meta property="twitter:app:id:googleplay" content={ANNIE_APPLE_STORE_ID} /> */}
-      {/* <meta property="twitter:app:url:googleplay" content={ANNIE_APPLE_STORE_URL} /> */}
+      <meta property="twitter:app:name:googleplay" content="Annie Music" />
+      <meta property="twitter:app:id:googleplay" content={ANNIE_PLAYSTORE_ID} />
+      <meta property="twitter:app:url:googleplay" content={ANNIE_PLAYSTORE_URL} />
 
       {(activateAudioSEO) ? (
         <Fragment>
@@ -73,10 +78,6 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
           <meta property="music:preview_url:url" content={previewUrl} />
           <meta property="music:preview_url:secure_url" content={previewUrl} />
           <meta property="music:song:preview_url:secure_url" content={previewUrl} />
-          {/* <meta property="twitter:player" content={`${publicRuntimeConfig.baseUrl}/t/${resourceId}/embed`} /> */}
-          {/* <meta property="twitter:player:stream" content={previewUrl} /> */}
-          {/*<meta property="twitter:player:width" content="600" />
-          <meta property="twitter:player:height" content="600" /> */}
         </Fragment>
       ) : null}
     </Head>

@@ -30,7 +30,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
 
   return (
     <Fragment>
-      <Oembed trackId={trackId} title={pageTitle} type="track" />
+      {/* <Oembed trackId={trackId} title={pageTitle} type="track" />  */}
       <SEO
         title={pageTitle}
         description={description}
