@@ -19,7 +19,8 @@
     "**/*.ts",
     "**/*.tsx",
     "sentry.client.config.js",
-    "pages/_error.js"
+    "pages/_error.js",
+    "./jest.setup.ts"
   ],
   "exclude": ["node_modules", "jest.*", "tests"]
 }
