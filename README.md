@@ -1,6 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6379935d-afc7-453f-8c6d-ab8adbfa057d/deploy-status)](https://app.netlify.com/sites/annie-web-prod/deploys)
-
-[![Annie Web Staging CI](https://github.com/logicalley/annie-web/actions/workflows/stage.yml/badge.svg)](https://github.com/logicalley/annie-web/actions/workflows/stage.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ecb3652f-365d-416f-8ce9-5011a537df8c/deploy-status)](https://app.netlify.com/sites/annie-prod/deploys)
 
 # ANNIE-WEB
 
