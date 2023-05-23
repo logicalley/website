@@ -1,5 +1,4 @@
 [build]
-  # command   = "sed -i \"s|NONCE_PLACEHOLDER|${COMMIT_REF}|g\" netlify.toml && npm run build"
   command = "pnpm build"
   functions = "out_functions"
   publish   = ".next"

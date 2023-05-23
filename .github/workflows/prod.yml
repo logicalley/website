@@ -15,7 +15,7 @@ jobs:
       ANNIE_CLIENT_BASE_URL: 'localhost:3000'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Use Node.js 18.x
         uses: actions/setup-node@v2
@@ -30,23 +30,57 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
+      - name: Get pnpm store directory path
+        id: pnpm-store-dir-path
+        run: echo "::set-output name=dir::$(pnpm store dir)"
+
+      - uses: actions/cache@v2
+        id: annie-ci-cache
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-annie-
+
       - name: Run test for Annie Web
         run: pnpm test
 
-  build:
+  build_deply:
     runs-on: ubuntu-latest
     needs: [test]
 
     steps:
-      - name: trigger netlify build hook
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+
+      - uses: actions/cache@v2
+        id: annie-ci-cache
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-annie-
+
+      - name: build
+        run: pnpm build
+
+      - name: Install Netlify CLI
+        run: pnpm install netlify-cli -g
+
+      - name: Disable telemetry
+        run: netlify --telemetry-disable
+
+      - name: Deploy to Netlify
         env:
-          BUILD_HOOK: ${{ secrets.ANNIE_PROD_BUILD_HOOK }}
-        run: |
-          curl -X POST -d '{}' $BUILD_HOOK
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build]
-
-    steps:
-      - n
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: netlify deploy --prod
