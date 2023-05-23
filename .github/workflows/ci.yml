@@ -18,17 +18,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 18.x
 
-      - name: Install dependencies
-        run: yarn
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, typescript]
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get pnpm store directory path
+        id: pnpm-store-dir-path
+        run: echo "::set-output name=dir::$(pnpm store dir)"
 
       - uses: actions/cache@v2
         id: annie-ci-cache
@@ -39,11 +45,10 @@ jobs:
             ${{ runner.os }}-annie-
 
       - name: Run Linter for Annie-Web
-        run: yarn lint
+        run: pnpm lint
 
   test:
     runs-on: ubuntu-latest
-
     needs: lint
 
     env:
@@ -54,10 +59,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 14.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 18.x
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
 
       - uses: actions/cache@v2
         id: annie-ci-cache
@@ -68,10 +78,10 @@ jobs:
             ${{ runner.os }}-annie-
 
       - name: Run test for Annie Web
-        run: yarn test
+        run: pnpm test
 
   # deployToStaging:
-  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main' &&
 
   #   runs-on: ubuntu-latest
 

@@ -5,7 +5,6 @@ const config = {
   testEnvironment: 'jsdom',
   testRegex: "spec\\.tsx?$",
   setupFilesAfterEnv: [
-    "@testing-library/jest-dom/extend-expect",
     "<rootDir>/jest.setup.ts"
   ],
   testPathIgnorePatterns: [
