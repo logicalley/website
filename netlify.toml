@@ -1,14 +1,11 @@
 [build]
   # command   = "sed -i \"s|NONCE_PLACEHOLDER|${COMMIT_REF}|g\" netlify.toml && npm run build"
-  command = "yarn build"
+  command = "pnpm build"
   functions = "out_functions"
   publish   = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
-
-[[plugins]]
-package = "netlify-plugin-cache-nextjs"
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
