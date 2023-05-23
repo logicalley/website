@@ -1,0 +1,52 @@
+name: Deploy to Prod
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+
+    env:
+      NODE_ENV: 'test'
+      ANNIE_API_BASE_URL: 'localhost:5000/api'
+      ANNIE_CLIENT_BASE_URL: 'localhost:3000'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Run test for Annie Web
+        run: pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
+
+    steps:
+      - name: trigger netlify build hook
+        env:
+          BUILD_HOOK: ${{ secrets.ANNIE_PROD_BUILD_HOOK }}
+        run: |
+          curl -X POST -d '{}' $BUILD_HOOK
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - n
