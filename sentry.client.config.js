@@ -11,7 +11,7 @@ Sentry.init({
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.3,
   enabled: process.env.NODE_ENV !== 'development',
-  integrations: [new Sentry.Integrations.BrowserTracing()],
+  integrations: [new Sentry.BrowserTracing()],
   // ...
   // Note: if you want to override the automatic release value, do not set a
   // `release` value here - use the environment variable `SENTRY_RELEASE`, so

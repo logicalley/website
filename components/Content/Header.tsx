@@ -7,8 +7,8 @@ import styles from '../TrackDetail/styles.module.css';
 const ContentHeader: React.FC = () => {
   return (
     <header className={styles.trackHeaderContainer}>
-      <Link href="/">
-        <a className={styles.platformLink}>Home</a>
+      <Link href="/" className={styles.platformLink}>
+        Home
       </Link>
     </header>
   );

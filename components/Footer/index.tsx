@@ -22,11 +22,11 @@ const Footer: React.FC = () => {
       <section className={styles.footerLinks}>
         <section className={styles.footerTermsGroup}>
           <Link href={termsOfUseLink}>
-            <a>Terms of Use</a>
+            Terms of Use
           </Link>
 
           <Link href={privacyPolicyLink}>
-            <a>Privacy Policy</a>
+            Privacy Policy
           </Link>
         </section>
 

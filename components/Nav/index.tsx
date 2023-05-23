@@ -20,14 +20,14 @@ const Nav: React.FC<NavProps> = (props: NavProps) => {
 
   return (
     <nav className={styles.nav}>
-      <Link href={primaryRoute.href}>
-        <a className={styles.headerNav}>
-          {primaryRoute.text}
-        </a>
+      <Link href={primaryRoute.href} className={styles.headerNav}>
+
+        {primaryRoute.text}
+
       </Link>
 
-      <Link href="/help">
-        <a className={styles.headerNav}>Contact</a>
+      <Link href="/help" className={styles.headerNav}>
+        Contact
       </Link>
 
       {/* <Patreon /> */}

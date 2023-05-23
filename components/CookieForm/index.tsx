@@ -48,7 +48,7 @@ const CookieForm: React.FC = () => {
       <section className={styles.privacyText}>
         By using Annie, you agree to our
         <Link href="/privacy-policy">
-          <a>Privacy Policy</a>
+          Privacy Policy
         </Link>
       </section>
 

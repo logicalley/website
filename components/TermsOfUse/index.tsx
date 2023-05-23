@@ -14,10 +14,10 @@ const TermsOfUse: React.FC = () => {
       <ol>
         <li>Terms</li>
         <div className={styles.textGroup}>
-          <span className={styles.docText}>Annie is a product of Logic Alley Ltd and uses a website with the domain name <Link href="/"><a className={styles.annieHomeLink}>https://anniemusic.app</a></Link>.</span>
-          <span className={styles.docText}>This terms of service regulate the use of the website <Link href="/"><a className={styles.annieHomeLink}>https://anniemusic.app</a></Link>. and the use of the Annie Music product on other platforms.</span>
+          <span className={styles.docText}>Annie is a product of Logic Alley Ltd and uses a website with the domain name <Link href="/" className={styles.annieHomeLink}>https://anniemusic.app</Link>.</span>
+          <span className={styles.docText}>This terms of service regulate the use of the website <Link href="/" className={styles.annieHomeLink}>https://anniemusic.app</Link>. and the use of the Annie Music product on other platforms.</span>
           <span className={styles.docText}>
-            By accessing Annie through the website at <Link href="/"><a className={styles.annieHomeLink}>https://anniemusic.app</a></Link>, the app or other platforms, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
+            By accessing Annie through the website at <Link href="/" className={styles.annieHomeLink}>https://anniemusic.app</Link>, the app or other platforms, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
           </span>
         </div>
 
@@ -133,17 +133,17 @@ const TermsOfUse: React.FC = () => {
           <span className={styles.docText}>
             <span className="bold">Youtube</span> - By using Anniemusic, You are agreeing to be bound by the YouTube Terms Of Service. Anniemusic uses the YouTube API Services.
             Please also checkout <a href={googlePrivacyUrl} className={styles.plainLink}>Google Privacy Policy</a>.
-            Anniemusic uses YouTube user information to access, provide and display YouTube data on Anniemusic. Anniemusic will be able to retrieve user YouTube username, user private playlists, liked videos, uploaded videos and subscribed channels. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Google security settings page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
+            Anniemusic uses YouTube user information to access, provide and display YouTube data on Anniemusic. Anniemusic will be able to retrieve user YouTube username, user private playlists, liked videos, uploaded videos and subscribed channels. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Google security settings page and can also contact Anniemusic with any questions or complaints <Link href="/contact" className={styles.plainLink}>here</Link>.
           </span>
 
           <span className={styles.docText}>
             <span className="bold">Spotify</span> - By using Anniemusic, You are agreeing to be bound by the Spotify Terms and Conditions of Use.
-            Anniemusic uses the Spotify API Services. Anniemusic uses Spotify user information to access, provide and display Spotify datas on anniemusic. Anniemusic will be able to retrieve user Spotify username, user private playlists, liked tracks, liked albums and liked artists. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Spotify Apps with access to your Spotify information page and can also contact Anniemusic with any questions or complaints <Link href="/contact"><a className={styles.plainLink}>here</a></Link>.
+            Anniemusic uses the Spotify API Services. Anniemusic uses Spotify user information to access, provide and display Spotify datas on anniemusic. Anniemusic will be able to retrieve user Spotify username, user private playlists, liked tracks, liked albums and liked artists. User data is only used to provide Anniemusic services and are not shared with any external service. You can always revoke Anniemusic&apos;s access to your data via the Spotify Apps with access to your Spotify information page and can also contact Anniemusic with any questions or complaints <Link href="/contact" className={styles.plainLink}>here</Link>.
           </span>
         </div>
       </ol>
     </section>
-  )
+  );
 }
 
 export default TermsOfUse;
