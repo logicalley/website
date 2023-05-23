@@ -23,8 +23,14 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Install dependencies
-        run: pnpm
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, typescript]
 
       - name: Get pnpm store directory path
         id: pnpm-store-dir-path
@@ -58,6 +64,11 @@ jobs:
         with:
           node-version: 18.x
 
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+
       - uses: actions/cache@v2
         id: annie-ci-cache
         with:
@@ -70,7 +81,7 @@ jobs:
         run: pnpm test
 
   # deployToStaging:
-  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  #   if: github.event_name == 'push' && github.ref == 'refs/heads/main' &&
 
   #   runs-on: ubuntu-latest
 
