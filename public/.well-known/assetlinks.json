@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.annie.annie_android",
+      "sha256_cert_fingerprints": [
+        "03:78:72:98:A0:83:BF:76:C4:D9:3B:D4:38:45:7A:20:F7:26:D9:94:1F:24:C8:42:EA:F1:A0:84:12:DC:F3:FB"
+      ]
+    }
+  }
+]
