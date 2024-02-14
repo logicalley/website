@@ -19,6 +19,7 @@
     "@bolajiolajide/utils": "1.0.15",
     "@headlessui/react": "1.4.0",
     "@jesstelford/react-portal-universal": "1.0.6",
+    "@netlify/blobs": "^6.5.0",
     "@netlify/plugin-nextjs": "^4.37.2",
     "@sentry/nextjs": "7.52.1",
     "@types/gtag.js": "0.0.3",

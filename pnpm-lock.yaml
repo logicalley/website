@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@bolajiolajide/utils':
     specifier: 1.0.15
@@ -10,6 +14,9 @@ dependencies:
   '@jesstelford/react-portal-universal':
     specifier: 1.0.6
     version: 1.0.6(react-dom@18.2.0)(react@18.2.0)
+  '@netlify/blobs':
+    specifier: ^6.5.0
+    version: 6.5.0
   '@netlify/plugin-nextjs':
     specifier: ^4.37.2
     version: 4.37.2
@@ -955,6 +962,11 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@netlify/blobs@6.5.0:
+    resolution: {integrity: sha512-wRFlNnL/Qv3WNLZd3OT/YYqF1zb6iPSo8T31sl9ccL1ahBxW1fBqKgF4b1XL7Z+6mRIkatvcsVPkWBcO+oJMNA==}
+    engines: {node: ^14.16.0 || >=16.0.0}
+    dev: false
 
   /@netlify/esbuild-android-64@0.14.39:
     resolution: {integrity: sha512-azq+lsvjRsKLap8ubIwSJXGyknUACqYu5h98Fvyoh40Qk4QXIVKl16JIJ4s+B7jy2k9qblEc5c4nxdDA3aGbVA==}
