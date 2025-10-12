@@ -42,11 +42,11 @@ interface Platform {
 interface Track {
   id: string;
   title: string;
-  artiste: string[];
+  artistes: string[];
   image_url: string;
-  genre: string[] | null;
+  genres: string[] | null;
   year: string | null;
-  preview_url: string[];
+  preview_urls: Record<string, string | null>;
   platforms: Platform[];
 }
 
@@ -87,27 +87,29 @@ export interface SEOProps {
   description?: string;
   url: string;
   imageUrl?: string;
-  resourceId?: number;
-  previewUrl?: string;
+  resourceId?: string;
+  previewUrl?: string | null | undefined;
 }
 
 interface TrackInfoProps {
   title: string;
   artiste: string;
   year: string | null;
-  genre: string | null;
+  genres: string[] | null;
   imageUrl: string;
 }
 
 export interface TrackInfoCardProps extends TrackInfoProps {
-  previewUrl: string | null;
+  previewUrl: string | undefined | null;
 }
 
-export interface PlatformGroup extends TrackInfoProps {
+export interface PlatformGroup extends Omit<TrackInfoProps, 'genres'> {
   platforms: Platform[];
 }
 
-export interface PlatformCardProps extends TrackInfoProps, Platform {}
+export interface PlatformCardProps
+  extends Omit<TrackInfoProps, 'genres'>,
+    Platform {}
 
 export interface AudioPlayerProps {
   previewUrl: string;
@@ -165,7 +167,6 @@ export interface PlatformModalProps {
   artiste: string;
   closeFn: () => void;
   platformName: ANNIE_TYPE | SPOTIFY_TYPE | DEEZER_TYPE | APPLE_MUSIC_TYPE;
-  shortUrl: string | null;
 }
 
 export interface Storefront {

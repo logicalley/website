@@ -27,7 +27,7 @@ import Analytics from '../../utils/analytics';
 const PlatformModal: React.FC<PlatformModalProps> = (
   props: PlatformModalProps
 ) => {
-  const { artiste, platformName, title, url, closeFn, shortUrl } = props;
+  const { artiste, platformName, title, url, closeFn } = props;
 
   const [showButton, setShowButton] = useState<boolean>(false);
   const [userStorefront, setUserStorefront] = useState<SelectableStorefront>();
@@ -38,10 +38,9 @@ const PlatformModal: React.FC<PlatformModalProps> = (
   const isAnnieLink = platformName === ANNIE_TYPE;
   const isAppleLink = platformName === APPLE_MUSIC_TYPE;
 
-  const storefrontUsable: boolean =
-    isAppleLink && Boolean(shortUrl) && Boolean(userStorefront);
+  const storefrontUsable: boolean = isAppleLink && Boolean(userStorefront);
   const trackUrl: string = storefrontUsable
-    ? `${appleMusicBaseUrl}/${userStorefront?.value}${shortUrl}`
+    ? `${appleMusicBaseUrl}/${userStorefront?.value}${url}`
     : url;
 
   useEffect(() => {
@@ -85,7 +84,7 @@ Shared via @anniemusicapp%0a%0a`;
     Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_COPIED, {
       title,
       artiste,
-      platform: platformName.toUpperCase()
+      platform: platformName.toUpperCase(),
     });
   };
 
@@ -93,15 +92,15 @@ Shared via @anniemusicapp%0a%0a`;
     Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_SHARED, {
       title,
       artiste,
-      platform
-    })
+      platform,
+    });
   };
 
   const sendOpenLinkAnalytics = (): void => {
     Analytics.getInstance().trackEvent(ANALYTICS_EVENTS.LINK_OPENED, {
       title,
       artiste,
-      platform: platformName.toUpperCase()
+      platform: platformName.toUpperCase(),
     });
   };
 
@@ -199,7 +198,7 @@ Shared via @anniemusicapp%0a%0a`;
         <button
           className={styles.copyLinkBtn}
           onClick={() => {
-            registerLinkCopy()
+            registerLinkCopy();
             copyLink(trackUrl);
           }}
         >

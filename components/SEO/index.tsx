@@ -4,15 +4,12 @@ import getConfig from 'next/config';
 
 import type { SEOProps } from '../..';
 
-import { 
-  ANNIE_APPLE_STORE_ID, 
-  ANNIE_APPLE_STORE_URL, 
+import {
+  ANNIE_APPLE_STORE_ID,
+  ANNIE_APPLE_STORE_URL,
   ANNIE_PLAYSTORE_URL,
-  ANNIE_PLAYSTORE_ID
+  ANNIE_PLAYSTORE_ID,
 } from '../../utils/constants';
-
-
-const { publicRuntimeConfig } = getConfig();
 
 const SEO: React.FC<SEOProps> = (props: SEOProps) => {
   const {
@@ -22,7 +19,7 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
     url,
     imageUrl = 'https://res.cloudinary.com/anniemusic/image/upload/f_auto,q_auto/v1603713396/icons/annie-logo-white_g6obnp.png',
     previewUrl,
-    resourceId
+    resourceId,
   } = props;
   const pageTitle = title || 'Annie';
 
@@ -68,16 +65,22 @@ const SEO: React.FC<SEOProps> = (props: SEOProps) => {
 
       <meta property="twitter:app:name:googleplay" content="Annie Music" />
       <meta property="twitter:app:id:googleplay" content={ANNIE_PLAYSTORE_ID} />
-      <meta property="twitter:app:url:googleplay" content={ANNIE_PLAYSTORE_URL} />
+      <meta
+        property="twitter:app:url:googleplay"
+        content={ANNIE_PLAYSTORE_URL}
+      />
 
-      {(activateAudioSEO) ? (
+      {activateAudioSEO ? (
         <Fragment>
           <meta property="og:audio" content={previewUrl} />
           <meta property="music:preview_url:type" content="audio/mpeg" />
           <meta property="og:audio:type" content="audio/mp3" />
           <meta property="music:preview_url:url" content={previewUrl} />
           <meta property="music:preview_url:secure_url" content={previewUrl} />
-          <meta property="music:song:preview_url:secure_url" content={previewUrl} />
+          <meta
+            property="music:song:preview_url:secure_url"
+            content={previewUrl}
+          />
         </Fragment>
       ) : null}
     </Head>

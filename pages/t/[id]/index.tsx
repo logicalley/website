@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { NextPage, GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 import getConfig from 'next/config';
 
 import type { TrackPageProps } from '../../..';
@@ -17,15 +18,28 @@ const { publicRuntimeConfig } = getConfig();
 
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
   const { trackDetails, trackId, error } = props;
+  const router = useRouter();
+
+  useEffect(() => {
+    const currentId = router.query.id as string;
+    if (trackDetails && trackDetails.id && trackDetails.id !== currentId) {
+      router.replace(`/t/${trackDetails.id}`, undefined, { shallow: true });
+    }
+  }, [trackDetails, router]);
 
   if (error || !trackDetails) return <Page404 />;
 
-  const { title, artiste, image_url, genre, year, preview_url, platforms } =
+  const { title, artistes, image_url, genres, year, preview_urls, platforms } =
     trackDetails;
+  // too lazy to rename lol
+  const artiste = artistes.join(', ');
   const pageTitle: string = `${title} - ${artiste}`;
   const description: string = `Listen to "${title}" by ${artiste}`;
   const keywords: string = `${title} ${artiste} music song annie share spotify deezer apple music`;
   const trackUrl: string = `https://anniemusic.app/t/${trackId}`;
+  const previewUrl = Object.values(preview_urls || {})
+    .filter(Boolean)
+    ?.at(0);
 
   return (
     <Fragment>
@@ -37,7 +51,7 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
         imageUrl={image_url}
         keywords={keywords}
         resourceId={trackDetails.id}
-        previewUrl={trackDetails.preview_url}
+        previewUrl={previewUrl}
       />
       <ContentHeader />
       <Spacer h="40px" mh="50px" />
@@ -45,15 +59,14 @@ const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
         title={title}
         imageUrl={image_url}
         artiste={artiste}
-        genre={genre}
+        genres={genres}
         year={year}
-        previewUrl={preview_url}
+        previewUrl={previewUrl}
       />
       <TrackPlatformGroup
         title={title}
         imageUrl={image_url}
         artiste={artiste}
-        genre={genre}
         year={year}
         platforms={platforms}
       />

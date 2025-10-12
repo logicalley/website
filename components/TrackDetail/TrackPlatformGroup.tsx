@@ -7,13 +7,14 @@ import { ANNIE_TYPE } from '../../utils/constants';
 
 import PlatformCard from './PlatformCard';
 
-
 const TrackPlatformGroup: React.FC<PlatformGroup> = (props: PlatformGroup) => {
-  const { platforms, title, year, genre, artiste, imageUrl } = props;
+  const { platforms, title, year, artiste, imageUrl } = props;
 
   return (
     <section className={styles.platformGroupContainer}>
-      <span className={styles.platformGroupHeader}>Share everything with Annie</span>
+      <span className={styles.platformGroupHeader}>
+        Share everything with Annie
+      </span>
 
       <section className={styles.platformGroup}>
         {platforms.map((platform) => {
@@ -22,11 +23,10 @@ const TrackPlatformGroup: React.FC<PlatformGroup> = (props: PlatformGroup) => {
             title,
             imageUrl,
             artiste,
-            genre,
-            year
+            year,
           };
 
-          return <PlatformCard {...cardProps} key={platform.name} />
+          return <PlatformCard {...cardProps} key={platform.name} />;
         })}
       </section>
     </section>

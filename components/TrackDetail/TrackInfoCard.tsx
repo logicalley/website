@@ -6,8 +6,10 @@ import type { TrackInfoCardProps } from '../..';
 
 import AudioPlayer from '../AudioPlayer';
 
-const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) => {
-  const { title, artiste, genre, year, imageUrl, previewUrl } = props;
+const TrackInfoCard: React.FC<TrackInfoCardProps> = (
+  props: TrackInfoCardProps
+) => {
+  const { title, artiste, genres, year, imageUrl, previewUrl } = props;
   const imageAlt = `Track artwork for "${title}" by "${artiste}"`;
 
   return (
@@ -24,9 +26,9 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
             <span className={styles.trackArtiste}>{artiste}</span>
 
             <div className={styles.genreYear}>
-              <span>{genre}</span>
-              {" · "}
               <span>{year}</span>
+              <br />
+              {genres && genres.map((g) => <span key={g}>#{g} </span>)}
             </div>
           </section>
         </section>
@@ -41,6 +43,6 @@ const TrackInfoCard: React.FC<TrackInfoCardProps> = (props: TrackInfoCardProps) 
       </section>
     </section>
   );
-}
+};
 
 export default TrackInfoCard;
