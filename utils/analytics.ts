@@ -23,14 +23,17 @@ class Analytics {
       throw new Error('Analytics instance creation is not allowed. Use `getInstance` method');
     }
 
-    mixpanel.init(publicRuntimeConfig.mixpanelProjectToken, {
-      debug: publicRuntimeConfig.isDev,
-      ignore_dnt: true,
-      secure_cookie: true
-    });
+    if (publicRuntimeConfig.mixpanelProjectToken) {
+      mixpanel.init(publicRuntimeConfig.mixpanelProjectToken, {
+        debug: publicRuntimeConfig.isDev,
+        ignore_dnt: true,
+        secure_cookie: true
+      });
+    }
   }
 
   private track(name: ANALYTICS_EVENTS, attributes: Attributes = {}): void {
+    if (!publicRuntimeConfig.mixpanelProjectToken) return;
     return mixpanel.track(name, attributes);
   }
 
@@ -43,14 +46,17 @@ class Analytics {
   }
 
   public trackLink(linkQuery: string, name: ANALYTICS_EVENTS, attributes: Attributes = {}): void {
+    if (!publicRuntimeConfig.mixpanelProjectToken) return;
     return mixpanel.track_links(linkQuery, name, attributes);
   }
 
   public optOut(): void {
+    if (!publicRuntimeConfig.mixpanelProjectToken) return;
     return mixpanel.opt_out_tracking();
   }
 
   public optIn(): void {
+    if (!publicRuntimeConfig.mixpanelProjectToken) return;
     return mixpanel.opt_in_tracking();
   }
 }

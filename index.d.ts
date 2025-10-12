@@ -5,7 +5,7 @@ import {
   ContextMenuChildName,
   APPLE_MUSIC_TYPE,
   SPOTIFY_TYPE,
-  DEEZER_TYPE
+  DEEZER_TYPE,
 } from './utils/constants';
 
 import {
@@ -37,18 +37,16 @@ interface Platform {
   buttonColor: string;
   icon: string | null;
   darkIcon: string | null;
-  shortUrl: string | null;
 }
 
 interface Track {
-  id: number;
-  isrc: string;
+  id: string;
   title: string;
-  artiste: string;
+  artiste: string[];
   image_url: string;
-  genre: string | null;
+  genre: string[] | null;
   year: string | null;
-  preview_url: string;
+  preview_url: string[];
   platforms: Platform[];
 }
 
@@ -239,8 +237,8 @@ export interface ContextMenuOpts {
 
 export interface ContextMenuClickEvent {
   props?: { url: string };
-  data?: { name: ContextMenuChildName },
-  event: any
+  data?: { name: ContextMenuChildName };
+  event: any;
 }
 
 export interface LoginPlatform {
@@ -253,9 +251,12 @@ export interface CheckIconProps {
   className?: string;
 }
 
-export type RadioGroupRenderProps = { active: boolean, checked: boolean };
+export type RadioGroupRenderProps = { active: boolean; checked: boolean };
 
-export type PlatformOptions = typeof SPOTIFY_TYPE | typeof DEEZER_TYPE | typeof APPLE_MUSIC_TYPE;
+export type PlatformOptions =
+  | typeof SPOTIFY_TYPE
+  | typeof DEEZER_TYPE
+  | typeof APPLE_MUSIC_TYPE;
 
 export interface ModalProps {
   children: React.ReactNode;

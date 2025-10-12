@@ -13,7 +13,6 @@ import ContentFooter from '../../../components/Content/Footer';
 import TrackInfoCard from '../../../components/TrackDetail/TrackInfoCard';
 import TrackPlatformGroup from '../../../components/TrackDetail/TrackPlatformGroup';
 
-
 const { publicRuntimeConfig } = getConfig();
 
 const TrackDetail: NextPage<TrackPageProps> = (props: TrackPageProps) => {
@@ -74,8 +73,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       const res = await fetch(trackApiEndpoint);
       const { data } = await res.json();
 
-      if (data && data.track_details) {
-        trackDetails = data.track_details;
+      if (data && data.kind === 'TRACK') {
+        trackDetails = data.details;
       }
 
       return { props: { trackDetails, trackId } };
