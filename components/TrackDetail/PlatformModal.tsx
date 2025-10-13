@@ -214,9 +214,12 @@ Shared via @anniemusicapp%0a%0a`;
 
   return (
     <section className={styles.platformModalContainer}>
+      <button onClick={closeFn} style={{ padding: '8px 16px', marginBottom: '10px' }}>Close</button>
       <Spacer h="10px" mh="10px" />
 
-      {isLoadedNoSelectedUserStorefront ? (
+      {!fetchedStorefront ? (
+        <p>Loading...</p>
+      ) : isLoadedNoSelectedUserStorefront ? (
         <Fragment>
           <p>
             Apple Music requires users to select a storefront which corresponds

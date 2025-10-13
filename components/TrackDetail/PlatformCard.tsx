@@ -28,6 +28,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (
 
   const openCardOptions = () => {
     sendTrackAnalytics();
+    console.log('openCardOptions called');
     setIsOpen(true);
   };
 
@@ -51,6 +52,7 @@ const PlatformCard: React.FC<PlatformCardProps> = (
               Everything in one link.
             </span>
           ) : null}
+          <span>Gege {modalIsOpen ? 'true' : 'false'}</span>
         </section>
 
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,13 +64,14 @@ const PlatformCard: React.FC<PlatformCardProps> = (
       </button>
 
       <Modal isOpen={modalIsOpen} onClose={closeModal} title="Share to ...">
-        <PlatformModal
+        <span>Modal...</span>
+        {/*<PlatformModal
           closeFn={closeModal}
           title={props.title}
           url={props.url}
           artiste={props.artiste}
           platformName={props.name}
-        />
+        />*/}
       </Modal>
     </Fragment>
   );
