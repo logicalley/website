@@ -214,7 +214,6 @@ Shared via @anniemusicapp%0a%0a`;
 
   return (
     <section className={styles.platformModalContainer}>
-      <button onClick={closeFn} style={{ padding: '8px 16px', marginBottom: '10px' }}>Close</button>
       <Spacer h="10px" mh="10px" />
 
       {!fetchedStorefront ? (

@@ -1,5 +1,5 @@
 import React, { Fragment, memo } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogPanel, DialogTitle, Transition } from '@headlessui/react';
 
 import type { ModalProps } from '../..';
 import styles from './styles.module.css';
@@ -9,32 +9,23 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog
-        as="div"
-        className={styles.dialog}
-        onClose={onClose}
-      >
-        <Dialog.Overlay className={styles.overlay} />
+      <Dialog as="div" className={styles.dialog} onClose={onClose}>
+        <div className={styles.overlay} />
 
-        <div className={styles.wrapper}>
+        <DialogPanel className={styles.wrapper}>
           <div className={styles.wrapperHeader}>
-            <Dialog.Title as="h2" className={styles.modalTitle}>
+            <DialogTitle as="h2" className={styles.modalTitle}>
               {title}
-            </Dialog.Title>
-            <button
-              onClick={onClose}
-              className={styles.closeBtn}
-            >
+            </DialogTitle>
+            <button onClick={onClose} className={styles.closeBtn} data-autofocus>
               &times;
             </button>
           </div>
 
-          {description ? (
-            <Dialog.Description>{description}</Dialog.Description>
-          ) : null}
+          {description ? <p>{description}</p> : null}
 
           {children}
-        </div>
+        </DialogPanel>
       </Dialog>
     </Transition>
   );
